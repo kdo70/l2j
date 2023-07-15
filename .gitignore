@@ -1,0 +1,6 @@
+/.idea/
+/build/login/log/
+/build/gameserver/log/
+/build/gameserver/config/hexid.txt
+/build/gameserver/libs/l2jserver.jar
+/build/login/libs/l2jserver.jar

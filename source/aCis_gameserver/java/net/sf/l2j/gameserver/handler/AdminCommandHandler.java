@@ -48,7 +48,7 @@ public class AdminCommandHandler
 		registerHandler(new AdminAnnouncements());
 		registerHandler(new AdminBookmark());
 		registerHandler(new AdminClanHall());
-		registerHandler(new AdminCursedWeapon())
+		registerHandler(new AdminCursedWeapon());
 		registerHandler(new AdminDoor());
 		registerHandler(new AdminEditChar());
 		registerHandler(new AdminEffects());

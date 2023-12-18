@@ -369,7 +369,7 @@ public abstract class Summon extends Playable
 	{
 		super.onSpawn();
 		
-		// Need it only for "crests on summons" custom.
+		// Need it only for "crests on summons" expander.
 		if (Config.SHOW_SUMMON_CREST)
 			sendPacket(new SummonInfo(this, _owner, 0));
 		
@@ -476,7 +476,7 @@ public abstract class Summon extends Playable
 	{
 		super.onTeleported();
 		
-		// Need it only for "crests on summons" custom.
+		// Need it only for "crests on summons" expander.
 		if (Config.SHOW_SUMMON_CREST)
 			sendPacket(new SummonInfo(this, _owner, 0));
 	}

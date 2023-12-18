@@ -311,7 +311,7 @@ public abstract class Creature extends WorldObject
 	}
 	
 	/**
-	 * Send a custom {@link String} text to self.
+	 * Send a expander {@link String} text to self.
 	 * @param text : The {@link String} to send.
 	 */
 	public void sendMessage(String text)

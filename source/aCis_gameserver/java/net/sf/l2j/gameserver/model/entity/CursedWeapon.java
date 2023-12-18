@@ -59,7 +59,7 @@ public class CursedWeapon
 	private int _playerId = 0;
 	protected Player _player = null;
 	
-	// Skill id and max level. Max level is took from skillid (allow custom skills).
+	// Skill id and max level. Max level is took from skillid (allow expander skills).
 	private final int _skillId;
 	private final int _skillMaxLevel;
 	

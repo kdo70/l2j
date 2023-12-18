@@ -4,13 +4,6 @@ import java.util.HashMap;
 
 import net.sf.l2j.gameserver.model.location.SpawnLocation;
 
-/**
- * In order to participate in a battle to occupy the Brigand’s Hideaway clan hall, the head of a clan of level 4 or above must complete the Brigand’s Hideaway quest within a certain time before the clan hall battle is started. Only the first five clans that complete the hideaway quest first can
- * participate. The number of clan members that can participate per clan is limited to 18 people. The quest to participate in the Brigand’s Hideaway clan hall battle is only valid for participating in the clan hall battle on that date. Having completed the quest previously does not make it possible
- * to participate in the clan battle.<br>
- * <br>
- * Once the decision is made to participate in the clan battle, the clan leader must register the 18 clan members and select the NPC that he will protect by conversing with the herald NPC. Clans that currently occupy the clan hall must register the 18 clan members to participate in the defense.
- */
 public final class BanditStronghold extends FlagWar
 {
 	public BanditStronghold()

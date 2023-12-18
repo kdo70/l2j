@@ -9760,6 +9760,7 @@
 				<drop itemid="959" min="1" max="1" chance="0.0111"/>
 				<drop itemid="7917" min="1" max="1" chance="6.1494"/>
 				<drop itemid="8742" min="1" max="1" chance="0.0587"/>
+				<drop itemid="4356" min="1" max="1" chance="99.0587"/>
 			</category>
 		</drops>
 	</npc>

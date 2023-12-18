@@ -26,7 +26,7 @@ public class ItemInfo
 	/** The price of the ItemInstance */
 	private int _price;
 	
-	/** The custom ItemInstance types (used loto, race tickets) */
+	/** The expander ItemInstance types (used loto, race tickets) */
 	private int _type1;
 	private int _type2;
 	
@@ -66,7 +66,7 @@ public class ItemInfo
 		// Get the quantity of the ItemInstance
 		_count = item.getCount();
 		
-		// Get custom item types (used loto, race tickets)
+		// Get expander item types (used loto, race tickets)
 		_type1 = item.getCustomType1();
 		_type2 = item.getCustomType2();
 		
@@ -103,7 +103,7 @@ public class ItemInfo
 		// Get the quantity of the ItemInstance
 		_count = item.getCount();
 		
-		// Get custom item types (used loto, race tickets)
+		// Get expander item types (used loto, race tickets)
 		_type1 = item.getCustomType1();
 		_type2 = item.getCustomType2();
 		

@@ -6181,7 +6181,10 @@
 				<drop itemid="1924" min="1" max="1" chance="8.5936"/>
 			</category>
 			<category type="CURRENCY" chance="70.0">
-				<drop itemid="57" min="125" max="213" chance="100.0"/>
+				<drop itemid="57" min="100" max="1000" chance="70.0"/>
+			</category>
+			<category type="GOLD" chance="10.0">
+				<drop itemid="4356" min="1" max="1" chance="0.90"/>
 			</category>
 			<category type="DROP" chance="1.2247">
 				<drop itemid="845" min="1" max="1" chance="7.2339"/>

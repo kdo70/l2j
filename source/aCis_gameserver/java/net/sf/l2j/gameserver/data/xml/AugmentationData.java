@@ -220,9 +220,9 @@ public class AugmentationData implements IXmlReader
 			
 		// Second: decide which grade the augmentation result is going to have:
 		// 0:yellow, 1:blue, 2:purple, 3:red
-		// The chances used here are most likely custom,
+		// The chances used here are most likely expander,
 		// whats known is: you cant have yellow with skill(or baseStatModifier)
-		// noGrade stone can not have glow, mid only with skill, high has a chance(custom), top allways glow
+		// noGrade stone can not have glow, mid only with skill, high has a chance(expander), top allways glow
 		int resultColor = Rnd.get(0, 100);
 		if (stat34 == 0 && !generateSkill)
 		{

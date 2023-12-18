@@ -4868,33 +4868,6 @@
 				<drop itemid="3032" min="1" max="1" chance="1.9232"/>
 				<drop itemid="5158" min="1" max="1" chance="1.9232"/>
 			</category>
-			<category type="HERB" chance="42.0">
-				<drop itemid="8600" min="1" max="1" chance="55.0"/>
-				<drop itemid="8601" min="1" max="1" chance="38.0"/>
-				<drop itemid="8602" min="1" max="1" chance="7.0"/>
-			</category>
-			<category type="HERB" chance="10.0">
-				<drop itemid="8607" min="1" max="1" chance="50.0"/>
-				<drop itemid="8609" min="1" max="1" chance="50.0"/>
-			</category>
-			<category type="HERB" chance="11.0">
-				<drop itemid="8603" min="1" max="1" chance="55.0"/>
-				<drop itemid="8604" min="1" max="1" chance="38.0"/>
-				<drop itemid="8605" min="1" max="1" chance="7.0"/>
-			</category>
-			<category type="HERB" chance="25.0">
-				<drop itemid="8606" min="1" max="1" chance="34.0"/>
-				<drop itemid="8608" min="1" max="1" chance="33.0"/>
-				<drop itemid="8610" min="1" max="1" chance="33.0"/>
-			</category>
-			<category type="HERB" chance="10.0">
-				<drop itemid="8611" min="1" max="1" chance="100.0"/>
-			</category>
-			<category type="HERB" chance="1.0">
-				<drop itemid="8612" min="1" max="1" chance="33.0"/>
-				<drop itemid="8613" min="1" max="1" chance="33.0"/>
-				<drop itemid="8614" min="1" max="1" chance="34.0"/>
-			</category>
 		</drops>
 	</npc>
 	<npc id="20060" name="Raging Spartoi" title="">
@@ -10219,61 +10192,17 @@
 			<skill id="4416" level="3"/>
 		</skills>
 		<drops>
-			<category type="SPOIL" chance="100.0">
-				<drop itemid="356" min="1" max="1" chance="0.0163"/>
-				<drop itemid="947" min="1" max="1" chance="0.0679"/>
-				<drop itemid="1871" min="1" max="3" chance="84.9303"/>
-			</category>
 			<category type="CURRENCY" chance="70.0">
-				<drop itemid="57" min="684" max="1394" chance="100.0"/>
+				<drop itemid="57" min="10" max="1000" chance="80.0"/>
 			</category>
-			<category type="DROP" chance="0.5815">
-				<drop itemid="4056" min="1" max="1" chance="19.5329"/>
-				<drop itemid="4064" min="1" max="1" chance="19.5329"/>
-				<drop itemid="2379" min="1" max="1" chance="0.1707"/>
-				<drop itemid="2376" min="1" max="1" chance="0.1193"/>
-				<drop itemid="4065" min="1" max="1" chance="30.1772"/>
-				<drop itemid="383" min="1" max="1" chance="0.1707"/>
-				<drop itemid="357" min="1" max="1" chance="0.1193"/>
-				<drop itemid="4057" min="1" max="1" chance="30.177"/>
+			<category type="GOLD" chance="10.0">
+				<drop itemid="4356" min="1" max="2" chance="10.0"/>
 			</category>
-			<category type="DROP" chance="11.3753">
-				<drop itemid="4192" min="1" max="1" chance="0.0422"/>
-				<drop itemid="4993" min="1" max="1" chance="0.6865"/>
-				<drop itemid="5220" min="1" max="1" chance="2.2056"/>
-				<drop itemid="4041" min="1" max="1" chance="0.4799"/>
-				<drop itemid="1885" min="1" max="1" chance="4.595"/>
-				<drop itemid="1871" min="1" max="1" chance="55.1359"/>
+			<category type="EQUIP" chance="10.0">
+				<drop itemid="2379" min="1" max="1" chance="1.0"/>
+			</category>
+			<category type="ITEM" chance="10.0">
 				<drop itemid="1866" min="1" max="1" chance="36.7566"/>
-				<drop itemid="947" min="1" max="1" chance="0.0228"/>
-				<drop itemid="8738" min="1" max="1" chance="0.0755"/>
-			</category>
-			<category type="HERB" chance="42.0">
-				<drop itemid="8600" min="1" max="1" chance="55.0"/>
-				<drop itemid="8601" min="1" max="1" chance="38.0"/>
-				<drop itemid="8602" min="1" max="1" chance="7.0"/>
-			</category>
-			<category type="HERB" chance="10.0">
-				<drop itemid="8607" min="1" max="1" chance="50.0"/>
-				<drop itemid="8609" min="1" max="1" chance="50.0"/>
-			</category>
-			<category type="HERB" chance="11.0">
-				<drop itemid="8603" min="1" max="1" chance="55.0"/>
-				<drop itemid="8604" min="1" max="1" chance="38.0"/>
-				<drop itemid="8605" min="1" max="1" chance="7.0"/>
-			</category>
-			<category type="HERB" chance="25.0">
-				<drop itemid="8606" min="1" max="1" chance="34.0"/>
-				<drop itemid="8608" min="1" max="1" chance="33.0"/>
-				<drop itemid="8610" min="1" max="1" chance="33.0"/>
-			</category>
-			<category type="HERB" chance="10.0">
-				<drop itemid="8611" min="1" max="1" chance="100.0"/>
-			</category>
-			<category type="HERB" chance="1.0">
-				<drop itemid="8612" min="1" max="1" chance="33.0"/>
-				<drop itemid="8613" min="1" max="1" chance="33.0"/>
-				<drop itemid="8614" min="1" max="1" chance="34.0"/>
 			</category>
 		</drops>
 	</npc>

@@ -2,24 +2,26 @@ package net.sf.l2j.gameserver.enums.items;
 
 public enum CrystalType
 {
-	NONE(0, 0, 0, 0),
-	D(1, 1458, 11, 90),
-	C(2, 1459, 6, 45),
-	B(3, 1460, 11, 67),
-	A(4, 1461, 19, 144),
-	S(5, 1462, 25, 250);
+	NONE(0, 0, 0, 0, "NG"),
+	D(1, 1458, 11, 90, "D"),
+	C(2, 1459, 6, 45, "C"),
+	B(3, 1460, 11, 67, "B"),
+	A(4, 1461, 19, 144, "A"),
+	S(5, 1462, 25, 250, "S");
 	
 	private final int _id;
 	private final int _crystalId;
 	private final int _crystalEnchantBonusArmor;
 	private final int _crystalEnchantBonusWeapon;
-	
-	private CrystalType(int id, int crystalId, int crystalEnchantBonusArmor, int crystalEnchantBonusWeapon)
+	private String _name;
+
+	private CrystalType(int id, int crystalId, int crystalEnchantBonusArmor, int crystalEnchantBonusWeapon, String name)
 	{
 		_id = id;
 		_crystalId = crystalId;
 		_crystalEnchantBonusArmor = crystalEnchantBonusArmor;
 		_crystalEnchantBonusWeapon = crystalEnchantBonusWeapon;
+		_name = name;
 	}
 	
 	/**
@@ -39,7 +41,11 @@ public enum CrystalType
 	{
 		return _crystalId;
 	}
-	
+
+	public String getName() {
+		return _name;
+	}
+
 	public int getCrystalEnchantBonusArmor()
 	{
 		return _crystalEnchantBonusArmor;

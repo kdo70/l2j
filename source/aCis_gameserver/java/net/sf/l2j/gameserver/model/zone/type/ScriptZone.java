@@ -5,7 +5,7 @@ import net.sf.l2j.gameserver.model.actor.Creature;
 import net.sf.l2j.gameserver.model.zone.type.subtype.ZoneType;
 
 /**
- * A zone extending {@link ZoneType}, used for quests and custom scripts.
+ * A zone extending {@link ZoneType}, used for quests and expander scripts.
  */
 public class ScriptZone extends ZoneType
 {

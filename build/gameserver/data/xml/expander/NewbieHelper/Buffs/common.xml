@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+    <buff skillId="1062" skillLevel="2" minLvl="6" maxLvl="75"
+          priceId="57" priceCount="1" isOnlyNight="false" isMagic="false"/>
+    <buff skillId="1414" skillLevel="1" minLvl="15" maxLvl="75"
+          priceId="57" priceCount="1" isOnlyNight="false" isMagic="false"/>
+    <buff skillId="1356" skillLevel="1" minLvl="15" maxLvl="75"
+          priceId="57" priceCount="1" isOnlyNight="false" isMagic="false"/>
+    <buff skillId="1355" skillLevel="1" minLvl="15" maxLvl="75"
+          priceId="57" priceCount="1" isOnlyNight="false" isMagic="false"/>
+    <buff skillId="1357" skillLevel="1" minLvl="15" maxLvl="75"
+          priceId="57" priceCount="1" isOnlyNight="false" isMagic="false"/>
+    <buff skillId="1413" skillLevel="1" minLvl="15" maxLvl="75"
+          priceId="57" priceCount="1" isOnlyNight="false" isMagic="false"/>
+    <buff skillId="1363" skillLevel="1" minLvl="15" maxLvl="75"
+          priceId="57" priceCount="1" isOnlyNight="false" isMagic="false"/>
+    <buff skillId="4699" skillLevel="13" minLvl="20" maxLvl="75"
+          priceId="57" priceCount="1" isOnlyNight="false" isMagic="false"/>
+    <buff skillId="4700" skillLevel="13" minLvl="20" maxLvl="75"
+          priceId="57" priceCount="1" isOnlyNight="false" isMagic="false"/>
+    <buff skillId="4702" skillLevel="13" minLvl="20" maxLvl="75"
+          priceId="57" priceCount="1" isOnlyNight="false" isMagic="false"/>
+    <buff skillId="4703" skillLevel="13" minLvl="20" maxLvl="75"
+          priceId="57" priceCount="1" isOnlyNight="false" isMagic="false"/>
+    <buff skillId="1323" skillLevel="1" minLvl="1" maxLvl="75"
+          priceId="57" priceCount="1" isOnlyNight="true" isMagic="false"/>
+</list>

@@ -350,7 +350,7 @@ public final class RainbowSpringsChateau extends ClanHallSiege
 						// html = "game_manager013.htm";
 						else if (!_acceptedClans.contains(clan))
 							html = "game_manager014.htm";
-						// else if () // Not have enough cards to register.
+						// else if () // Not have enough expander to register.
 						// html = "game_manager015.htm";
 						else
 							portToArena(player, _acceptedClans.indexOf(clan));

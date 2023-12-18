@@ -1,5 +1,6 @@
 package net.sf.l2j.gameserver.scripting.script.feature;
 
+import net.sf.l2j.commons.logging.CLogger;
 import net.sf.l2j.gameserver.data.manager.SpawnManager;
 import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.actor.Player;

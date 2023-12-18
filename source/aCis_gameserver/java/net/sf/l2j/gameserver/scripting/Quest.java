@@ -155,7 +155,7 @@ public class Quest
 	}
 	
 	/**
-	 * @return True for a quest script and false for any custom script (script, AI, etc).
+	 * @return True for a quest script and false for any expander script (script, AI, etc).
 	 */
 	public boolean isRealQuest()
 	{

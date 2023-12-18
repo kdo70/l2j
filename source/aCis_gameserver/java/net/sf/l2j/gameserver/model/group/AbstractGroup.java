@@ -140,8 +140,8 @@ public abstract class AbstractGroup
 	}
 	
 	/**
-	 * Broadcast a custom text message to this group.
-	 * @param text : the custom string to broadcast.
+	 * Broadcast a expander text message to this group.
+	 * @param text : the expander string to broadcast.
 	 */
 	public void broadcastString(String text)
 	{

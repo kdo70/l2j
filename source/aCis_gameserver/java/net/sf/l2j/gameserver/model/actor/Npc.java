@@ -872,21 +872,15 @@ public class Npc extends Creature
 	{
 		_isReversePath = isReversePath;
 	}
-	
-	/**
-	 * @return The Exp reward of this {@link Npc} based on its {@link NpcTemplate} and modified by {@link Config#RATE_XP}.
-	 */
+
 	public int getExpReward()
 	{
-		return (int) (getTemplate().getRewardExp() * Config.RATE_XP);
+		return getTemplate().getRewardExp();
 	}
-	
-	/**
-	 * @return The SP reward of this {@link Npc} based on its {@link NpcTemplate} and modified by {@link Config#RATE_SP}.
-	 */
+
 	public int getSpReward()
 	{
-		return (int) (getTemplate().getRewardSp() * Config.RATE_SP);
+		return getTemplate().getRewardSp();
 	}
 	
 	/**
@@ -1725,36 +1719,7 @@ public class Npc extends Creature
 	 */
 	public void showTeleportWindow(Player player, TeleportType type)
 	{
-		final List<TeleportLocation> teleports = TeleportData.getInstance().getTeleports(getNpcId());
-		if (teleports == null)
-			return;
-		
-		final StringBuilder sb = new StringBuilder();
-		sb.append("<html><body>&$556;<br><br>");
-		
-		for (int index = 0; index < teleports.size(); index++)
-		{
-			final TeleportLocation teleport = teleports.get(index);
-			if (teleport == null || type != teleport.getType())
-				continue;
-			
-			StringUtil.append(sb, "<a action=\"bypass -h npc_", getObjectId(), "_teleport ", index, "\" msg=\"811;", teleport.getDesc(), "\">", teleport.getDesc());
-			
-			if (!Config.FREE_TELEPORT)
-			{
-				final int priceCount = teleport.getCalculatedPriceCount(player);
-				if (priceCount > 0)
-					StringUtil.append(sb, " - ", priceCount, " &#", teleport.getPriceId(), ";");
-			}
-			
-			sb.append("</a><br1>");
-		}
-		sb.append("</body></html>");
-		
-		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-		html.setHtml(sb.toString());
-		
-		player.sendPacket(html);
+		TeleportData.getInstance().showTeleportList(player, this, TeleportType.STANDARD);
 	}
 	
 	/**

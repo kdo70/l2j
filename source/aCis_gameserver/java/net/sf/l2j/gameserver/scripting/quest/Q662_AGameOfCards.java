@@ -33,7 +33,7 @@ public class Q662_AGameOfCards extends Quest
 	private static final int EA_D = 956;
 	private static final int ZIGGO_GEMSTONE = 8868;
 	
-	// All cards
+	// All expander
 	private static final Map<Integer, String> CARDS = new HashMap<>();
 	static
 	{

@@ -60,7 +60,7 @@ public class Q663_SeductiveWhispers extends Quest
 		4121
 	};
 	
-	// Text of cards
+	// Text of expander
 	private static final Map<Integer, NpcStringId> CARDS = new HashMap<>();
 	static
 	{

@@ -29,7 +29,7 @@ public final class Config {
     public static final String PLAYERS_FILE = "./config/players.properties";
     public static final String SERVER_FILE = "./config/server.properties";
     public static final String SIEGE_FILE = "./config/siege.properties";
-    public static final String EXPANDER_NEWBIE_HELPER = "./config/expander/newbie-helper.properties";
+    public static final String EXPANDER_BUFFER = "./config/expander/buffer.properties";
 
     // --------------------------------------------------
     // Clans settings
@@ -303,9 +303,9 @@ public final class Config {
     public static boolean FREE_TELEPORT;
     public static int FREE_TELEPORT_LVL;
     public static boolean FREE_BUFFER;
-    public static int NEWBIE_BUFFER_PRICE_PER_UNIT;
-    public static int NEWBIE_BUFFER_FREE_PLAYER_LVL;
-    public static int NEWBIE_BUFFER_PRICE_ITEM_ID;
+    public static int BUFFER_PRICE_PER_UNIT;
+    public static int BUFFER_FREE_PLAYER_LVL;
+    public static int BUFFER_PRICE_ITEM_ID;
     public static boolean ANNOUNCE_MAMMON_SPAWN;
     public static boolean MOB_AGGRO_IN_PEACEZONE;
     public static boolean SHOW_NPC_LVL;
@@ -1136,13 +1136,13 @@ public final class Config {
         CH_MAX_ATTACKERS_NUMBER = sieges.getProperty("ChAttackerMaxClans", 10);
     }
 
-    private static void loadNewbieHelper() {
-        final ExProperties newbieHelper = initProperties(Config.EXPANDER_NEWBIE_HELPER);
+    private static void loadBuffer() {
+        final ExProperties buffer = initProperties(Config.EXPANDER_BUFFER);
 
-        FREE_BUFFER = newbieHelper.getProperty("FreeBuffer", false);
-        NEWBIE_BUFFER_PRICE_PER_UNIT = newbieHelper.getProperty("NewbieBufferPricePerUnit", 1);
-        NEWBIE_BUFFER_FREE_PLAYER_LVL = newbieHelper.getProperty("NewbieBufferFreePlayerLvl", 40);
-        NEWBIE_BUFFER_PRICE_ITEM_ID = newbieHelper.getProperty("NewbieBufferPriceItemId", 57);
+        FREE_BUFFER = buffer.getProperty("FreeBuffer", false);
+        BUFFER_PRICE_PER_UNIT = buffer.getProperty("BufferPricePerUnit", 1);
+        BUFFER_FREE_PLAYER_LVL = buffer.getProperty("BufferFreePlayerLvl", 40);
+        BUFFER_PRICE_ITEM_ID = buffer.getProperty("BufferPriceItemId", 57);
     }
 
     /**
@@ -1314,7 +1314,7 @@ public final class Config {
         loadNpcs();
         loadPlayers();
         loadSieges();
-        loadNewbieHelper();
+        loadBuffer();
         loadServer();
     }
 

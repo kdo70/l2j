@@ -9,10 +9,6 @@ import net.sf.l2j.commons.pool.ConnectionPool;
 import net.sf.l2j.commons.pool.ThreadPool;
 import net.sf.l2j.commons.util.SysUtil;
 import net.sf.l2j.gameserver.communitybbs.CommunityBoard;
-import net.sf.l2j.gameserver.expander.helpers.data.xml.ItemIconData;
-import net.sf.l2j.gameserver.expander.helpers.data.xml.SkillInfoData;
-import net.sf.l2j.gameserver.expander.newbiehelper.data.xml.BuffsByClassData;
-import net.sf.l2j.gameserver.expander.newbiehelper.data.xml.BuffsCommonData;
 import net.sf.l2j.gameserver.data.SkillTable;
 import net.sf.l2j.gameserver.data.cache.CrestCache;
 import net.sf.l2j.gameserver.data.cache.HtmCache;
@@ -22,6 +18,11 @@ import net.sf.l2j.gameserver.data.sql.ClanTable;
 import net.sf.l2j.gameserver.data.sql.PlayerInfoTable;
 import net.sf.l2j.gameserver.data.sql.ServerMemoTable;
 import net.sf.l2j.gameserver.data.xml.*;
+import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsByClassData;
+import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsCommonData;
+import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.LocationsData;
+import net.sf.l2j.gameserver.expander.helpers.data.xml.ItemIconData;
+import net.sf.l2j.gameserver.expander.helpers.data.xml.SkillInfoData;
 import net.sf.l2j.gameserver.geoengine.GeoEngine;
 import net.sf.l2j.gameserver.handler.*;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
@@ -174,9 +175,12 @@ public class GameServer {
 
         CastleManager.getInstance().loadArtifacts();
 
-        StringUtil.printSection("Newbie Buffer");
+        StringUtil.printSection("Buffer");
         BuffsByClassData.getInstance();
         BuffsCommonData.getInstance();
+
+        StringUtil.printSection("Gatekeeper");
+        LocationsData.getInstance();
 
         StringUtil.printSection("Olympiads & Heroes");
         OlympiadGameManager.getInstance();

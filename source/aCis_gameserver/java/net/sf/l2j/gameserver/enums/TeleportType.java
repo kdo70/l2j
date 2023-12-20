@@ -45,5 +45,7 @@ public enum TeleportType
 	 * AI.obj equivalent: "2"<br>
 	 * Used by Clan Hall Functions.
 	 */
-	CHF_LEVEL_2;
+	CHF_LEVEL_2,
+
+	NOBLE;
 }

@@ -1792,7 +1792,7 @@
 			<skill id="4416" level="14"/>
 		</skills>
 	</npc>
-	<npc id="31077" name="Newbie Guide" title="">
+	<npc id="31077" name="Ellis" title="Guardian of Light">
 		<set name="level" val="70"/>
 		<set name="radius" val="8"/>
 		<set name="height" val="20.5"/>

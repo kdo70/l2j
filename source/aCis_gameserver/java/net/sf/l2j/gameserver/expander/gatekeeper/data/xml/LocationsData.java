@@ -6,13 +6,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class LocationsData implements IXmlReader {
-    private final Map<Integer, List<LocationHolder>> _lists = new HashMap<>();
+    private final Map<Integer, Map<Integer, LocationHolder>> _lists = new ConcurrentHashMap<>();
 
     protected LocationsData() {
         load();
@@ -30,8 +28,14 @@ public class LocationsData implements IXmlReader {
             final NamedNodeMap npcAttributes = list.getAttributes();
             final int listId = Integer.parseInt(npcAttributes.getNamedItem("id").getNodeValue());
 
-            final List<LocationHolder> locations = new ArrayList<>();
-            forEach(list, "loc", location -> locations.add(new LocationHolder(parseAttributes(location))));
+            final Map<Integer, LocationHolder> locations = new ConcurrentHashMap<>();
+
+            forEach(list, "loc", location -> {
+                final NamedNodeMap locationAttributes = location.getAttributes();
+                final int locationId = Integer.parseInt(locationAttributes.getNamedItem("id").getNodeValue());
+
+                locations.put(locationId, new LocationHolder(parseAttributes(location)));
+            });
 
             _lists.put(listId, locations);
         }));
@@ -42,7 +46,7 @@ public class LocationsData implements IXmlReader {
         load();
     }
 
-    public List<LocationHolder> getList(int id) {
+    public Map<Integer, LocationHolder> getList(int id) {
         return _lists.get(id);
     }
 

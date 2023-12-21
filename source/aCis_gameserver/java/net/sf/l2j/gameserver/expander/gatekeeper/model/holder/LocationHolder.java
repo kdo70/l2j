@@ -21,10 +21,10 @@ public class LocationHolder extends Location {
 
         _id = set.getInteger("id");
         _childId = set.getInteger("childId", 0);
-        _lvl = set.getString("lvl", null);
+        _lvl = set.getString("lvl", "-");
         _name = set.getString("name");
-        _desc = set.getString("desc", null);
-        _point = set.getString("point", null);
+        _desc = set.getString("desc", "");
+        _point = set.getString("point", "");
         _type = set.getEnum("type", TeleportType.class, TeleportType.STANDARD);
         _priceId = set.getInteger("priceId");
         _priceCount = set.getInteger("priceCount");

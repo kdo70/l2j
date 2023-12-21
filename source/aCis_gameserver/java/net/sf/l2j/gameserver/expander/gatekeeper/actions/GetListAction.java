@@ -54,6 +54,7 @@ public class GetListAction extends Action {
 
             visibleCount++;
         }
+
         if (visibleCount < _minItemPerList) {
             heightIndent += _heightIndentPerItem * (_minItemPerList - visibleCount);
         }

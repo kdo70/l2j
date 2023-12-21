@@ -19,7 +19,7 @@ public class TeleportAction extends Action {
     public void execute(Player player, Npc npc, int listId, int locationId) {
         final Map<Integer, LocationHolder> list = LocationsData.getInstance().getList(listId);
         if (list == null) {
-            Str.sendMsg(player, "Выбранная локация недоступна для телепорта");
+            Str.sendMsg(player, "Выбранная вами локация недоступна для телепорта");
 
             player.sendPacket(ActionFailed.STATIC_PACKET);
             return;

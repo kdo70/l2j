@@ -7,6 +7,7 @@ import net.sf.l2j.gameserver.model.location.Location;
 public class LocationHolder extends Location {
     private final int _id;
     private final int _childId;
+    private int _teleportCount;
     private final String _lvl;
     private final String _name;
     private final String _desc;
@@ -16,11 +17,12 @@ public class LocationHolder extends Location {
     private final int _priceCount;
     private final int _castleId;
 
-    public LocationHolder(StatSet set) {
+    public LocationHolder(StatSet set, int teleportCount) {
         super(set.getInteger("x"), set.getInteger("y"), set.getInteger("z"));
 
         _id = set.getInteger("id");
         _childId = set.getInteger("childId", 0);
+        _teleportCount = teleportCount;
         _lvl = set.getString("lvl", "-");
         _name = set.getString("name");
         _desc = set.getString("desc", "");
@@ -37,6 +39,14 @@ public class LocationHolder extends Location {
 
     public int getChildId() {
         return _childId;
+    }
+
+    public int getTeleportCount() {
+        return _teleportCount;
+    }
+
+    public void setTeleportCount(int _teleportCount) {
+        this._teleportCount = _teleportCount;
     }
 
     public String getLvl() {

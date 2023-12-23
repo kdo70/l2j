@@ -43,6 +43,8 @@ public class TeleportAction extends Action {
             }
         }
 
+        location.setTeleportCount(location.getTeleportCount() + 1);
+
         final boolean isNotNeedPay = Config.FREE_TELEPORT || location.getPriceCount() == 0;
         if (isNotNeedPay || _paymentAction.execute(player, npc, location.getPriceId(), location.getPriceCount())) {
             player.teleportTo(location, 20);

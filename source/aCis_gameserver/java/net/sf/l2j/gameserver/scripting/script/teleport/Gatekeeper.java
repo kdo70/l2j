@@ -18,6 +18,7 @@ public class Gatekeeper extends Quest {
     protected final GetListAction _getListAction = new GetListAction();
     private static final int _townsId = 1;
     private static final int _villagesId = 2;
+    private static final int _popularsId = 20;
 
     public Gatekeeper() {
         super(-1, "gatekeeper");
@@ -44,6 +45,7 @@ public class Gatekeeper extends Quest {
         switch (Objects.requireNonNull(action)) {
             case "Towns" -> _getMenuListAction.execute(player, npc, _townsId, action);
             case "Villages" -> _getMenuListAction.execute(player, npc, _villagesId, action);
+            case "Popular" -> _getListAction.execute(player, npc, _popularsId, action);
             case "Teleport" -> _teleportAction.execute(player, npc, listId, locationId);
             case "List" -> _getListAction.execute(player, npc, listId, parentAction);
             default -> player.sendPacket(ActionFailed.STATIC_PACKET);

@@ -31,7 +31,6 @@ public class GetListAction extends Action {
 
     public void execute(Player player, Npc npc, int listId, String parentAction) {
         final Map<Integer, LocationHolder> list = LocationsData.getInstance().getList(listId);
-
         if (list == null) {
             Str.sendMsg(player, "Выбранная вами локация недоступна для телепорта");
 
@@ -45,6 +44,10 @@ public class GetListAction extends Action {
         int visibleCount = 0;
 
         Comparator<LocationHolder> comparator = Comparator.comparing(LocationHolder::getId, Comparator.naturalOrder());
+        if (listId == 20) {
+            comparator = Comparator.comparing(LocationHolder::getTeleportCount, Comparator.reverseOrder());
+        }
+
         for (LocationHolder locationHolder : list.values().stream().sorted(comparator).toList()) {
             if (locationHolder.getType() == TeleportType.NOBLE && !player.isNoble()) {
                 continue;
@@ -75,7 +78,7 @@ public class GetListAction extends Action {
 
         html.replace("%list%", locations.toString());
         html.replace("%heightIndent%", heightIndent);
-        html.replace("%parentAction%", parentAction);
+        html.replace("%parentAction%", Objects.equals(parentAction, "Popular") ? "Towns" : parentAction);
 
         player.sendPacket(html);
     }

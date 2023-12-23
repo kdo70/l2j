@@ -12,14 +12,14 @@
 		<loc id="9" childId="11" lvl="21-28" name="Town of Oren" desc="Oren" type="STANDARD" priceId="57" priceCount="125" x="82917" y="53173" z="-1488" castleId="4"/>
 	</list>
 	<list id="2">
-		<loc id="10" childId="13" lvl="21-28" name="Floran Village" desc="Floran" type="STANDARD" priceId="57" priceCount="125" x="17430" y="170103" z="-3506" />
-		<loc id="11" childId="14" lvl="21-28" name="Gludin Village" desc="Gludin" type="STANDARD" priceId="57" priceCount="125" x="-80804" y="149833" z="-3040" />
-		<loc id="12" childId="15" lvl="21-28" name="Hunters Village" desc="Hunters" type="STANDARD" priceId="57" priceCount="125" x="117052" y="76905" z="-2704" />
-		<loc id="13" childId="16" lvl="21-28" name="Talking Island Village" desc="Talking" type="STANDARD" priceId="57" priceCount="125" x="-84153" y="244542" z="-3728" />
-		<loc id="14" childId="17" lvl="21-28" name="Elven Village" desc="Elven" type="STANDARD" priceId="57" priceCount="125" x="46874" y="51457" z="-2976" />
-		<loc id="15" childId="18" lvl="21-28" name="Dark Elf Village" desc="Dark" type="STANDARD" priceId="57" priceCount="125" x="9738" y="15567" z="-4568" />
-		<loc id="16" childId="19" lvl="21-28" name="Orc Village" desc="Orc" type="STANDARD" priceId="57" priceCount="125" x="-45177" y="-112512" z="-240" />
-		<loc id="17" childId="20" lvl="21-28" name="Dwarven Village" desc="Dwarven" type="STANDARD" priceId="57" priceCount="125" x="115129" y="-178177" z="-912" />
+		<loc id="10" childId="12" lvl="21-28" name="Floran Village" desc="Floran" type="STANDARD" priceId="57" priceCount="125" x="17430" y="170103" z="-3506" />
+		<loc id="11" childId="13" lvl="21-28" name="Gludin Village" desc="Gludin" type="STANDARD" priceId="57" priceCount="125" x="-80804" y="149833" z="-3040" />
+		<loc id="12" childId="14" lvl="21-28" name="Hunters Village" desc="Hunters" type="STANDARD" priceId="57" priceCount="125" x="117052" y="76905" z="-2704" />
+		<loc id="13" childId="15" lvl="21-28" name="Talking Island Village" desc="Talking" type="STANDARD" priceId="57" priceCount="125" x="-84153" y="244542" z="-3728" />
+		<loc id="14" childId="16" lvl="21-28" name="Elven Village" desc="Elven" type="STANDARD" priceId="57" priceCount="125" x="46874" y="51457" z="-2976" />
+		<loc id="15" childId="17" lvl="21-28" name="Dark Elf Village" desc="Dark Elf" type="STANDARD" priceId="57" priceCount="125" x="9738" y="15567" z="-4568" />
+		<loc id="16" childId="18" lvl="21-28" name="Orc Village" desc="Orc" type="STANDARD" priceId="57" priceCount="125" x="-45177" y="-112512" z="-240" />
+		<loc id="17" childId="19" lvl="21-28" name="Dwarven Village" desc="Dwarven" type="STANDARD" priceId="57" priceCount="125" x="115129" y="-178177" z="-912" />
 	</list>
 	<list id="3">
 		<loc id="18" name="Town of Dion" type="STANDARD" priceId="57" priceCount="125" x="15637" y="142947" z="-2696" castleId="2"/>
@@ -154,6 +154,9 @@
 		<loc id="131" name="Altar of Rites" type="NOBLE" priceId="57" priceCount="125" x="-44566" y="77508" z="-3736"/>
 	</list>
 	<list id="12">
+		<loc id="144" name="Floran Village" type="STANDARD" priceId="57" priceCount="125" x="17430" y="170103" z="-3506" />
+	</list>
+	<list id="13">
 		<loc id="132" name="Gludin Village" type="STANDARD" priceId="57" priceCount="125" x="-80804" y="149833" z="-3040" />
 		<loc id="133" name="Lizardmen Dwellings" type="STANDARD" priceId="57" priceCount="125" x="-44763" y="203497" z="-3592" />
 		<loc id="134" name="Windmill Hill" type="STANDARD" priceId="57" priceCount="125" x="-75437" y="168800" z="-3632" />
@@ -166,9 +169,6 @@
 		<loc id="141" name="Wastelands" type="STANDARD" priceId="57" priceCount="125" x="-16526" y="208032" z="-3664" />
 		<loc id="142" name="Wastelands" point="Western" type="NOBLE" priceId="57" priceCount="125" x="-47506" y="179572" z="-3632" />
 		<loc id="143" name="Red Rock Ridge" type="STANDARD" priceId="57" priceCount="125" x="-42256" y="198333" z="-2800" />
-	</list>
-	<list id="13">
-		<loc id="144" name="Floran Village" type="STANDARD" priceId="57" priceCount="125" x="17430" y="170103" z="-3506" />
 	</list>
 	<list id="14">
 		<loc id="145" name="Hunters Village" type="STANDARD" priceId="57" priceCount="125" x="117052" y="76905" z="-2704" />

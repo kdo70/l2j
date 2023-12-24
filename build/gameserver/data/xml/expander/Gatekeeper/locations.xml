@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='utf-8'?>
 <list>
 	<list id="1">
-		<loc id="1" childId="3" lvl="21-28" name="Town of Dion" desc="Dion" type="STANDARD" priceId="57" priceCount="125" x="15637" y="142947" z="-2696" castleId="2"/>
-		<loc id="2" childId="4" lvl="21-28" name="Town of Gludio" desc="Gludio" type="STANDARD" priceId="57" priceCount="125" x="-12739" y="122740" z="-3112" castleId="1"/>
-		<loc id="3" childId="5" lvl="21-28" name="Town of Giran" desc="Giran" type="STANDARD" priceId="57" priceCount="125" x="83393" y="147975" z="-3400" castleId="3"/>
-		<loc id="4" childId="6" lvl="21-28" name="Town of Goddard" desc="Goddard" type="STANDARD" priceId="57" priceCount="125" x="147964" y="-55305" z="-2728" castleId="7"/>
-		<loc id="5" childId="7" lvl="21-28" name="Town of Aden" desc="Aden" type="STANDARD" priceId="57" priceCount="125" x="146811" y="25810" z="-2008" castleId="5"/>
-		<loc id="6" childId="8" lvl="21-28" name="Town of Schuttgard" desc="Schuttgard" type="STANDARD" priceId="57" priceCount="125" x="87053" y="-143387" z="-1288" castleId="9"/>
-		<loc id="7" childId="9" lvl="21-28" name="Town of Rune" desc="Rune" type="STANDARD" priceId="57" priceCount="125" x="43831" y="-47748" z="-792" castleId="8"/>
-		<loc id="8" childId="10" lvl="21-28" name="Town of Heine" desc="Heine" type="STANDARD" priceId="57" priceCount="125" x="111385" y="219338" z="-3544" castleId="6"/>
-		<loc id="9" childId="11" lvl="21-28" name="Town of Oren" desc="Oren" type="STANDARD" priceId="57" priceCount="125" x="82917" y="53173" z="-1488" castleId="4"/>
+		<loc id="1" childId="3" lvl="?" name="Town of Dion" desc="Dion" type="STANDARD" priceId="57" priceCount="125" x="15637" y="142947" z="-2696" castleId="2"/>
+		<loc id="2" childId="4" lvl="?" name="Town of Gludio" desc="Gludio" type="STANDARD" priceId="57" priceCount="125" x="-12739" y="122740" z="-3112" castleId="1"/>
+		<loc id="3" childId="5" lvl="?" name="Town of Giran" desc="Giran" type="STANDARD" priceId="57" priceCount="125" x="83393" y="147975" z="-3400" castleId="3"/>
+		<loc id="4" childId="6" lvl="?" name="Town of Goddard" desc="Goddard" type="STANDARD" priceId="57" priceCount="125" x="147964" y="-55305" z="-2728" castleId="7"/>
+		<loc id="5" childId="7" lvl="?" name="Town of Aden" desc="Aden" type="STANDARD" priceId="57" priceCount="125" x="146811" y="25810" z="-2008" castleId="5"/>
+		<loc id="6" childId="8" lvl="?" name="Town of Schuttgard" desc="Schuttgard" type="STANDARD" priceId="57" priceCount="125" x="87053" y="-143387" z="-1288" castleId="9"/>
+		<loc id="7" childId="9" lvl="?" name="Town of Rune" desc="Rune" type="STANDARD" priceId="57" priceCount="125" x="43831" y="-47748" z="-792" castleId="8"/>
+		<loc id="8" childId="10" lvl="?" name="Town of Heine" desc="Heine" type="STANDARD" priceId="57" priceCount="125" x="111385" y="219338" z="-3544" castleId="6"/>
+		<loc id="9" childId="11" lvl="?" name="Town of Oren" desc="Oren" type="STANDARD" priceId="57" priceCount="125" x="82917" y="53173" z="-1488" castleId="4"/>
 	</list>
 	<list id="2">
-		<loc id="10" childId="12" lvl="21-28" name="Floran Village" desc="Floran" type="STANDARD" priceId="57" priceCount="125" x="17430" y="170103" z="-3506" />
-		<loc id="11" childId="13" lvl="21-28" name="Gludin Village" desc="Gludin" type="STANDARD" priceId="57" priceCount="125" x="-80804" y="149833" z="-3040" />
-		<loc id="12" childId="14" lvl="21-28" name="Hunters Village" desc="Hunters" type="STANDARD" priceId="57" priceCount="125" x="117052" y="76905" z="-2704" />
-		<loc id="13" childId="15" lvl="21-28" name="Talking Island Village" desc="Talking" type="STANDARD" priceId="57" priceCount="125" x="-84153" y="244542" z="-3728" />
-		<loc id="14" childId="16" lvl="21-28" name="Elven Village" desc="Elven" type="STANDARD" priceId="57" priceCount="125" x="46874" y="51457" z="-2976" />
-		<loc id="15" childId="17" lvl="21-28" name="Dark Elf Village" desc="Dark Elf" type="STANDARD" priceId="57" priceCount="125" x="9738" y="15567" z="-4568" />
-		<loc id="16" childId="18" lvl="21-28" name="Orc Village" desc="Orc" type="STANDARD" priceId="57" priceCount="125" x="-45177" y="-112512" z="-240" />
-		<loc id="17" childId="19" lvl="21-28" name="Dwarven Village" desc="Dwarven" type="STANDARD" priceId="57" priceCount="125" x="115129" y="-178177" z="-912" />
+		<loc id="10" childId="12" lvl="?" name="Floran Village" desc="Floran" type="STANDARD" priceId="57" priceCount="125" x="17430" y="170103" z="-3506" castleId="10"/>
+		<loc id="11" childId="13" lvl="?" name="Gludin Village" desc="Gludin" type="STANDARD" priceId="57" priceCount="125" x="-80804" y="149833" z="-3040" castleId="10"/>
+		<loc id="12" childId="14" lvl="?" name="Hunters Village" desc="Hunters" type="STANDARD" priceId="57" priceCount="125" x="117052" y="76905" z="-2704" castleId="10"/>
+		<loc id="13" childId="15" lvl="?" name="Talking Island Village" desc="Talking" type="STANDARD" priceId="57" priceCount="125" x="-84153" y="244542" z="-3728" castleId="10"/>
+		<loc id="14" childId="16" lvl="?" name="Elven Village" desc="Elven" type="STANDARD" priceId="57" priceCount="125" x="46874" y="51457" z="-2976" castleId="10"/>
+		<loc id="15" childId="17" lvl="?" name="Dark Elf Village" desc="Dark Elf" type="STANDARD" priceId="57" priceCount="125" x="9738" y="15567" z="-4568" castleId="10"/>
+		<loc id="16" childId="18" lvl="?" name="Orc Village" desc="Orc" type="STANDARD" priceId="57" priceCount="125" x="-45177" y="-112512" z="-240" castleId="10"/>
+		<loc id="17" childId="19" lvl="?" name="Dwarven Village" desc="Dwarven" type="STANDARD" priceId="57" priceCount="125" x="115129" y="-178177" z="-912" castleId="10"/>
 	</list>
 	<list id="3">
 		<loc id="18" name="Town of Dion" type="STANDARD" priceId="57" priceCount="125" x="15637" y="142947" z="-2696" castleId="2"/>
@@ -226,6 +226,9 @@
 		<loc id="185" name="Dwarven Village" type="STANDARD" priceId="57" priceCount="125" x="115129" y="-178177" z="-912" />
 	</list>
 	<list id="21">
-		<loc id="186" name="Dwarven Village" type="STANDARD" priceId="57" priceCount="125" x="115129" y="-178177" z="-912" />
+		<loc id="186" childId="22" lvl="75+" name="Monastery of Silence" desc="Entry" type="STANDARD" priceId="57" priceCount="125" x="124161" y="-74828" z="-2904"/>
+	</list>
+	<list id="22">
+		<loc id="187" name="Monastery of Silence" point="Entry" type="STANDARD" priceId="57" priceCount="125" x="124161" y="-74828" z="-2904"/>
 	</list>
 </list>

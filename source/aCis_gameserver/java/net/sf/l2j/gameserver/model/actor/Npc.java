@@ -785,7 +785,6 @@ public class Npc extends Creature {
      * @param command : The {@link String} used as command bypass received from client.
      */
     public void onBypassFeedback(Player player, String command) {
-        LOGGER.error(command);
         if (command.equalsIgnoreCase("TerritoryStatus")) {
             final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 

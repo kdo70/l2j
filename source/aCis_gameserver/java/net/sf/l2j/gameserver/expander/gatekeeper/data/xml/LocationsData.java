@@ -3,6 +3,8 @@ package net.sf.l2j.gameserver.expander.gatekeeper.data.xml;
 import net.sf.l2j.commons.data.xml.IXmlReader;
 import net.sf.l2j.commons.pool.ConnectionPool;
 import net.sf.l2j.commons.pool.ThreadPool;
+import net.sf.l2j.gameserver.expander.gatekeeper.conditions.PopularCondition;
+import net.sf.l2j.gameserver.expander.gatekeeper.enums.MenuEnum;
 import net.sf.l2j.gameserver.expander.gatekeeper.model.holder.LocationHolder;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -17,14 +19,16 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class LocationsData implements IXmlReader {
     private final Map<Integer, Map<Integer, LocationHolder>> _lists = new ConcurrentHashMap<>();
-    private final Map<Integer, Integer> _statistic = new ConcurrentHashMap<>();
+    private final Map<Integer, Integer> _statistics = new ConcurrentHashMap<>();
     private final Map<Integer, LocationHolder> _popularList = new ConcurrentHashMap<>();
+    private final PopularCondition _popularCondition = new PopularCondition();
     private static final String SELECT_LOCATIONS_COUNT = "SELECT location_id,count FROM teleport_locations";
     private static final String ADD_OR_UPDATE_LOCATION = "INSERT INTO teleport_locations (location_id,count) VALUES (?,?) ON DUPLICATE KEY UPDATE count=VALUES(count)";
+    private static final int _reloadDelay = 1000 * 60 * 30;
 
     protected LocationsData() {
         load();
-        ThreadPool.scheduleAtFixedRate(this::reload, 60000, 60000);
+        ThreadPool.scheduleAtFixedRate(this::reload, _reloadDelay, _reloadDelay);
     }
 
     @Override
@@ -46,17 +50,17 @@ public class LocationsData implements IXmlReader {
             forEach(list, "loc", location -> {
                 final NamedNodeMap locationAttributes = location.getAttributes();
                 final int locationId = Integer.parseInt(locationAttributes.getNamedItem("id").getNodeValue());
-                final int count = _statistic.get(locationId) == null ? 0 : _statistic.get(locationId);
+                final int count = _statistics.get(locationId) == null ? 0 : _statistics.get(locationId);
                 final LocationHolder locationHolder = new LocationHolder(parseAttributes(location), count);
 
                 locations.put(locationId, locationHolder);
 
-                if (_statistic.get(locationId) != null && _statistic.get(locationId) != 0 && locationHolder.getCastleId() == 0 && _popularList.size() < 15) {
+                if (_popularCondition.execute(_statistics, locationHolder, _popularList.size())) {
                     _popularList.put(locationId, locationHolder);
                 }
             });
 
-            _lists.put(listId, listId == 20 ? _popularList : locations);
+            _lists.put(listId, listId == MenuEnum.POPULAR.getId() ? _popularList : locations);
         }));
     }
 
@@ -67,7 +71,7 @@ public class LocationsData implements IXmlReader {
                     int index = rs.getInt("location_id");
                     int count = rs.getInt("count");
 
-                    _statistic.put(index, count);
+                    _statistics.put(index, count);
                 }
             }
         } catch (SQLException e) {
@@ -77,20 +81,22 @@ public class LocationsData implements IXmlReader {
 
     public void reload() {
         updateLocationsCounter();
+
         _lists.clear();
         _popularList.clear();
+
         load();
     }
 
     public void updateLocationsCounter() {
         for (Map<Integer, LocationHolder> map : _lists.values()) {
             for (LocationHolder locationHolder : map.values()) {
-                try (Connection con = ConnectionPool.getConnection(); PreparedStatement ps = con.prepareStatement(ADD_OR_UPDATE_LOCATION)) {
-
+                try (Connection con = ConnectionPool.getConnection();
+                     PreparedStatement ps = con.prepareStatement(ADD_OR_UPDATE_LOCATION)) {
                     ps.setInt(1, locationHolder.getId());
                     ps.setInt(2, locationHolder.getTeleportCount());
-                    ps.executeUpdate();
 
+                    ps.executeUpdate();
                 } catch (final Exception e) {
                     LOGGER.error("Error update location counter.", e);
                 }

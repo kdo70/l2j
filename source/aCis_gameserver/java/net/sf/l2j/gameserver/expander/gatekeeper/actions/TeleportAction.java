@@ -1,8 +1,9 @@
 package net.sf.l2j.gameserver.expander.gatekeeper.actions;
 
-import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.data.manager.CastleManager;
 import net.sf.l2j.gameserver.expander.common.actions.Action;
+import net.sf.l2j.gameserver.expander.gatekeeper.calculators.TeleportPriceCalculator;
+import net.sf.l2j.gameserver.expander.gatekeeper.conditions.NeedPayCondition;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.LocationsData;
 import net.sf.l2j.gameserver.expander.gatekeeper.model.holder.LocationHolder;
 import net.sf.l2j.gameserver.model.actor.Npc;
@@ -14,6 +15,8 @@ import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import java.util.Map;
 
 public class TeleportAction extends Action {
+    protected final NeedPayCondition _needPayCondition = new NeedPayCondition();
+    protected final TeleportPriceCalculator _teleportPriceCalculator = new TeleportPriceCalculator();
     protected final PaymentAction _paymentAction = new PaymentAction();
 
     public void execute(Player player, Npc npc, int listId, int locationId) {
@@ -43,10 +46,9 @@ public class TeleportAction extends Action {
             }
         }
 
-        location.setTeleportCount(location.getTeleportCount() + 1);
-
-        final boolean isNotNeedPay = Config.FREE_TELEPORT || location.getPriceCount() == 0;
-        if (isNotNeedPay || _paymentAction.execute(player, npc, location.getPriceId(), location.getPriceCount())) {
+        final int price = _teleportPriceCalculator.execute(player, location);
+        if (_needPayCondition.execute(location) || _paymentAction.execute(player, npc, location.getPriceId(), price)) {
+            location.setTeleportCount(location.getTeleportCount() + 1);
             player.teleportTo(location, 20);
         }
     }

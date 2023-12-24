@@ -17,7 +17,7 @@ import java.util.Objects;
 public class GetMenuListAction extends Action {
     protected final GetMenuAction _getMenuAction = new GetMenuAction();
     protected final String _dialogTemplate = "data/html/script/feature/gatekeeper/towns.htm";
-    protected final String _itemTemplate = "data/html/script/feature/gatekeeper/townItem.htm";
+    protected final String _itemTemplate = "data/html/script/feature/gatekeeper/town-item.htm";
     protected final String _activeColor = "color=B09878";
     protected final int _minItemPerList = 10;
     protected final int _heightIndentPerItem = 20;

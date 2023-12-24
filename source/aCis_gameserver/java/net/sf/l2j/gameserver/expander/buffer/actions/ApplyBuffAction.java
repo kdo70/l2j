@@ -27,7 +27,7 @@ public class ApplyBuffAction extends Action {
     public void execute(Player player, Npc npc, int index, int page) {
         final BuffHolder buffHolder = _buffHolderList.get(index);
         final int price = _buffPriceCalculator.execute(player, buffHolder);
-        final int buffLvl = buffHolder.getSkill().getLevel();
+        final int skillLvl = buffHolder.getSkill().getLevel();
 
         if (!_visibleBuffCondition.execute(player, buffHolder)) {
             Str.sendMsg(player, "Сейчас неподходящее время для этого действия, доступно только ночью");
@@ -48,7 +48,7 @@ public class ApplyBuffAction extends Action {
             visualSkillId = visualSkillId == 4699 ? 4700 : 4703;
         }
 
-        MagicSkillUse packet = new MagicSkillUse(npc, player, visualSkillId, buffLvl, 1000, 0);
+        MagicSkillUse packet = new MagicSkillUse(npc, player, visualSkillId, skillLvl, 1000, 0);
         player.broadcastPacket(packet);
         ThreadPool.schedule(() -> buffHolder.getSkill().getEffects(npc, player), 1000);
 

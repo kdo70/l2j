@@ -62,6 +62,13 @@ public class Buffer extends Quest {
 
     @Override
     public String onFirstTalk(Npc npc, Player player) {
+        if (!_availableBuffCondition.execute(player)) {
+            Str.sendMsg(player, _getErrorMessageAction.execute(player));
+
+            player.sendPacket(ActionFailed.STATIC_PACKET);
+            return null;
+        }
+
         _talkAction.execute(player, npc);
 
         return super.onFirstTalk(npc, player);

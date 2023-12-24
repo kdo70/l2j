@@ -24,7 +24,7 @@ public class GetListAction extends Action {
     protected final VisibleBuffCondition _visibleBuffCondition = new VisibleBuffCondition();
     protected final BuffPriceCalculator _buffPriceCalculator = new BuffPriceCalculator();
     protected final String _listTemplate = "data/html/script/feature/buffer/templates/list.htm";
-    protected final String _tableListTemplate = "data/html/script/feature/buffer/templates/table.htm";
+    protected final String _itemTemplate = "data/html/script/feature/buffer/templates/list-item.htm";
     protected final String _paginationTemplate = "data/html/script/feature/buffer/templates/pagination.htm";
     protected final List<BuffHolder> _buffList = BuffsCommonData.getInstance().getBuffs();
     protected final int _itemPerPage = 12;
@@ -32,9 +32,7 @@ public class GetListAction extends Action {
     protected final int _minHeightIndent = 12;
 
     public String execute(Player player, Npc npc, int page) {
-        int heightIndent = _minHeightIndent;
         final StringBuilder list = new StringBuilder();
-
         int currentPage = 1;
         int iteration = 0;
         int itemInPage = 0;
@@ -65,33 +63,12 @@ public class GetListAction extends Action {
                 break;
             }
 
-            Item item = ItemData.getInstance().getTemplate(buffHolder.getPriceId());
-            StringTokenizer tokenizer = new StringTokenizer(item.getName());
-            String itemName = tokenizer.nextToken();
-
-            try {
-                BufferedReader reader = new BufferedReader(new FileReader(_tableListTemplate));
-                String template = reader.readLine();
-                String price = Str.number(_buffPriceCalculator.execute(player, buffHolder));
-
-                final int skillId = buffHolder.getSkill().getId();
-                final int skillLvl = buffHolder.getSkill().getLevel();
-
-                template = template.replace("%skillIcon%", SkillInfoData.getIco(skillId, skillLvl));
-                template = template.replace("%skillName%", SkillInfoData.getName(skillId, skillLvl));
-                template = template.replace("%price%", price);
-                template = template.replace("%itemName%", itemName);
-                template = template.replace("%index%", String.valueOf(index));
-                template = template.replace("%page%", String.valueOf(page));
-
-                StringUtil.append(list, template);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            StringUtil.append(list, getTemplateItem(player, buffHolder, index, page));
 
             itemInPage++;
         }
 
+        int heightIndent = _minHeightIndent;
         if (itemInPage < _itemPerPage) {
             heightIndent += _heightIndentPerBuff * (_itemPerPage - itemInPage);
         }
@@ -109,6 +86,32 @@ public class GetListAction extends Action {
         player.sendPacket(html);
 
         return null;
+    }
+
+    private String getTemplateItem(Player player, BuffHolder buffHolder, int index, int page) {
+        Item item = ItemData.getInstance().getTemplate(buffHolder.getPriceId());
+        StringTokenizer tokenizer = new StringTokenizer(item.getName());
+        String itemName = tokenizer.nextToken();
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(_itemTemplate));
+            String template = reader.readLine();
+            String price = Str.number(_buffPriceCalculator.execute(player, buffHolder));
+
+            final int skillId = buffHolder.getSkill().getId();
+            final int skillLvl = buffHolder.getSkill().getLevel();
+
+            template = template.replace("%skillIcon%", SkillInfoData.getIco(skillId, skillLvl));
+            template = template.replace("%skillName%", SkillInfoData.getName(skillId, skillLvl));
+            template = template.replace("%price%", price);
+            template = template.replace("%itemName%", itemName);
+            template = template.replace("%index%", String.valueOf(index));
+            template = template.replace("%page%", String.valueOf(page));
+
+            return template;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private String getTemplatePagination(int page, boolean hasMore) {

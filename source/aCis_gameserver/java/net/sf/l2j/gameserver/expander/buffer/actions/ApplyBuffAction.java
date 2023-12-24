@@ -24,7 +24,7 @@ public class ApplyBuffAction extends Action {
     protected List<BuffHolder> _buffHolderList = BuffsCommonData.getInstance().getBuffs();
     protected static final GetListAction _getListAction = new GetListAction();
 
-    public void execute(Player player, Npc npc, int index) {
+    public void execute(Player player, Npc npc, int index, int page) {
         final BuffHolder buffHolder = _buffHolderList.get(index);
         final int price = _buffPriceCalculator.execute(player, buffHolder);
         final int buffLvl = buffHolder.getSkill().getLevel();
@@ -52,6 +52,6 @@ public class ApplyBuffAction extends Action {
         player.broadcastPacket(packet);
         ThreadPool.schedule(() -> buffHolder.getSkill().getEffects(npc, player), 1000);
 
-        _getListAction.execute(player, npc);
+        _getListAction.execute(player, npc, page);
     }
 }

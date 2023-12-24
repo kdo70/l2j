@@ -21,7 +21,7 @@ public class GetInfoAction extends Action {
     protected final String _infoTemplate = "data/html/script/feature/buffer/templates/info.htm";
     protected final int _itemPerPage = 8;
 
-    public void execute(Player player, Npc npc, int page) {
+    public void execute(Player player, Npc npc, int index, int page) {
         final StringBuilder list = new StringBuilder();
 
         final List<BuffHolder> buffHolderList = BuffsByClassData.getInstance().getValidBuffs(player.isMystic());
@@ -101,6 +101,7 @@ public class GetInfoAction extends Action {
             pagination = pagination.replace("%prevPage%", String.valueOf(page - (page > 1 ? 1 : 0)));
             pagination = pagination.replace("%currentPage%", String.valueOf(page));
             pagination = pagination.replace("%nextPage%", String.valueOf(page + (hasMore ? 1 : 0)));
+            pagination = pagination.replace("%action%", "Info");
 
             return pagination;
         } catch (IOException e) {

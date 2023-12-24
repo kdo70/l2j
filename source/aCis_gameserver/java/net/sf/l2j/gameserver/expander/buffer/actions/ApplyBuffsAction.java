@@ -2,11 +2,11 @@ package net.sf.l2j.gameserver.expander.buffer.actions;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.pool.ThreadPool;
-import net.sf.l2j.gameserver.expander.common.actions.Action;
 import net.sf.l2j.gameserver.expander.buffer.calculators.BuffPriceCalculator;
 import net.sf.l2j.gameserver.expander.buffer.conditions.NeedPayCondition;
 import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsByClassData;
 import net.sf.l2j.gameserver.expander.buffer.model.holder.BuffHolder;
+import net.sf.l2j.gameserver.expander.common.actions.Action;
 import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.model.actor.container.player.custom.helpers.Str;
@@ -21,7 +21,7 @@ public class ApplyBuffsAction extends Action {
     protected final int _priceItemId = Config.BUFFER_PRICE_ITEM_ID;
     protected static final GetListAction _getListAction = new GetListAction();
 
-    public void execute(Player player, Npc npc) {
+    public void execute(Player player, Npc npc, int page) {
         int price = _buffPriceCalculator.execute(player);
 
         if (_needPayCondition.execute(player) && !_paymentAction.execute(player, npc, _priceItemId, price)) {
@@ -34,7 +34,7 @@ public class ApplyBuffsAction extends Action {
         player.broadcastPacket(new MagicSkillUse(npc, player, 1036, 1, 1000, 0));
         ThreadPool.schedule(() -> setBuffs(npc, player), 1000);
 
-        _getListAction.execute(player, npc);
+        _getListAction.execute(player, npc, page);
     }
 
     private void setBuffs(Npc npc, Player player) {

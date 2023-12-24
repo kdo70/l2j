@@ -46,13 +46,14 @@ public class Buffer extends Quest {
         final StringTokenizer command = new StringTokenizer(event, " ");
         final String action = command.hasMoreTokens() ? command.nextToken() : null;
         final int index = command.hasMoreTokens() ? Integer.parseInt(command.nextToken()) : 1;
+        final int page = command.hasMoreTokens() ? Integer.parseInt(command.nextToken()) : 1;
 
         switch (Objects.requireNonNull(action)) {
             case "Talk" -> _talkAction.execute(player, npc);
-            case "Buffs" -> _applyBuffsAction.execute(player, npc);
-            case "List" -> _getListAction.execute(player, npc);
-            case "Buff" -> _applyBuffAction.execute(player, npc, index);
-            case "Info" -> _getInfoAction.execute(player, npc, index);
+            case "Buffs" -> _applyBuffsAction.execute(player, npc, page);
+            case "List" -> _getListAction.execute(player, npc, page);
+            case "Buff" -> _applyBuffAction.execute(player, npc, index, page);
+            case "Info" -> _getInfoAction.execute(player, npc, index, page);
             default -> player.sendPacket(ActionFailed.STATIC_PACKET);
         }
 

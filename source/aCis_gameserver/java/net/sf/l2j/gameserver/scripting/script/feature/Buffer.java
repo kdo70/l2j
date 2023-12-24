@@ -23,6 +23,7 @@ public class Buffer extends Quest {
     public Buffer() {
         super(-1, "buffer");
 
+        // TODO: Добавить идентификаторы
         addTalkId(31077);
         addFirstTalkId(31077);
     }

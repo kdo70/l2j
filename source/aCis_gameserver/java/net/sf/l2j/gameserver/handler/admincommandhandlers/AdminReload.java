@@ -8,6 +8,7 @@ import net.sf.l2j.gameserver.data.manager.BuyListManager;
 import net.sf.l2j.gameserver.data.manager.CursedWeaponManager;
 import net.sf.l2j.gameserver.data.manager.ZoneManager;
 import net.sf.l2j.gameserver.data.xml.*;
+import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.LocationsData;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.actor.Player;
 
@@ -72,7 +73,7 @@ public class AdminReload implements IAdminCommandHandler {
                     player.sendMessage("Skills' XMLs have been reloaded.");
                 } else if (type.startsWith("teleport")) {
                     InstantTeleportData.getInstance().reload();
-                    TeleportData.getInstance().reload();
+                    LocationsData.getInstance().reload();
                     player.sendMessage("Teleport locations have been reloaded.");
                 } else if (type.startsWith("zone")) {
                     ZoneManager.getInstance().reload();

@@ -1161,17 +1161,17 @@ public final class Config {
     }
 
     private static void loadGatekeeper() {
-        final ExProperties buffer = initProperties(Config.EXPANDER_GATEKEEPER);
+        final ExProperties config = initProperties(Config.EXPANDER_GATEKEEPER);
 
-        FREE_TELEPORT = buffer.getProperty("FreeBuffer", false);
-        FREE_TELEPORT_LVL = buffer.getProperty("FreeTeleportLvl", 1);
-        TELEPORT_LIST_ITEM_PER_PAGE = buffer.getProperty("ListItemPerPage", 12);
-        TELEPORT_LIST_HEIGHT_INDENT_PER_ITEM = buffer.getProperty("ListHeightIndentPerItem", 20);
-        TELEPORT_LIST_MIN_HEIGHT_INDENT = buffer.getProperty("ListMinHeightIndent", 12);
-        TELEPORT_MENU_ITEM_PER_PAGE = buffer.getProperty("MenuItemPerPage", 10);
-        TELEPORT_MENU_HEIGHT_INDENT_PER_ITEM = buffer.getProperty("MenuHeightIndentPerItem", 20);
-        TELEPORT_POPULAR_REFRESH_DELAY = buffer.getProperty("PopularRefreshDelayMinutes", 30);
-        TELEPORT_POPULAR_LIMIT = buffer.getProperty("PopularLimit", 20);
+        FREE_TELEPORT = config.getProperty("FreeTeleport", false);
+        FREE_TELEPORT_LVL = config.getProperty("FreeTeleportLvl", 1);
+        TELEPORT_LIST_ITEM_PER_PAGE = config.getProperty("ListItemPerPage", 12);
+        TELEPORT_LIST_HEIGHT_INDENT_PER_ITEM = config.getProperty("ListHeightIndentPerItem", 20);
+        TELEPORT_LIST_MIN_HEIGHT_INDENT = config.getProperty("ListMinHeightIndent", 12);
+        TELEPORT_MENU_ITEM_PER_PAGE = config.getProperty("MenuItemPerPage", 10);
+        TELEPORT_MENU_HEIGHT_INDENT_PER_ITEM = config.getProperty("MenuHeightIndentPerItem", 20);
+        TELEPORT_POPULAR_REFRESH_DELAY = config.getProperty("PopularRefreshDelayMinutes", 30);
+        TELEPORT_POPULAR_LIMIT = config.getProperty("PopularLimit", 20);
     }
 
     /**

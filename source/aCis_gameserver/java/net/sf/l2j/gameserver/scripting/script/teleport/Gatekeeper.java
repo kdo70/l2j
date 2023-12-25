@@ -21,8 +21,8 @@ public class Gatekeeper extends Quest {
     public Gatekeeper() {
         super(-1, "gatekeeper");
 
-        addTalkId(30256);
-        addFirstTalkId(30256);
+        addTalkId(30256, 30080, 30320, 30059, 30899, 30848, 30177, 31275, 31964, 31320, 30006, 30146, 30134, 30540, 30576, 30233);
+        addFirstTalkId(30256, 30080, 30320, 30059, 30899, 30848, 30177, 31275, 31964, 31320, 30006, 30146, 30134, 30540, 30576, 30233);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class Gatekeeper extends Quest {
             case "Villages" -> _getMenuListAction.execute(player, npc, MenuEnum.VILLAGES.getId(), action);
             case "Popular" -> _getListAction.execute(player, npc, MenuEnum.POPULAR.getId(), action, page);
             case "Recommended" -> _getMenuListAction.execute(player, npc, MenuEnum.RECOMMENDED.getId(), action);
-            case "Teleport" -> _teleportAction.execute(player, npc, listId, locationId);
+            case "Teleport" -> _teleportAction.execute(player, npc, locationId);
             case "List" -> _getListAction.execute(player, npc, listId, parentAction, page);
             default -> player.sendPacket(ActionFailed.STATIC_PACKET);
         }

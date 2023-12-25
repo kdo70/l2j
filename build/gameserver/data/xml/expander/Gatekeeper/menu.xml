@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='utf-8'?>
+<menu>
+    <list id="1">
+        <item locId="1" childId="3" placeholder="?" desc="Dion"/>
+        <item locId="13" childId="4" placeholder="?" desc="Gludio"/>
+        <item locId="19" childId="5" placeholder="?" desc="Giran"/>
+        <item locId="32" childId="6" placeholder="?" desc="Goddard"/>
+        <item locId="51" childId="7" placeholder="?" desc="Aden"/>
+        <item locId="70" childId="8" placeholder="?" desc="Schuttgard"/>
+        <item locId="79" childId="9" placeholder="?" desc="Rune"/>
+        <item locId="90" childId="10" placeholder="?" desc="Heine"/>
+        <item locId="104" childId="11" placeholder="?" desc="Oren"/>
+    </list>
+    <list id="2">
+        <item locId="115" childId="12" placeholder="?" desc="Floran"/>
+        <item locId="116" childId="13" placeholder="?" desc="Gludin"/>
+        <item locId="128" childId="14" placeholder="?" desc="Hunters"/>
+        <item locId="136" childId="15" placeholder="?" desc="Talking"/>
+        <item locId="142" childId="16" placeholder="?" desc="Elven"/>
+        <item locId="147" childId="17" placeholder="?" desc="Dark Elf"/>
+        <item locId="155" childId="18" placeholder="?" desc="Orc"/>
+        <item locId="161" childId="19" placeholder="?" desc="Dwarven"/>
+    </list>
+    <list id="3">
+        <item locId="1"/>
+        <item locId="2"/>
+        <item locId="3"/>
+        <item locId="4"/>
+        <item locId="5"/>
+        <item locId="6"/>
+        <item locId="7"/>
+        <item locId="8"/>
+        <item locId="9"/>
+        <item locId="10"/>
+        <item locId="11"/>
+        <item locId="12"/>
+    </list>
+    <list id="4">
+        <item locId="13"/>
+        <item locId="14"/>
+        <item locId="15"/>
+        <item locId="16"/>
+        <item locId="17"/>
+        <item locId="18"/>
+    </list>
+    <list id="5">
+        <item locId="19"/>
+        <item locId="20"/>
+        <item locId="21"/>
+        <item locId="22"/>
+        <item locId="23"/>
+        <item locId="24"/>
+        <item locId="25"/>
+        <item locId="26"/>
+        <item locId="27"/>
+        <item locId="28"/>
+        <item locId="29"/>
+        <item locId="30"/>
+        <item locId="31"/>
+    </list>
+    <list id="6">
+        <item locId="32"/>
+        <item locId="33"/>
+        <item locId="34"/>
+        <item locId="35"/>
+        <item locId="36"/>
+        <item locId="37"/>
+        <item locId="38"/>
+        <item locId="39"/>
+        <item locId="40"/>
+        <item locId="41"/>
+        <item locId="42"/>
+        <item locId="43"/>
+        <item locId="44"/>
+        <item locId="45"/>
+        <item locId="46"/>
+        <item locId="47"/>
+        <item locId="48"/>
+        <item locId="49"/>
+        <item locId="50"/>
+    </list>
+    <list id="7">
+        <item locId="51"/>
+        <item locId="52"/>
+        <item locId="53"/>
+        <item locId="54"/>
+        <item locId="55"/>
+        <item locId="56"/>
+        <item locId="57"/>
+        <item locId="58"/>
+        <item locId="59"/>
+        <item locId="60"/>
+        <item locId="61"/>
+        <item locId="62"/>
+        <item locId="63"/>
+        <item locId="64"/>
+        <item locId="65"/>
+        <item locId="66"/>
+        <item locId="67"/>
+        <item locId="68"/>
+        <item locId="69"/>
+    </list>
+    <list id="8">
+        <item locId="70"/>
+        <item locId="71"/>
+        <item locId="72"/>
+        <item locId="73"/>
+        <item locId="74"/>
+        <item locId="75"/>
+        <item locId="76"/>
+        <item locId="77"/>
+        <item locId="78"/>
+    </list>
+    <list id="9">
+        <item locId="79"/>
+        <item locId="80"/>
+        <item locId="81"/>
+        <item locId="82"/>
+        <item locId="83"/>
+        <item locId="84"/>
+        <item locId="85"/>
+        <item locId="86"/>
+        <item locId="87"/>
+        <item locId="88"/>
+        <item locId="89"/>
+    </list>
+    <list id="10">
+        <item locId="90"/>
+        <item locId="20"/>
+        <item locId="92"/>
+        <item locId="93"/>
+        <item locId="94"/>
+        <item locId="95"/>
+        <item locId="96"/>
+        <item locId="97"/>
+        <item locId="98"/>
+        <item locId="99"/>
+        <item locId="100"/>
+        <item locId="101"/>
+        <item locId="102"/>
+        <item locId="103"/>
+    </list>
+    <list id="11">
+        <item locId="104"/>
+        <item locId="105"/>
+        <item locId="128"/>
+        <item locId="107"/>
+        <item locId="108"/>
+        <item locId="109"/>
+        <item locId="110"/>
+        <item locId="111"/>
+        <item locId="112"/>
+        <item locId="113"/>
+        <item locId="114"/>
+    </list>
+    <list id="12">
+        <item locId="115"/>
+    </list>
+    <list id="13">
+        <item locId="116"/>
+        <item locId="117"/>
+        <item locId="118"/>
+        <item locId="119"/>
+        <item locId="120"/>
+        <item locId="121"/>
+        <item locId="122"/>
+        <item locId="123"/>
+        <item locId="124"/>
+        <item locId="125"/>
+        <item locId="126"/>
+        <item locId="127"/>
+    </list>
+    <list id="14">
+        <item locId="128"/>
+        <item locId="129"/>
+        <item locId="130"/>
+        <item locId="131"/>
+        <item locId="132"/>
+        <item locId="133"/>
+        <item locId="134"/>
+        <item locId="135"/>
+    </list>
+    <list id="15">
+        <item locId="136"/>
+        <item locId="137"/>
+        <item locId="138"/>
+        <item locId="139"/>
+        <item locId="140"/>
+        <item locId="141"/>
+    </list>
+    <list id="16">
+        <item locId="142"/>
+        <item locId="143"/>
+        <item locId="144"/>
+        <item locId="145"/>
+        <item locId="146"/>
+    </list>
+    <list id="17">
+        <item locId="147"/>
+        <item locId="148"/>
+        <item locId="149"/>
+        <item locId="150"/>
+        <item locId="151"/>
+        <item locId="152"/>
+        <item locId="153"/>
+        <item locId="154"/>
+    </list>
+    <list id="18">
+        <item locId="155"/>
+        <item locId="156"/>
+        <item locId="157"/>
+        <item locId="158"/>
+        <item locId="159"/>
+        <item locId="160"/>
+    </list>
+    <list id="19">
+        <item locId="161"/>
+        <item locId="162"/>
+        <item locId="163"/>
+        <item locId="164"/>
+        <item locId="165"/>
+        <item locId="166"/>
+        <item locId="167"/>
+    </list>
+    <list id="20"/>
+    <list id="21">
+        <item locId="167" childId="22" placeholder="75+" desc="Western"/>
+    </list>
+    <list id="22">
+        <item locId="167"/>
+    </list>
+</menu>

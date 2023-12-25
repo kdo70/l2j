@@ -21,6 +21,7 @@ import net.sf.l2j.gameserver.data.xml.*;
 import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsByClassData;
 import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsCommonData;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.LocationsData;
+import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.MenuData;
 import net.sf.l2j.gameserver.expander.helpers.data.xml.ItemIconData;
 import net.sf.l2j.gameserver.expander.helpers.data.xml.SkillInfoData;
 import net.sf.l2j.gameserver.geoengine.GeoEngine;
@@ -181,6 +182,7 @@ public class GameServer {
 
         StringUtil.printSection("Gatekeeper");
         LocationsData.getInstance();
+        MenuData.getInstance();
 
         StringUtil.printSection("Olympiads & Heroes");
         OlympiadGameManager.getInstance();

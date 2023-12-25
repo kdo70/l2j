@@ -30,6 +30,7 @@ public final class Config {
     public static final String SERVER_FILE = "./config/server.properties";
     public static final String SIEGE_FILE = "./config/siege.properties";
     public static final String EXPANDER_BUFFER = "./config/expander/buffer.properties";
+    public static final String EXPANDER_GATEKEEPER = "./config/expander/gatekeeper.properties";
 
     // --------------------------------------------------
     // Clans settings
@@ -300,12 +301,6 @@ public final class Config {
     /**
      * Misc
      */
-    public static boolean FREE_TELEPORT;
-    public static int FREE_TELEPORT_LVL;
-    public static boolean FREE_BUFFER;
-    public static int BUFFER_PRICE_PER_UNIT;
-    public static int BUFFER_FREE_PLAYER_LVL;
-    public static int BUFFER_PRICE_ITEM_ID;
     public static boolean ANNOUNCE_MAMMON_SPAWN;
     public static boolean MOB_AGGRO_IN_PEACEZONE;
     public static boolean SHOW_NPC_LVL;
@@ -676,6 +671,27 @@ public final class Config {
     public static boolean SERVER_NEWS;
     public static int ZONE_TOWN;
 
+    /**
+     * Expander: Buffer
+     */
+    public static boolean FREE_BUFFER;
+    public static int BUFFER_PRICE_PER_UNIT;
+    public static int BUFFER_FREE_PLAYER_LVL;
+    public static int BUFFER_PRICE_ITEM_ID;
+
+    /**
+     * Expander: Gatekeeper
+     */
+    public static boolean FREE_TELEPORT;
+    public static int FREE_TELEPORT_LVL;
+    public static int TELEPORT_LIST_ITEM_PER_PAGE;
+    public static int TELEPORT_LIST_HEIGHT_INDENT_PER_ITEM;
+    public static int TELEPORT_LIST_MIN_HEIGHT_INDENT;
+    public static int TELEPORT_MENU_ITEM_PER_PAGE;
+    public static int TELEPORT_MENU_HEIGHT_INDENT_PER_ITEM;
+    public static int TELEPORT_POPULAR_REFRESH_DELAY;
+    public static int TELEPORT_POPULAR_LIMIT;
+
     // --------------------------------------------------
     // Those "hidden" settings haven't configs to avoid admins to fuck their server
     // You still can experiment changing values here. But don't say I didn't warn you.
@@ -972,7 +988,6 @@ public final class Config {
         ALLOW_ENTIRE_TREE = npcs.getProperty("AllowEntireTree", false);
         if (ALLOW_CLASS_MASTERS) CLASS_MASTER_SETTINGS = new ClassMasterSettings(npcs.getProperty("ConfigClassMaster"));
 
-        FREE_TELEPORT = npcs.getProperty("FreeTeleport", false);
         ANNOUNCE_MAMMON_SPAWN = npcs.getProperty("AnnounceMammonSpawn", true);
         MOB_AGGRO_IN_PEACEZONE = npcs.getProperty("MobAggroInPeaceZone", true);
         SHOW_NPC_LVL = npcs.getProperty("ShowNpcLevel", false);
@@ -1145,6 +1160,20 @@ public final class Config {
         BUFFER_PRICE_ITEM_ID = buffer.getProperty("BufferPriceItemId", 57);
     }
 
+    private static void loadGatekeeper() {
+        final ExProperties buffer = initProperties(Config.EXPANDER_GATEKEEPER);
+
+        FREE_TELEPORT = buffer.getProperty("FreeBuffer", false);
+        FREE_TELEPORT_LVL = buffer.getProperty("FreeTeleportLvl", 1);
+        TELEPORT_LIST_ITEM_PER_PAGE = buffer.getProperty("ListItemPerPage", 12);
+        TELEPORT_LIST_HEIGHT_INDENT_PER_ITEM = buffer.getProperty("ListHeightIndentPerItem", 20);
+        TELEPORT_LIST_MIN_HEIGHT_INDENT = buffer.getProperty("ListMinHeightIndent", 12);
+        TELEPORT_MENU_ITEM_PER_PAGE = buffer.getProperty("MenuItemPerPage", 10);
+        TELEPORT_MENU_HEIGHT_INDENT_PER_ITEM = buffer.getProperty("MenuHeightIndentPerItem", 20);
+        TELEPORT_POPULAR_REFRESH_DELAY = buffer.getProperty("PopularRefreshDelayMinutes", 30);
+        TELEPORT_POPULAR_LIMIT = buffer.getProperty("PopularLimit", 20);
+    }
+
     /**
      * Loads gameserver settings.<br>
      * IP addresses, database, rates, feature enabled/disabled, misc.
@@ -1315,6 +1344,7 @@ public final class Config {
         loadPlayers();
         loadSieges();
         loadBuffer();
+        loadGatekeeper();
         loadServer();
     }
 

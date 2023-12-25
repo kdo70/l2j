@@ -6,31 +6,30 @@ import net.sf.l2j.gameserver.model.location.Location;
 
 public class LocationHolder extends Location {
     private final int _id;
-    private final int _childId;
+    private int _childId;
     private int _teleportCount;
-    private final String _lvl;
+    private String _placeholder;
     private final String _name;
-    private final String _desc;
+    private String _desc;
     private final String _point;
     private final TeleportType _type;
     private final int _priceId;
     private final int _priceCount;
     private final int _castleId;
+    private final StatSet _statSet;
 
     public LocationHolder(StatSet set, int teleportCount) {
         super(set.getInteger("x"), set.getInteger("y"), set.getInteger("z"));
 
         _id = set.getInteger("id");
-        _childId = set.getInteger("childId", 0);
         _teleportCount = teleportCount;
-        _lvl = set.getString("lvl", "-");
         _name = set.getString("name");
-        _desc = set.getString("desc", "");
         _point = set.getString("point", "");
         _type = set.getEnum("type", TeleportType.class, TeleportType.STANDARD);
         _priceId = set.getInteger("priceId");
         _priceCount = set.getInteger("priceCount");
         _castleId = set.getInteger("castleId", 0);
+        _statSet = set;
     }
 
     public int getId() {
@@ -41,16 +40,24 @@ public class LocationHolder extends Location {
         return _childId;
     }
 
+    public void setChildId(int childId) {
+        this._childId = childId;
+    }
+
     public int getTeleportCount() {
         return _teleportCount;
     }
 
-    public void setTeleportCount(int _teleportCount) {
-        this._teleportCount = _teleportCount;
+    public void setTeleportCount(int teleportCount) {
+        this._teleportCount = teleportCount;
     }
 
-    public String getLvl() {
-        return _lvl;
+    public String getPlaceholder() {
+        return _placeholder;
+    }
+
+    public void setPlaceholder(String placeholder) {
+        this._placeholder = placeholder;
     }
 
     public String getName() {
@@ -59,6 +66,10 @@ public class LocationHolder extends Location {
 
     public String getDesc() {
         return _desc;
+    }
+
+    public void setDesc(String desc) {
+        this._desc = desc;
     }
 
     public String getPoint() {
@@ -79,5 +90,12 @@ public class LocationHolder extends Location {
 
     public int getCastleId() {
         return _castleId;
+    }
+
+    @Override
+    public LocationHolder clone() {
+        super.clone();
+
+        return new LocationHolder(_statSet, _teleportCount);
     }
 }

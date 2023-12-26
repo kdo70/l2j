@@ -54,7 +54,7 @@ public class Buffer extends Quest {
             case "Buffs" -> _applyBuffsAction.execute(player, npc, page);
             case "List" -> _getListAction.execute(player, npc, page);
             case "Buff" -> _applyBuffAction.execute(player, npc, index, page);
-            case "Info" -> _getInfoAction.execute(player, npc, index, page);
+            case "Info" -> _getInfoAction.execute(player, npc, page);
             default -> player.sendPacket(ActionFailed.STATIC_PACKET);
         }
 

@@ -5,7 +5,6 @@ import net.sf.l2j.gameserver.expander.common.actions.Action;
 import net.sf.l2j.gameserver.model.actor.Player;
 
 public class GetErrorMessageAction extends Action {
-
     protected final int _playerMinLvl = BuffsByClassData.getInstance().getMinLvl();
     protected final int _playerMaxLvl = BuffsByClassData.getInstance().getMaxLvl();
 

@@ -678,6 +678,10 @@ public final class Config {
     public static int BUFFER_PRICE_PER_UNIT;
     public static int BUFFER_FREE_PLAYER_LVL;
     public static int BUFFER_PRICE_ITEM_ID;
+    public static int BUFFER_INFO_ITEM_PEG_PAGE;
+    public static int BUFFER_LIST_ITEM_PEG_PAGE;
+    public static int BUFFER_LIST_HEIGHT_INDENT_PER_ITEM;
+    public static int BUFFER_LIST_MIN_HEIGHT_INDENT;
 
     /**
      * Expander: Gatekeeper
@@ -1155,9 +1159,13 @@ public final class Config {
         final ExProperties buffer = initProperties(Config.EXPANDER_BUFFER);
 
         FREE_BUFFER = buffer.getProperty("FreeBuffer", false);
-        BUFFER_PRICE_PER_UNIT = buffer.getProperty("BufferPricePerUnit", 1);
-        BUFFER_FREE_PLAYER_LVL = buffer.getProperty("BufferFreePlayerLvl", 40);
-        BUFFER_PRICE_ITEM_ID = buffer.getProperty("BufferPriceItemId", 57);
+        BUFFER_PRICE_PER_UNIT = buffer.getProperty("PricePerUnit", 1);
+        BUFFER_FREE_PLAYER_LVL = buffer.getProperty("FreePlayerLvl", 40);
+        BUFFER_PRICE_ITEM_ID = buffer.getProperty("PriceItemId", 57);
+        BUFFER_INFO_ITEM_PEG_PAGE = buffer.getProperty("InfoItemPerPage", 8);
+        BUFFER_LIST_ITEM_PEG_PAGE = buffer.getProperty("ListItemPerPage", 8);
+        BUFFER_LIST_HEIGHT_INDENT_PER_ITEM = buffer.getProperty("ListHeightIndentPerItem", 20);
+        BUFFER_LIST_MIN_HEIGHT_INDENT = buffer.getProperty("ListMinHeightIndent", 12);
     }
 
     private static void loadGatekeeper() {

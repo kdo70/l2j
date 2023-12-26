@@ -1,5 +1,6 @@
 package net.sf.l2j.gameserver.expander.buffer.actions;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsByClassData;
 import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsCommonData;
@@ -19,9 +20,9 @@ public class GetInfoAction extends Action {
     protected final String _itemTemplate = "data/html/script/feature/buffer/templates/item.htm";
     protected final String _paginationTemplate = "data/html/script/feature/buffer/templates/pagination.htm";
     protected final String _infoTemplate = "data/html/script/feature/buffer/templates/info.htm";
-    protected final int _itemPerPage = 8;
+    protected int _itemPerPage = Config.BUFFER_INFO_ITEM_PEG_PAGE;
 
-    public void execute(Player player, Npc npc, int index, int page) {
+    public void execute(Player player, Npc npc, int page) {
         final StringBuilder list = new StringBuilder();
 
         final List<BuffHolder> buffHolderList = BuffsByClassData.getInstance().getValidBuffs(player.isMystic());
@@ -55,7 +56,9 @@ public class GetInfoAction extends Action {
             itemInPage++;
         }
 
-        StringUtil.append(list, getTemplatePagination(page, hasMore));
+        if (hasMore || page > 1) {
+            StringUtil.append(list, getTemplatePagination(buffHolderList.size(), page, hasMore));
+        }
 
         final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
         html.setFile(_infoTemplate);
@@ -93,15 +96,17 @@ public class GetInfoAction extends Action {
         }
     }
 
-    private String getTemplatePagination(int page, boolean hasMore) {
+    private String getTemplatePagination(int count, int page, boolean hasMore) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(_paginationTemplate));
+            final int pageCount = (int) Math.ceil((double) count / _itemPerPage);
             String pagination = reader.readLine();
 
             pagination = pagination.replace("%prevPage%", String.valueOf(page - (page > 1 ? 1 : 0)));
             pagination = pagination.replace("%currentPage%", String.valueOf(page));
             pagination = pagination.replace("%nextPage%", String.valueOf(page + (hasMore ? 1 : 0)));
             pagination = pagination.replace("%action%", "Info");
+            pagination = pagination.replace("%pageCount%", String.valueOf(pageCount));
 
             return pagination;
         } catch (IOException e) {

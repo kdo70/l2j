@@ -1,5 +1,6 @@
 package net.sf.l2j.gameserver.expander.buffer.actions;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.data.xml.ItemData;
 import net.sf.l2j.gameserver.expander.buffer.calculators.BuffPriceCalculator;
@@ -27,15 +28,16 @@ public class GetListAction extends Action {
     protected final String _itemTemplate = "data/html/script/feature/buffer/templates/list-item.htm";
     protected final String _paginationTemplate = "data/html/script/feature/buffer/templates/pagination.htm";
     protected final List<BuffHolder> _buffList = BuffsCommonData.getInstance().getBuffs();
-    protected final int _itemPerPage = 12;
-    protected final int _heightIndentPerBuff = 24;
-    protected final int _minHeightIndent = 12;
+    protected final int _itemPerPage = Config.BUFFER_LIST_ITEM_PEG_PAGE;
+    protected final int _heightIndentPerItem = Config.BUFFER_LIST_HEIGHT_INDENT_PER_ITEM;
+    protected final int _minHeightIndent = Config.BUFFER_LIST_MIN_HEIGHT_INDENT;
 
     public String execute(Player player, Npc npc, int page) {
         final StringBuilder list = new StringBuilder();
         int currentPage = 1;
         int iteration = 0;
         int itemInPage = 0;
+        int count = 0;
         boolean hasMore = false;
 
         for (int index = 0; index < _buffList.size(); index++) {
@@ -44,6 +46,8 @@ public class GetListAction extends Action {
             if (!_visibleBuffCondition.execute(player, buffHolder)) {
                 continue;
             }
+
+            count++;
 
             if (currentPage != page) {
                 iteration++;
@@ -70,7 +74,7 @@ public class GetListAction extends Action {
 
         int heightIndent = _minHeightIndent;
         if (itemInPage < _itemPerPage) {
-            heightIndent += _heightIndentPerBuff * (_itemPerPage - itemInPage);
+            heightIndent += _heightIndentPerItem * (_itemPerPage - itemInPage);
         }
 
         final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
@@ -80,7 +84,14 @@ public class GetListAction extends Action {
         html.replace("%npcTitle%", npc.getTitle());
         html.replace("%npcName%", npc.getName());
         html.replace("%objectId%", npc.getObjectId());
-        html.replace("%pagination%", getTemplatePagination(page, hasMore));
+
+        if (hasMore || page > 1) {
+            html.replace("%pagination%", getTemplatePagination(count, page, hasMore));
+        } else {
+            html.replace("%pagination%", "");
+            heightIndent += 24;
+        }
+
         html.replace("%heightIndent%", heightIndent);
 
         player.sendPacket(html);
@@ -114,15 +125,17 @@ public class GetListAction extends Action {
         }
     }
 
-    private String getTemplatePagination(int page, boolean hasMore) {
+    private String getTemplatePagination(int count, int page, boolean hasMore) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(_paginationTemplate));
+            final int pageCount = (int) Math.ceil((double) count / _itemPerPage);
             String pagination = reader.readLine();
 
             pagination = pagination.replace("%prevPage%", String.valueOf(page - (page > 1 ? 1 : 0)));
             pagination = pagination.replace("%currentPage%", String.valueOf(page));
             pagination = pagination.replace("%nextPage%", String.valueOf(page + (hasMore ? 1 : 0)));
             pagination = pagination.replace("%action%", "List");
+            pagination = pagination.replace("%pageCount%", String.valueOf(pageCount));
 
             return pagination;
         } catch (IOException e) {

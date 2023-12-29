@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -20,26 +21,50 @@ public class GetMenuListAction extends Action {
     protected final GetMenuAction _getMenuAction = new GetMenuAction();
     protected final String _dialogTemplate = "data/html/script/feature/gatekeeper/towns.htm";
     protected final String _itemTemplate = "data/html/script/feature/gatekeeper/town-item.htm";
+    protected final String _paginationTemplate = "data/html/script/feature/gatekeeper/pagination.htm";
     protected final String _activeColor = "color=B09878";
-    protected final int _minItemPerList = Config.TELEPORT_MENU_ITEM_PER_PAGE;
+    protected final int _itemPerPage = Config.TELEPORT_MENU_ITEM_PER_PAGE;
     protected final int _heightIndentPerItem = Config.TELEPORT_MENU_HEIGHT_INDENT_PER_ITEM;
 
-    public void execute(Player player, Npc npc, int listId, String action) {
+    public void execute(Player player, Npc npc, int listId, String action, String parentAction, int page) {
         final Map<Integer, LocationHolder> list = MenuData.getInstance().getList(listId);
         final StringBuilder locations = new StringBuilder();
 
+        int currentPage = 1;
+        int iteration = 0;
+        int itemInPage = 0;
+        boolean hasMore = false;
         int heightIndent = 0;
-        int visibleCount = 0;
 
         Comparator<LocationHolder> comparator = Comparator.comparing(LocationHolder::getId, Comparator.naturalOrder());
-        for (LocationHolder location : list.values().stream().sorted(comparator).toList()) {
+
+        List<LocationHolder> filteredList = list.values().stream().sorted(comparator).toList();
+        for (LocationHolder location : filteredList) {
+            if (currentPage != page) {
+                iteration++;
+
+                if (iteration != _itemPerPage) {
+                    continue;
+                }
+
+                currentPage++;
+                iteration = 0;
+
+                continue;
+            }
+
+            if (itemInPage == _itemPerPage) {
+                hasMore = true;
+                break;
+            }
+
             StringUtil.append(locations, getTemplateItem(action, listId, location));
 
-            visibleCount++;
+            itemInPage++;
         }
 
-        if (visibleCount < _minItemPerList) {
-            heightIndent += _heightIndentPerItem * (_minItemPerList - visibleCount);
+        if (itemInPage < _itemPerPage) {
+            heightIndent += _heightIndentPerItem * (_itemPerPage - itemInPage);
         }
 
         final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
@@ -56,6 +81,13 @@ public class GetMenuListAction extends Action {
         html.replace("%villages%", Objects.equals(action, "Villages") ? _activeColor : "");
         html.replace("%popular%", Objects.equals(action, "Popular") ? _activeColor : "");
         html.replace("%recommended%", Objects.equals(action, "Recommended") ? _activeColor : "");
+
+        if (hasMore || page > 1) {
+            int itemCount = filteredList.size();
+            html.replace("%pagination%", getTemplatePagination(itemCount, parentAction, listId, page, hasMore));
+        } else {
+            html.replace("%pagination%", "");
+        }
 
         html.replace("%heightIndent%", heightIndent);
 
@@ -76,6 +108,26 @@ public class GetMenuListAction extends Action {
             templateItem = templateItem.replace("%parentAction%", action);
 
             return templateItem;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String getTemplatePagination(int count, String parentAction, int listId, int page, boolean hasMore) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(_paginationTemplate));
+            final int pageCount = (int) Math.ceil((double) count / _itemPerPage);
+            String pagination = reader.readLine();
+
+            pagination = pagination.replace("%prevPage%", String.valueOf(page - (page > 1 ? 1 : 0)));
+            pagination = pagination.replace("%currentPage%", String.valueOf(page));
+            pagination = pagination.replace("%nextPage%", String.valueOf(page + (hasMore ? 1 : 0)));
+            pagination = pagination.replace("%listId%", String.valueOf(listId));
+            pagination = pagination.replace("%parentAction%", parentAction);
+            pagination = pagination.replace("%action%", parentAction);
+            pagination = pagination.replace("%pageCount%", String.valueOf(pageCount));
+
+            return pagination;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -18,10 +18,8 @@ import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class GetListAction extends Action {
     protected final GetMenuAction _getMenuAction = new GetMenuAction();
@@ -54,11 +52,15 @@ public class GetListAction extends Action {
         if (listId == 20) {
             comparator = Comparator.comparing(LocationHolder::getTeleportCount, Comparator.reverseOrder());
         }
+        Stream<LocationHolder> listStream = list.values().stream();
 
-        for (LocationHolder locationHolder : list.values().stream().sorted(comparator).toList()) {
-            if (locationHolder.getType() == TeleportType.NOBLE && !player.isNoble()) {
-                continue;
-            }
+        if (!player.isNoble()) {
+            listStream = listStream.filter(locationHolder -> locationHolder.getType() != TeleportType.NOBLE);
+        }
+
+        List<LocationHolder> filteredList = listStream.sorted(comparator).toList();
+
+        for (LocationHolder locationHolder : filteredList) {
             if (currentPage != page) {
                 iteration++;
 
@@ -102,8 +104,16 @@ public class GetListAction extends Action {
         html.replace("%recommended%", Objects.equals(parentAction, "Recommended") ? _activeColor : "");
 
         html.replace("%list%", locations.toString());
+
+        if (hasMore || page > 1) {
+            int itemCount = filteredList.size();
+            html.replace("%pagination%", getTemplatePagination(itemCount, parentAction, listId, page, hasMore));
+        } else {
+            html.replace("%pagination%", "");
+            heightIndent += 24;
+        }
+
         html.replace("%heightIndent%", heightIndent);
-        html.replace("%pagination%", getTemplatePagination(parentAction, listId, page, hasMore));
         html.replace("%parentAction%", Objects.equals(parentAction, "Popular") ? "Towns" : parentAction);
 
         player.sendPacket(html);
@@ -133,9 +143,10 @@ public class GetListAction extends Action {
         }
     }
 
-    private String getTemplatePagination(String parentAction, int listId, int page, boolean hasMore) {
+    private String getTemplatePagination(int count, String parentAction, int listId, int page, boolean hasMore) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(_paginationTemplate));
+            final int pageCount = (int) Math.ceil((double) count / _itemPerPage);
             String pagination = reader.readLine();
 
             pagination = pagination.replace("%prevPage%", String.valueOf(page - (page > 1 ? 1 : 0)));
@@ -144,6 +155,7 @@ public class GetListAction extends Action {
             pagination = pagination.replace("%listId%", String.valueOf(listId));
             pagination = pagination.replace("%parentAction%", parentAction);
             pagination = pagination.replace("%action%", "List");
+            pagination = pagination.replace("%pageCount%", String.valueOf(pageCount));
 
             return pagination;
         } catch (IOException e) {

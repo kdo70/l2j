@@ -42,10 +42,12 @@ public class Gatekeeper extends Quest {
         final int page = command.hasMoreTokens() ? Integer.parseInt(command.nextToken()) : 1;
 
         switch (Objects.requireNonNull(action)) {
-            case "Towns" -> _getMenuListAction.execute(player, npc, MenuEnum.TOWNS.getId(), action);
-            case "Villages" -> _getMenuListAction.execute(player, npc, MenuEnum.VILLAGES.getId(), action);
+            case "Towns" -> _getMenuListAction.execute(player, npc, MenuEnum.TOWNS.getId(), action, parentAction, page);
+            case "Villages" ->
+                    _getMenuListAction.execute(player, npc, MenuEnum.VILLAGES.getId(), action, parentAction, page);
             case "Popular" -> _getListAction.execute(player, npc, MenuEnum.POPULAR.getId(), action, page);
-            case "Recommended" -> _getMenuListAction.execute(player, npc, MenuEnum.RECOMMENDED.getId(), action);
+            case "Recommended" ->
+                    _getMenuListAction.execute(player, npc, MenuEnum.RECOMMENDED.getId(), action, parentAction, page);
             case "Teleport" -> _teleportAction.execute(player, npc, locationId);
             case "List" -> _getListAction.execute(player, npc, listId, parentAction, page);
             default -> player.sendPacket(ActionFailed.STATIC_PACKET);
@@ -56,7 +58,7 @@ public class Gatekeeper extends Quest {
 
     @Override
     public String onFirstTalk(Npc npc, Player player) {
-        _getMenuListAction.execute(player, npc, MenuEnum.TOWNS.getId(), "Towns");
+        _getMenuListAction.execute(player, npc, MenuEnum.TOWNS.getId(), "Towns", "Towns", 1);
 
         return super.onFirstTalk(npc, player);
     }

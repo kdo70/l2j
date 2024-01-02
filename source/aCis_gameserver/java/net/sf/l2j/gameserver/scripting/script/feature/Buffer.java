@@ -4,7 +4,7 @@ import net.sf.l2j.gameserver.expander.buffer.actions.*;
 import net.sf.l2j.gameserver.expander.buffer.conditions.AvailableBuffCondition;
 import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.actor.Player;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.helpers.Str;
+import net.sf.l2j.gameserver.expander.helpers.Str;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.scripting.Quest;
 

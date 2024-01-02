@@ -15,7 +15,7 @@ import net.sf.l2j.gameserver.model.actor.Attackable;
 import net.sf.l2j.gameserver.model.actor.Creature;
 import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.model.actor.container.npc.RewardInfo;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.statistics.PlayerStatistic;
+import net.sf.l2j.gameserver.expander.statistic.CharacterStatistic;
 import net.sf.l2j.gameserver.model.actor.instance.Monster;
 import net.sf.l2j.gameserver.model.actor.instance.Servitor;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
@@ -525,7 +525,7 @@ public class Party extends AbstractGroup {
             return;
 
         looter.addItem((isSpoil) ? "Sweep" : "Party", item.getId(), item.getValue(), player, true);
-        PlayerStatistic.calculateStatisticDrop(looter, item, target);
+        CharacterStatistic.calculateStatisticDrop(looter, item, target);
 
         // Send messages to other party members about reward.
         SystemMessage msg;
@@ -565,7 +565,7 @@ public class Party extends AbstractGroup {
         final int count = adena / toReward.size();
         for (Player member : toReward) {
             member.addAdena("Party", count, player, true);
-            PlayerStatistic.addAdena(member, count, target);
+            CharacterStatistic.addAdena(member, count, target);
         }
     }
 

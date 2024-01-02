@@ -18,7 +18,7 @@ import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.model.actor.Summon;
 import net.sf.l2j.gameserver.model.actor.container.attackable.AggroList;
 import net.sf.l2j.gameserver.model.actor.container.npc.AggroInfo;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.helpers.RateHelper;
+import net.sf.l2j.gameserver.expander.helpers.RateHelper;
 import net.sf.l2j.gameserver.model.actor.instance.*;
 import net.sf.l2j.gameserver.model.buylist.NpcBuyList;
 import net.sf.l2j.gameserver.model.item.DropCategory;

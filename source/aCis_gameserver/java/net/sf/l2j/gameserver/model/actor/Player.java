@@ -24,6 +24,9 @@ import net.sf.l2j.gameserver.enums.items.*;
 import net.sf.l2j.gameserver.enums.skills.EffectFlag;
 import net.sf.l2j.gameserver.enums.skills.EffectType;
 import net.sf.l2j.gameserver.enums.skills.Stats;
+import net.sf.l2j.gameserver.expander.cards.CharacterCard;
+import net.sf.l2j.gameserver.expander.statistic.CharacterStatistic;
+import net.sf.l2j.gameserver.expander.cards.model.holder.CharacterCardHolder;
 import net.sf.l2j.gameserver.geoengine.GeoEngine;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.handler.ItemHandler;
@@ -38,8 +41,6 @@ import net.sf.l2j.gameserver.model.actor.cast.PlayerCast;
 import net.sf.l2j.gameserver.model.actor.container.npc.RewardInfo;
 import net.sf.l2j.gameserver.model.actor.container.player.QuestList;
 import net.sf.l2j.gameserver.model.actor.container.player.*;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.cards.PlayerCard;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.statistics.PlayerStatistic;
 import net.sf.l2j.gameserver.model.actor.instance.*;
 import net.sf.l2j.gameserver.model.actor.move.PlayerMove;
 import net.sf.l2j.gameserver.model.actor.status.PlayerStatus;
@@ -335,8 +336,8 @@ public final class Player extends Playable {
     private L2Skill _summonSkillRequest;
 
     private Door _requestedGate;
-    private final Map<String, PlayerCard> _cards = new ConcurrentHashMap<>();
-    private final Map<String, PlayerStatistic> _statistics = new ConcurrentHashMap<>();
+    private final Map<String, CharacterCardHolder> _cards = new ConcurrentHashMap<>();
+    private final Map<String, CharacterStatistic> _statistics = new ConcurrentHashMap<>();
 
     /**
      * Constructor of Player (use Creature constructor).
@@ -440,8 +441,8 @@ public final class Player extends Playable {
             ps.setLong(33, 0);
             ps.executeUpdate();
 
-            PlayerCard.createCards(player);
-            PlayerStatistic.createStatistic(player);
+            CharacterCard.createCards(player);
+            CharacterStatistic.createStatistic(player);
         } catch (final Exception e) {
             LOGGER.error("Couldn't create player {} for {} account.", e, name, accountName);
             return null;
@@ -2311,7 +2312,7 @@ public final class Player extends Playable {
         // Icons update in order to get retained buffs list
         updateEffectIcons();
 
-        PlayerStatistic.addMonsterDeaths(this, killer);
+        CharacterStatistic.addMonsterDeaths(this, killer);
 
         return true;
     }
@@ -3674,8 +3675,8 @@ public final class Player extends Playable {
                     player.setRunning(true);
                     player.setStanding(true);
 
-                    PlayerCard.restoreCards(player);
-                    PlayerStatistic.restoreStatistic(player);
+                    CharacterCard.restoreCards(player);
+                    CharacterStatistic.restoreStatistic(player);
 
                     World.getInstance().addPlayer(player);
 
@@ -3767,8 +3768,8 @@ public final class Player extends Playable {
         storeCharBase();
         storeCharSub();
         storeEffect(storeActiveEffects);
-        PlayerCard.storeCards(this);
-        PlayerStatistic.storeStatistic(this);
+        CharacterCard.storeCards(this);
+        CharacterStatistic.storeStatistic(this);
     }
 
     public void store() {
@@ -6231,19 +6232,19 @@ public final class Player extends Playable {
         return gms;
     }
 
-    public Map<String, PlayerCard> getCards() {
+    public Map<String, CharacterCardHolder> getCards() {
         return _cards;
     }
 
-    public void addCard(String type, PlayerCard card) {
+    public void addCard(String type, CharacterCardHolder card) {
         _cards.put(type, card);
     }
 
-    public Map<String, PlayerStatistic> getStatistics() {
+    public Map<String, CharacterStatistic> getStatistics() {
         return _statistics;
     }
 
-    public void addStatistic(String type, PlayerStatistic statistic) {
+    public void addStatistic(String type, CharacterStatistic statistic) {
         _statistics.put(type, statistic);
     }
 

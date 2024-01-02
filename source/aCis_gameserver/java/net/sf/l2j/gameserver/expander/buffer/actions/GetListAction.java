@@ -8,10 +8,10 @@ import net.sf.l2j.gameserver.expander.buffer.conditions.VisibleBuffCondition;
 import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsCommonData;
 import net.sf.l2j.gameserver.expander.buffer.model.holder.BuffHolder;
 import net.sf.l2j.gameserver.expander.common.actions.Action;
+import net.sf.l2j.gameserver.expander.helpers.Str;
 import net.sf.l2j.gameserver.expander.helpers.data.xml.SkillInfoData;
 import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.actor.Player;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.helpers.Str;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 
@@ -19,7 +19,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class GetListAction extends Action {
     protected final VisibleBuffCondition _visibleBuffCondition = new VisibleBuffCondition();
@@ -28,9 +27,9 @@ public class GetListAction extends Action {
     protected final String _itemTemplate = "data/html/script/feature/buffer/templates/list-item.htm";
     protected final String _paginationTemplate = "data/html/script/feature/buffer/templates/pagination.htm";
     protected final List<BuffHolder> _buffList = BuffsCommonData.getInstance().getBuffs();
-    protected final int _itemPerPage = Config.BUFFER_LIST_ITEM_PEG_PAGE;
-    protected final int _heightIndentPerItem = Config.BUFFER_LIST_HEIGHT_INDENT_PER_ITEM;
-    protected final int _minHeightIndent = Config.BUFFER_LIST_MIN_HEIGHT_INDENT;
+    private static final int _itemPerPage = Config.BUFFER_LIST_ITEM_PEG_PAGE;
+    private static final int _heightIndentPerItem = Config.BUFFER_LIST_HEIGHT_INDENT_PER_ITEM;
+    private static final int _minHeightIndent = Config.BUFFER_LIST_MIN_HEIGHT_INDENT;
 
     public String execute(Player player, Npc npc, int page) {
         final StringBuilder list = new StringBuilder();
@@ -101,11 +100,10 @@ public class GetListAction extends Action {
 
     private String getTemplateItem(Player player, BuffHolder buffHolder, int index, int page) {
         Item item = ItemData.getInstance().getTemplate(buffHolder.getPriceId());
-        StringTokenizer tokenizer = new StringTokenizer(item.getName());
-        String itemName = tokenizer.nextToken();
+        String[] tokens = item.getName().split("\\s");
+        String itemName = tokens[0];
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(_itemTemplate));
+        try (BufferedReader reader = new BufferedReader(new FileReader(_itemTemplate))) {
             String template = reader.readLine();
             String price = Str.number(_buffPriceCalculator.execute(player, buffHolder));
 
@@ -121,14 +119,14 @@ public class GetListAction extends Action {
 
             return template;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Class: Gatekeeper Method: getTemplateItem", e);
         }
     }
 
     private String getTemplatePagination(int count, int page, boolean hasMore) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(_paginationTemplate));
+        try (BufferedReader reader = new BufferedReader(new FileReader(_paginationTemplate))) {
             final int pageCount = (int) Math.ceil((double) count / _itemPerPage);
+
             String pagination = reader.readLine();
 
             pagination = pagination.replace("%prevPage%", String.valueOf(page - (page > 1 ? 1 : 0)));
@@ -139,7 +137,7 @@ public class GetListAction extends Action {
 
             return pagination;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Class: Gatekeeper Method: getTemplatePagination", e);
         }
     }
 }

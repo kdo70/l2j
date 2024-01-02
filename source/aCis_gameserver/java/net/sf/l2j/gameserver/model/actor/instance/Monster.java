@@ -12,6 +12,7 @@ import net.sf.l2j.gameserver.enums.items.EtcItemType;
 import net.sf.l2j.gameserver.enums.items.ItemType;
 import net.sf.l2j.gameserver.enums.items.WeaponType;
 import net.sf.l2j.gameserver.enums.skills.Stats;
+import net.sf.l2j.gameserver.expander.cards.HuntingCard;
 import net.sf.l2j.gameserver.model.actor.*;
 import net.sf.l2j.gameserver.model.actor.container.monster.OverhitState;
 import net.sf.l2j.gameserver.model.actor.container.monster.SeedState;
@@ -19,8 +20,7 @@ import net.sf.l2j.gameserver.model.actor.container.monster.SpoilState;
 import net.sf.l2j.gameserver.model.actor.container.npc.AbsorbInfo;
 import net.sf.l2j.gameserver.model.actor.container.npc.AggroInfo;
 import net.sf.l2j.gameserver.model.actor.container.npc.RewardInfo;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.helpers.RateHelper;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.statistics.PlayerStatistic;
+import net.sf.l2j.gameserver.expander.statistic.CharacterStatistic;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.group.CommandChannel;
 import net.sf.l2j.gameserver.model.group.Party;
@@ -159,8 +159,8 @@ public class Monster extends Attackable {
                     // Distribute the Exp and SP.
                     attacker.addExpAndSp(exp, sp, rewards, this);
 
-                    PlayerStatistic.addMonsterKills(attacker, this);
-                    attacker.getCards().get("monster").addExp(attacker, this);
+                    CharacterStatistic.addMonsterKills(attacker, this);
+                    HuntingCard.addExp(attacker, this);
                 }
             }
             // Share with party members.
@@ -172,8 +172,8 @@ public class Monster extends Attackable {
                 final List<Player> rewardedMembers = new ArrayList<>();
                 final Map<Creature, RewardInfo> playersWithPets = new HashMap<>();
 
-                PlayerStatistic.addMonsterKills(attacker, this);
-                attacker.getCards().get("monster").addExp(attacker, this);
+                CharacterStatistic.addMonsterKills(attacker, this);
+                HuntingCard.addExp(attacker, this);
 
                 // Iterate every Party member.
                 for (Player partyPlayer : (attackerParty.isInCommandChannel()) ? attackerParty.getCommandChannel().getMembers() : attackerParty.getMembers()) {
@@ -478,25 +478,25 @@ public class Monster extends Attackable {
                 player.getParty().distributeItem(player, holder, false, this);
             } else {
                 dropItem(player, holder);
-                PlayerStatistic.calculateStatisticDrop(player, holder, this);
+                CharacterStatistic.calculateStatisticDrop(player, holder, this);
             }
         } else if (player.getInventory().validateCapacityByItemId(holder)) {
             if (autolootMonsterLevel >= 2 && holder.getId() == 57) {
                 player.addAdena("Loot", holder.getValue(), this, true);
-                PlayerStatistic.calculateStatisticDrop(player, holder, this);
+                CharacterStatistic.calculateStatisticDrop(player, holder, this);
             } else if (autolootMonsterLevel >= 3 && type instanceof EtcItemType) {
                 player.addItem("Loot", holder.getId(), holder.getValue(), this, true);
-                PlayerStatistic.calculateStatisticDrop(player, holder, this);
+                CharacterStatistic.calculateStatisticDrop(player, holder, this);
             } else if (autolootMonsterLevel >= 4 && (type instanceof ArmorType || type instanceof WeaponType)) {
                 player.addItem("Loot", holder.getId(), holder.getValue(), this, true);
-                PlayerStatistic.calculateStatisticDrop(player, holder, this);
+                CharacterStatistic.calculateStatisticDrop(player, holder, this);
             } else {
                 dropItem(player, holder);
-                PlayerStatistic.calculateStatisticDrop(player, holder, this);
+                CharacterStatistic.calculateStatisticDrop(player, holder, this);
             }
         } else {
             dropItem(player, holder);
-            PlayerStatistic.calculateStatisticDrop(player, holder, this);
+            CharacterStatistic.calculateStatisticDrop(player, holder, this);
         }
 
         // Broadcast message if RaidBoss was defeated.

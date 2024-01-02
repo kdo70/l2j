@@ -4,13 +4,14 @@ import net.sf.l2j.Config;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.data.xml.ItemData;
 import net.sf.l2j.gameserver.enums.TeleportType;
+import net.sf.l2j.gameserver.expander.gatekeeper.data.dto.GatekeeperData;
 import net.sf.l2j.gameserver.expander.common.actions.Action;
 import net.sf.l2j.gameserver.expander.gatekeeper.calculators.PriceCalculator;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.MenuData;
 import net.sf.l2j.gameserver.expander.gatekeeper.model.holder.LocationHolder;
 import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.actor.Player;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.helpers.Str;
+import net.sf.l2j.gameserver.expander.helpers.Str;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
@@ -32,7 +33,7 @@ public class GetListAction extends Action {
     protected final int _heightIndentPerItem = Config.TELEPORT_LIST_HEIGHT_INDENT_PER_ITEM;
     protected final int _minHeightIndent = Config.TELEPORT_LIST_MIN_HEIGHT_INDENT;
 
-    public void execute(Player player, Npc npc, int listId, String parentAction, int page) {
+    public void execute(Player player, Npc npc, int listId, GatekeeperData data) {
         final Map<Integer, LocationHolder> list = MenuData.getInstance().getList(listId);
         if (list == null) {
             Str.sendMsg(player, "Выбранная вами локация недоступна для телепорта");
@@ -58,8 +59,8 @@ public class GetListAction extends Action {
             listStream = listStream.filter(locationHolder -> locationHolder.getType() != TeleportType.NOBLE);
         }
 
+        final int page = data.getPage();
         List<LocationHolder> filteredList = listStream.sorted(comparator).toList();
-
         for (LocationHolder locationHolder : filteredList) {
             if (currentPage != page) {
                 iteration++;
@@ -89,6 +90,7 @@ public class GetListAction extends Action {
             heightIndent += _heightIndentPerItem * (_itemPerPage - itemInPage);
         }
 
+        final String parentAction = data.getParentAction();
         final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 
         html.setFile(_dialogTemplate);
@@ -107,7 +109,7 @@ public class GetListAction extends Action {
 
         if (hasMore || page > 1) {
             int itemCount = filteredList.size();
-            html.replace("%pagination%", getTemplatePagination(itemCount, parentAction, listId, page, hasMore));
+            html.replace("%pagination%", getTemplatePagination(itemCount, data, listId, hasMore));
         } else {
             html.replace("%pagination%", "");
             heightIndent += 24;
@@ -120,16 +122,14 @@ public class GetListAction extends Action {
     }
 
     private String getTemplateItem(Player player, LocationHolder locationHolder, int listId) {
-
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(_itemTemplate));
-            String template = reader.readLine();
-
+        try (BufferedReader reader = new BufferedReader(new FileReader(_itemTemplate))) {
             Item item = ItemData.getInstance().getTemplate(locationHolder.getPriceId());
             StringTokenizer tokenizer = new StringTokenizer(item.getName());
             String itemName = tokenizer.nextToken();
-
             final int priceCount = _priceCalculator.execute(player, locationHolder);
+
+            String template = reader.readLine();
+
             template = template.replace("%name%", locationHolder.getName());
             template = template.replace("%listId%", String.valueOf(listId));
             template = template.replace("%id%", String.valueOf(locationHolder.getId()));
@@ -143,17 +143,18 @@ public class GetListAction extends Action {
         }
     }
 
-    private String getTemplatePagination(int count, String parentAction, int listId, int page, boolean hasMore) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(_paginationTemplate));
+    private String getTemplatePagination(int count, GatekeeperData data, int listId, boolean hasMore) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(_paginationTemplate))) {
+            final int page = data.getPage();
             final int pageCount = (int) Math.ceil((double) count / _itemPerPage);
+
             String pagination = reader.readLine();
 
             pagination = pagination.replace("%prevPage%", String.valueOf(page - (page > 1 ? 1 : 0)));
             pagination = pagination.replace("%currentPage%", String.valueOf(page));
             pagination = pagination.replace("%nextPage%", String.valueOf(page + (hasMore ? 1 : 0)));
             pagination = pagination.replace("%listId%", String.valueOf(listId));
-            pagination = pagination.replace("%parentAction%", parentAction);
+            pagination = pagination.replace("%parentAction%", data.getParentAction());
             pagination = pagination.replace("%action%", "List");
             pagination = pagination.replace("%pageCount%", String.valueOf(pageCount));
 

@@ -74,12 +74,15 @@ public class LocationsData implements IXmlReader {
     public void updateLocationsCounter() {
         try (Connection con = ConnectionPool.getConnection();
              PreparedStatement ps = con.prepareStatement(ADD_OR_UPDATE_LOCATION)) {
+
             for (LocationHolder location : _locations.values()) {
                 ps.setInt(1, location.getId());
                 ps.setInt(2, location.getTeleportCount());
 
-                ps.executeUpdate();
+                ps.addBatch();
             }
+
+            ps.executeBatch();
         } catch (final Exception e) {
             LOGGER.error("Error update location counter.", e);
         }

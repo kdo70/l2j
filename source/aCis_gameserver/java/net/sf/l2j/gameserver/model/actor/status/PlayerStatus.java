@@ -17,8 +17,8 @@ import net.sf.l2j.gameserver.enums.skills.Stats;
 import net.sf.l2j.gameserver.model.PlayerLevel;
 import net.sf.l2j.gameserver.model.actor.*;
 import net.sf.l2j.gameserver.model.actor.container.npc.RewardInfo;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.helpers.RateHelper;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.statistics.PlayerStatistic;
+import net.sf.l2j.gameserver.expander.helpers.RateHelper;
+import net.sf.l2j.gameserver.expander.statistic.CharacterStatistic;
 import net.sf.l2j.gameserver.model.actor.instance.Pet;
 import net.sf.l2j.gameserver.model.actor.instance.Servitor;
 import net.sf.l2j.gameserver.model.clanhall.ClanHall;
@@ -474,7 +474,7 @@ public class PlayerStatus extends PlayableStatus<Player> {
 
         _actor.sendPacket(sm);
 
-        PlayerStatistic.addExpAndSp(_actor, addToExp, addToSp, creature);
+        CharacterStatistic.addExpAndSp(_actor, addToExp, addToSp, creature);
 
         return true;
     }

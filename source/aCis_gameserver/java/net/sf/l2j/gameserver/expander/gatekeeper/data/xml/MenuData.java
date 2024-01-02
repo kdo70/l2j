@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.expander.gatekeeper.data.xml;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.data.xml.IXmlReader;
-import net.sf.l2j.gameserver.expander.gatekeeper.enums.MenuEnum;
+import net.sf.l2j.gameserver.expander.gatekeeper.data.enums.MenuEnum;
 import net.sf.l2j.gameserver.expander.gatekeeper.model.holder.LocationHolder;
 import net.sf.l2j.gameserver.expander.gatekeeper.model.holder.MenuHolder;
 import org.w3c.dom.Document;

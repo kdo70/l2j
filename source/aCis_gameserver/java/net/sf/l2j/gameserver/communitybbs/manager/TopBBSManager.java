@@ -1,13 +1,11 @@
 package net.sf.l2j.gameserver.communitybbs.manager;
 
-import net.sf.l2j.commons.logging.CLogger;
-import net.sf.l2j.gameserver.data.cache.HtmCache;
+import net.sf.l2j.gameserver.expander.cards.HuntingCard;
 import net.sf.l2j.gameserver.model.actor.Player;
 
 import java.util.StringTokenizer;
 
 public class TopBBSManager extends BaseBBSManager {
-    private static final CLogger LOGGER = new CLogger(TopBBSManager.class.getName());
 
     protected TopBBSManager() {
     }
@@ -15,8 +13,7 @@ public class TopBBSManager extends BaseBBSManager {
     @Override
     public void parseCmd(String command, Player player) {
         if (command.equals("_bbshome")) {
-            String content = HtmCache.getInstance().getHtm(CB_PATH + getFolder() + "index.htm");
-            content = player.getCards().get("monster").getPageIndex(content, player);
+            String content = HuntingCard.getPageIndex(player);
             separateAndSend(content, player);
         } else if (command.startsWith("_bbshome;")) {
             final StringTokenizer st = new StringTokenizer(command, ";");

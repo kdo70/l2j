@@ -112,57 +112,57 @@
     <loc id="112" name="Forest of Evil" type="NOBLE" priceId="57" priceCount="125" x="93218" y="16969" z="-3904"/>
     <loc id="113" name="Timak Outpost" type="NOBLE" priceId="57" priceCount="125" x="67097" y="68815" z="-3648"/>
     <loc id="114" name="Altar of Rites" type="NOBLE" priceId="57" priceCount="125" x="-44566" y="77508" z="-3736"/>
-    <loc id="115" name="Floran Village" type="STANDARD" priceId="57" priceCount="125" x="17430" y="170103" z="-3506" />
-    <loc id="116" name="Gludin Village" type="STANDARD" priceId="57" priceCount="125" x="-80804" y="149833" z="-3040" />
-    <loc id="117" name="Lizardmen Dwellings" type="STANDARD" priceId="57" priceCount="125" x="-44763" y="203497" z="-3592" />
-    <loc id="118" name="Windmill Hill" type="STANDARD" priceId="57" priceCount="125" x="-75437" y="168800" z="-3632" />
-    <loc id="119" name="Harvesting Grounds" type="STANDARD" priceId="57" priceCount="125" x="-63736" y="101522" z="-3552" />
-    <loc id="120" name="Forgotten Temple" type="STANDARD" priceId="57" priceCount="125" x="-53001" y="191425" z="-3568" />
-    <loc id="121" name="Forgotten Temple" point="Center" type="NOBLE" priceId="57" priceCount="125" x="-54026" y="179504" z="-4650" />
-    <loc id="122" name="Orc Barracks" type="STANDARD" priceId="57" priceCount="125" x="-89763" y="105359" z="-3576" />
-    <loc id="123" name="Windy Hill" type="STANDARD" priceId="57" priceCount="125" x="-88539" y="83389" z="-2864" />
-    <loc id="124" name="Abandoned Camp" type="STANDARD" priceId="57" priceCount="125" x="-49853" y="147089" z="-2784" />
-    <loc id="125" name="Wastelands" type="STANDARD" priceId="57" priceCount="125" x="-16526" y="208032" z="-3664" />
-    <loc id="126" name="Wastelands" point="Western" type="NOBLE" priceId="57" priceCount="125" x="-47506" y="179572" z="-3632" />
-    <loc id="127" name="Red Rock Ridge" type="STANDARD" priceId="57" priceCount="125" x="-42256" y="198333" z="-2800" />
-    <loc id="128" name="Hunters Village" type="STANDARD" priceId="57" priceCount="125" x="117052" y="76905" z="-2704" />
-    <loc id="129" name="Hardin's Private Academy" type="STANDARD" priceId="57" priceCount="125" x="105846" y="109762" z="-3170" castleId="3" />
-    <loc id="130" name="Enchanted Valley" point="Southern" type="STANDARD" priceId="57" priceCount="125" x="124904" y="61992" z="-3973" />
-    <loc id="131" name="Enchanted Valley" point="Northern" type="STANDARD" priceId="57" priceCount="125" x="104426" y="33746" z="-3825" />
-    <loc id="132" name="Enchanted Valley" point="Center" type="NOBLE" priceId="57" priceCount="125" x="114674" y="44150" z="-3376" />
-    <loc id="133" name="Forest of Mirrors" type="STANDARD" priceId="57" priceCount="125" x="142065" y="81300" z="-3000" />
-    <loc id="134" name="Forest of Mirrors" point="Center" type="NOBLE" priceId="57" priceCount="125" x="166080" y="75574" z="-2992" />
-    <loc id="135" name="Hunters Valley" type="NOBLE" priceId="57" priceCount="125" x="114306" y="86573" z="-3112" />
-    <loc id="136" name="Talking Island Village" type="STANDARD" priceId="57" priceCount="125" x="-84153" y="244542" z="-3728" />
-    <loc id="137" name="Elven Ruins" type="STANDARD" priceId="57" priceCount="125" x="-112367" y="234703" z="-3688" />
-    <loc id="138" name="Elven Ruins" point="Center" type="NOBLE" priceId="57" priceCount="125" x="49315" y="248452" z="-5960" />
-    <loc id="139" name="Singing Waterfall" type="STANDARD" priceId="57" priceCount="125" x="-111728" y="244330" z="-3448" />
-    <loc id="140" name="Western Territory" type="STANDARD" priceId="57" priceCount="125" x="-106696" y="214691" z="-3424" />
-    <loc id="141" name="Obelisk of Victory" type="STANDARD" priceId="57" priceCount="125" x="-99586" y="237637" z="-3568" />
-    <loc id="142" name="Elven Village" type="STANDARD" priceId="57" priceCount="125" x="46874" y="51457" z="-2976" />
-    <loc id="143" name="Elven Forest" type="STANDARD" priceId="57" priceCount="125" x="21362" y="51122" z="-3688" />
-    <loc id="144" name="Elven Fortress" type="STANDARD" priceId="57" priceCount="125" x="29294" y="74968" z="-3776" />
-    <loc id="145" name="Neutral Zone" type="STANDARD" priceId="57" priceCount="125" x="-10612" y="75881" z="-3592" />
-    <loc id="146" name="Neutral Zone" point="Center" type="NOBLE" priceId="57" priceCount="125" x="-10612" y="75881" z="-3592" />
-    <loc id="147" name="Dark Elf Village" type="STANDARD" priceId="57" priceCount="125" x="9738" y="15567" z="-4568" />
-    <loc id="148" name="Dark Forest" type="STANDARD" priceId="57" priceCount="125" x="-22224" y="14168" z="-3232" />
-    <loc id="149" name="Dark Forest" point="Center" type="NOBLE" priceId="57" priceCount="125" x="-22224" y="14168" z="-3232" />
-    <loc id="150" name="Swampland" type="STANDARD" priceId="57" priceCount="125" x="-21966" y="40544" z="-3192" />
-    <loc id="151" name="Spider Nest" type="STANDARD" priceId="57" priceCount="125" x="-61095" y="75104" z="-3352" />
-    <loc id="152" name="Neutral Zone" type="STANDARD" priceId="57" priceCount="125" x="-10612" y="75881" z="-3592" />
-    <loc id="153" name="Neutral Zone" point="Center" type="NOBLE" priceId="57" priceCount="125" x="-18415" y="85624" z="-3680" />
-    <loc id="154" name="School of Dark Arts" point="Center" type="NOBLE" priceId="57" priceCount="125" x="-49185" y="49441" z="-5912" />
-    <loc id="155" name="Orc Village" type="STANDARD" priceId="57" priceCount="125" x="-45177" y="-112512" z="-240" />
-    <loc id="156" name="The Immortal Plateau" type="STANDARD" priceId="57" priceCount="125" x="10983" y="-117484" z="-2464" />
-    <loc id="157" name="The Immortal Plateau" point="Southern" type="STANDARD" priceId="57" priceCount="125" x="-4190" y="-80040" z="-2696" />
-    <loc id="158" name="The Immortal Plateau" point="Northern" type="NOBLE" priceId="57" priceCount="125" x="-8804" y="-114748" z="-3030" />
-    <loc id="159" name="Cave of Trials" type="STANDARD" priceId="57" priceCount="125" x="9340" y="-112509" z="-2536" />
-    <loc id="160" name="Frozen Waterfall" type="STANDARD" priceId="57" priceCount="125" x="8652" y="-139941" z="-1144" />
-    <loc id="161" name="Dwarven Village" type="STANDARD" priceId="57" priceCount="125" x="115129" y="-178177" z="-912" />
-    <loc id="162" name="Mithril Mines" type="STANDARD" priceId="57" priceCount="125" x="171946" y="-173352" z="3440" />
-    <loc id="163" name="Mithril Mines" point="Center" type="NOBLE" priceId="57" priceCount="125" x="175499" y="-181586" z="-904" />
-    <loc id="164" name="Abandoned Coal Mines" type="STANDARD" priceId="57" priceCount="125" x="139714" y="-177456" z="-1536" />
-    <loc id="165" name="Abandoned Coal Mines" point="Center" type="NOBLE" priceId="57" priceCount="125" x="144706" y="-173223" z="-1520" />
-    <loc id="166" name="Mining Zone" point="Eastern" type="STANDARD" priceId="57" priceCount="125" x="169008" y="-208272" z="-3496" />
-    <loc id="167" name="Mining Zone" point="Western" type="STANDARD" priceId="57" priceCount="125" x="136910" y="-205082" z="-3664" />
+    <loc id="115" name="Floran Village" type="STANDARD" priceId="57" priceCount="125" x="17430" y="170103" z="-3506"/>
+    <loc id="116" name="Gludin Village" type="STANDARD" priceId="57" priceCount="125" x="-80804" y="149833" z="-3040"/>
+    <loc id="117" name="Lizardmen Dwellings" type="STANDARD" priceId="57" priceCount="125" x="-44763" y="203497" z="-3592"/>
+    <loc id="118" name="Windmill Hill" type="STANDARD" priceId="57" priceCount="125" x="-75437" y="168800" z="-3632"/>
+    <loc id="119" name="Harvesting Grounds" type="STANDARD" priceId="57" priceCount="125" x="-63736" y="101522" z="-3552"/>
+    <loc id="120" name="Forgotten Temple" type="STANDARD" priceId="57" priceCount="125" x="-53001" y="191425" z="-3568"/>
+    <loc id="121" name="Forgotten Temple" point="Center" type="NOBLE" priceId="57" priceCount="125" x="-54026" y="179504" z="-4650"/>
+    <loc id="122" name="Orc Barracks" type="STANDARD" priceId="57" priceCount="125" x="-89763" y="105359" z="-3576"/>
+    <loc id="123" name="Windy Hill" type="STANDARD" priceId="57" priceCount="125" x="-88539" y="83389" z="-2864"/>
+    <loc id="124" name="Abandoned Camp" type="STANDARD" priceId="57" priceCount="125" x="-49853" y="147089" z="-2784"/>
+    <loc id="125" name="Wastelands" type="STANDARD" priceId="57" priceCount="125" x="-16526" y="208032" z="-3664"/>
+    <loc id="126" name="Wastelands" point="Western" type="NOBLE" priceId="57" priceCount="125" x="-47506" y="179572" z="-3632"/>
+    <loc id="127" name="Red Rock Ridge" type="STANDARD" priceId="57" priceCount="125" x="-42256" y="198333" z="-2800"/>
+    <loc id="128" name="Hunters Village" type="STANDARD" priceId="57" priceCount="125" x="117052" y="76905" z="-2704"/>
+    <loc id="129" name="Hardin's Private Academy" type="STANDARD" priceId="57" priceCount="125" x="105846" y="109762" z="-3170" castleId="3"/>
+    <loc id="130" name="Enchanted Valley" point="Southern" type="STANDARD" priceId="57" priceCount="125" x="124904" y="61992" z="-3973"/>
+    <loc id="131" name="Enchanted Valley" point="Northern" type="STANDARD" priceId="57" priceCount="125" x="104426" y="33746" z="-3825"/>
+    <loc id="132" name="Enchanted Valley" point="Center" type="NOBLE" priceId="57" priceCount="125" x="114674" y="44150" z="-3376"/>
+    <loc id="133" name="Forest of Mirrors" type="STANDARD" priceId="57" priceCount="125" x="142065" y="81300" z="-3000"/>
+    <loc id="134" name="Forest of Mirrors" point="Center" type="NOBLE" priceId="57" priceCount="125" x="166080" y="75574" z="-2992"/>
+    <loc id="135" name="Hunters Valley" type="NOBLE" priceId="57" priceCount="125" x="114306" y="86573" z="-3112"/>
+    <loc id="136" name="Talking Island Village" type="STANDARD" priceId="57" priceCount="125" x="-84153" y="244542" z="-3728" castleId="10"/>
+    <loc id="137" name="Elven Ruins" type="STANDARD" priceId="57" priceCount="125" x="-112367" y="234703" z="-3688"/>
+    <loc id="138" name="Elven Ruins" point="Center" type="NOBLE" priceId="57" priceCount="125" x="49315" y="248452" z="-5960"/>
+    <loc id="139" name="Singing Waterfall" type="STANDARD" priceId="57" priceCount="125" x="-111728" y="244330" z="-3448"/>
+    <loc id="140" name="Western Territory" type="STANDARD" priceId="57" priceCount="125" x="-106696" y="214691" z="-3424"/>
+    <loc id="141" name="Obelisk of Victory" type="STANDARD" priceId="57" priceCount="125" x="-99586" y="237637" z="-3568"/>
+    <loc id="142" name="Elven Village" type="STANDARD" priceId="57" priceCount="125" x="46874" y="51457" z="-2976" castleId="10"/>
+    <loc id="143" name="Elven Forest" type="STANDARD" priceId="57" priceCount="125" x="21362" y="51122" z="-3688"/>
+    <loc id="144" name="Elven Fortress" type="STANDARD" priceId="57" priceCount="125" x="29294" y="74968" z="-3776"/>
+    <loc id="145" name="Neutral Zone" type="STANDARD" priceId="57" priceCount="125" x="-10612" y="75881" z="-3592"/>
+    <loc id="146" name="Neutral Zone" point="Center" type="NOBLE" priceId="57" priceCount="125" x="-10612" y="75881" z="-3592"/>
+    <loc id="147" name="Dark Elf Village" type="STANDARD" priceId="57" priceCount="125" x="9738" y="15567" z="-4568" castleId="10"/>
+    <loc id="148" name="Dark Forest" type="STANDARD" priceId="57" priceCount="125" x="-22224" y="14168" z="-3232"/>
+    <loc id="149" name="Dark Forest" point="Center" type="NOBLE" priceId="57" priceCount="125" x="-22224" y="14168" z="-3232"/>
+    <loc id="150" name="Swampland" type="STANDARD" priceId="57" priceCount="125" x="-21966" y="40544" z="-3192"/>
+    <loc id="151" name="Spider Nest" type="STANDARD" priceId="57" priceCount="125" x="-61095" y="75104" z="-3352"/>
+    <loc id="152" name="Neutral Zone" type="STANDARD" priceId="57" priceCount="125" x="-10612" y="75881" z="-3592"/>
+    <loc id="153" name="Neutral Zone" point="Center" type="NOBLE" priceId="57" priceCount="125" x="-18415" y="85624" z="-3680"/>
+    <loc id="154" name="School of Dark Arts" point="Center" type="NOBLE" priceId="57" priceCount="125" x="-49185" y="49441" z="-5912"/>
+    <loc id="155" name="Orc Village" type="STANDARD" priceId="57" priceCount="125" x="-45177" y="-112512" z="-240" castleId="10"/>
+    <loc id="156" name="The Immortal Plateau" type="STANDARD" priceId="57" priceCount="125" x="10983" y="-117484" z="-2464"/>
+    <loc id="157" name="The Immortal Plateau" point="Southern" type="STANDARD" priceId="57" priceCount="125" x="-4190" y="-80040" z="-2696"/>
+    <loc id="158" name="The Immortal Plateau" point="Northern" type="NOBLE" priceId="57" priceCount="125" x="-8804" y="-114748" z="-3030"/>
+    <loc id="159" name="Cave of Trials" type="STANDARD" priceId="57" priceCount="125" x="9340" y="-112509" z="-2536"/>
+    <loc id="160" name="Frozen Waterfall" type="STANDARD" priceId="57" priceCount="125" x="8652" y="-139941" z="-1144"/>
+    <loc id="161" name="Dwarven Village" type="STANDARD" priceId="57" priceCount="125" x="115129" y="-178177" z="-912" castleId="10"/>
+    <loc id="162" name="Mithril Mines" type="STANDARD" priceId="57" priceCount="125" x="171946" y="-173352" z="3440"/>
+    <loc id="163" name="Mithril Mines" point="Center" type="NOBLE" priceId="57" priceCount="125" x="175499" y="-181586" z="-904"/>
+    <loc id="164" name="Abandoned Coal Mines" type="STANDARD" priceId="57" priceCount="125" x="139714" y="-177456" z="-1536"/>
+    <loc id="165" name="Abandoned Coal Mines" point="Center" type="NOBLE" priceId="57" priceCount="125" x="144706" y="-173223" z="-1520"/>
+    <loc id="166" name="Mining Zone" point="Eastern" type="STANDARD" priceId="57" priceCount="125" x="169008" y="-208272" z="-3496"/>
+    <loc id="167" name="Mining Zone" point="Western" type="STANDARD" priceId="57" priceCount="125" x="136910" y="-205082" z="-3664"/>
 </list>

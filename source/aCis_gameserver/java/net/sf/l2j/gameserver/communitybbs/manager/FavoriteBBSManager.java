@@ -1,8 +1,8 @@
 package net.sf.l2j.gameserver.communitybbs.manager;
 
-import net.sf.l2j.gameserver.data.cache.HtmCache;
+import net.sf.l2j.gameserver.expander.cards.HuntingCard;
+import net.sf.l2j.gameserver.expander.cards.Shop;
 import net.sf.l2j.gameserver.model.actor.Player;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.xml.ShopData;
 
 import java.util.StringTokenizer;
 
@@ -21,11 +21,10 @@ public class FavoriteBBSManager extends BaseBBSManager {
         int itemCount = st.hasMoreTokens() ? Integer.parseInt(st.nextToken()) : 1;
 
         if (itemIndex > 0) {
-            ShopData.buy(player, "monster", itemIndex, itemCount);
+            Shop.buyItem(player, "monster", itemIndex, itemCount);
         }
 
-        String content = HtmCache.getInstance().getHtm(CB_PATH + getFolder() + "index.htm");
-        content = player.getCards().get("monster").getPageShop(content, page);
+        String content = HuntingCard.getPageShop(player, page);
         separateAndSend(content, player);
     }
 

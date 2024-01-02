@@ -1,6 +1,7 @@
 package net.sf.l2j.gameserver.expander.gatekeeper.actions;
 
 import net.sf.l2j.gameserver.data.manager.CastleManager;
+import net.sf.l2j.gameserver.expander.gatekeeper.data.dto.GatekeeperData;
 import net.sf.l2j.gameserver.expander.common.actions.Action;
 import net.sf.l2j.gameserver.expander.gatekeeper.calculators.PriceCalculator;
 import net.sf.l2j.gameserver.expander.gatekeeper.conditions.NeedPayCondition;
@@ -8,7 +9,7 @@ import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.LocationsData;
 import net.sf.l2j.gameserver.expander.gatekeeper.model.holder.LocationHolder;
 import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.actor.Player;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.helpers.Str;
+import net.sf.l2j.gameserver.expander.helpers.Str;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 
@@ -17,8 +18,8 @@ public class TeleportAction extends Action {
     protected final PriceCalculator _priceCalculator = new PriceCalculator();
     protected final PaymentAction _paymentAction = new PaymentAction();
 
-    public void execute(Player player, Npc npc, int locationId) {
-        final LocationHolder location = LocationsData.getInstance().getLocation(locationId);
+    public void execute(Player player, Npc npc, GatekeeperData data) {
+        final LocationHolder location = LocationsData.getInstance().getLocation(data.getLocationId());
         if (location == null) {
             Str.sendMsg(player, "Выбранная локация недоступна для телепорта");
 

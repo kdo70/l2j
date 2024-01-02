@@ -28,9 +28,9 @@ import net.sf.l2j.gameserver.geoengine.GeoEngine;
 import net.sf.l2j.gameserver.handler.*;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.World;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.tasks.PlayerStatisticTask;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.xml.ShopData;
-import net.sf.l2j.gameserver.model.actor.container.player.custom.xml.cards.HuntingData;
+import net.sf.l2j.gameserver.expander.statistic.tasks.ResetDayStatisticTask;
+import net.sf.l2j.gameserver.expander.cards.data.xml.ShopData;
+import net.sf.l2j.gameserver.expander.cards.data.xml.HuntingCardData;
 import net.sf.l2j.gameserver.model.boat.*;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadGameManager;
@@ -121,7 +121,7 @@ public class GameServer {
         PlayerData.getInstance();
         PlayerInfoTable.getInstance();
         PlayerLevelData.getInstance();
-        HuntingData.getInstance();
+        HuntingCardData.getInstance();
         PartyMatchRoomManager.getInstance();
         RaidPointManager.getInstance();
         HealSpsData.getInstance();
@@ -249,7 +249,7 @@ public class GameServer {
         final GamePacketHandler handler = new GamePacketHandler();
         _selectorThread = new SelectorThread<>(sc, handler, handler, handler, new IPv4Filter());
 
-        ThreadPool.scheduleAtFixedRate(new PlayerStatisticTask(), 60000, 60000);
+        ThreadPool.scheduleAtFixedRate(new ResetDayStatisticTask(), 60000, 60000);
 
         InetAddress bindAddress = null;
         if (!Config.GAMESERVER_HOSTNAME.equals("*")) {

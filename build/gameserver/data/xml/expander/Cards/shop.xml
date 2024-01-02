@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+    <shop type="monster">
+        <item itemId="5307" count="1" price="477" limit="252" lvl="25"/>
+        <item itemId="5308" count="1" price="148" limit="145" lvl="15"/>
+        <item itemId="5309" count="1" price="110" limit="555" lvl="10"/>
+        <item itemId="5310" count="1" price="815" limit="462" lvl="15"/>
+        <item itemId="5311" count="1" price="245" limit="858" lvl="10"/>
+        <item itemId="5312" count="1" price="524" limit="512" lvl="15"/>
+        <item itemId="5313" count="1" price="8" limit="813" lvl="15"/>
+        <item itemId="5314" count="1" price="698" limit="769" lvl="15"/>
+
+        <item itemId="5320" count="1" price="659" limit="274" lvl="15"/>
+        <item itemId="5321" count="1" price="231" limit="251" lvl="15"/>
+        <item itemId="5322" count="1" price="458" limit="301" lvl="10"/>
+        <item itemId="5323" count="1" price="720" limit="927" lvl="10"/>
+        <item itemId="5324" count="1" price="48" limit="583" lvl="15"/>
+        <item itemId="5325" count="1" price="314" limit="297" lvl="25"/>
+        <item itemId="5326" count="1" price="246" limit="321" lvl="10"/>
+        <item itemId="5327" count="1" price="795" limit="901" lvl="15"/>
+
+        <item itemId="5360" count="1" price="19" limit="612" lvl="25"/>
+        <item itemId="5361" count="1" price="954" limit="120" lvl="25"/>
+        <item itemId="5362" count="1" price="590" limit="488" lvl="25"/>
+        <item itemId="5363" count="1" price="335" limit="257" lvl="10"/>
+        <item itemId="5364" count="1" price="470" limit="922" lvl="25"/>
+        <item itemId="5365" count="1" price="887" limit="960" lvl="15"/>
+        <item itemId="5366" count="1" price="719" limit="462" lvl="10"/>
+        <item itemId="5367" count="1" price="753" limit="950" lvl="10"/>
+
+        <item itemId="5380" count="1" price="604" limit="502" lvl="25"/>
+    </shop>
+</list>

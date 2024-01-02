@@ -19,7 +19,7 @@ public class BuffsCommonData implements IXmlReader {
     @Override
     public void load() {
         parseFile("./data/xml/expander/Buffer/common.xml");
-        LOGGER.info("Loaded {} common buffs.", _buffs.size());
+        LOGGER.info("Loaded {} common buffs", _buffs.size());
     }
 
     @Override

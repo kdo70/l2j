@@ -31,7 +31,7 @@ public class LocationsData implements IXmlReader {
     @Override
     public void load() {
         parseFile("./data/xml/expander/gatekeeper/locations.xml");
-        LOGGER.info("Loaded {} gatekeeper locations.", _locations.size());
+        LOGGER.info("Loaded {} gatekeeper locations", _locations.size());
     }
 
     @Override

@@ -27,7 +27,7 @@ public class MenuData implements IXmlReader {
     @Override
     public void load() {
         parseFile("./data/xml/expander/gatekeeper/menu.xml");
-        LOGGER.info("Loaded {} gatekeeper menu.", _menu.size());
+        LOGGER.info("Loaded {} gatekeeper menu", _menu.size());
     }
 
     @Override

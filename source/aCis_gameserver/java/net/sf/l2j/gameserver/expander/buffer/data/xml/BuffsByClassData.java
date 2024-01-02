@@ -25,7 +25,7 @@ public class BuffsByClassData implements IXmlReader {
     @Override
     public void load() {
         parseFile("./data/xml/expander/Buffer/classes.xml");
-        LOGGER.info("Loaded {} classes buffs.", _buffs.size());
+        LOGGER.info("Loaded {} classes buffs", _buffs.size());
     }
 
     @Override

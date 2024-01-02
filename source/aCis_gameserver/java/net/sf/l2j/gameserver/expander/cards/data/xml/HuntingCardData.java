@@ -19,7 +19,7 @@ public class HuntingCardData implements IXmlReader {
     @Override
     public void load() {
         parseFile("./data/xml/expander/cards/hunting.xml");
-        LOGGER.info("Loaded {} hunting card levels.", _cards.size());
+        LOGGER.info("Loaded {} hunting card levels", _cards.size());
     }
 
     @Override

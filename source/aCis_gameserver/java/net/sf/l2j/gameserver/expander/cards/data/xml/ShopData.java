@@ -21,7 +21,7 @@ public class ShopData implements IXmlReader {
     @Override
     public void load() {
         parseFile("./data/xml/expander/cards/shop.xml");
-        LOGGER.info("Loaded {} card shops.", _shops.size());
+        LOGGER.info("Loaded {} shops", _shops.size());
     }
 
     @Override

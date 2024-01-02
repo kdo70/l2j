@@ -20,17 +20,17 @@ import net.sf.l2j.gameserver.data.sql.ServerMemoTable;
 import net.sf.l2j.gameserver.data.xml.*;
 import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsByClassData;
 import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsCommonData;
+import net.sf.l2j.gameserver.expander.cards.data.xml.HuntingCardData;
+import net.sf.l2j.gameserver.expander.cards.data.xml.ShopData;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.LocationsData;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.MenuData;
 import net.sf.l2j.gameserver.expander.helpers.data.xml.ItemIconData;
 import net.sf.l2j.gameserver.expander.helpers.data.xml.SkillInfoData;
+import net.sf.l2j.gameserver.expander.statistic.tasks.ResetDayStatisticTask;
 import net.sf.l2j.gameserver.geoengine.GeoEngine;
 import net.sf.l2j.gameserver.handler.*;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.World;
-import net.sf.l2j.gameserver.expander.statistic.tasks.ResetDayStatisticTask;
-import net.sf.l2j.gameserver.expander.cards.data.xml.ShopData;
-import net.sf.l2j.gameserver.expander.cards.data.xml.HuntingCardData;
 import net.sf.l2j.gameserver.model.boat.*;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadGameManager;
@@ -121,7 +121,6 @@ public class GameServer {
         PlayerData.getInstance();
         PlayerInfoTable.getInstance();
         PlayerLevelData.getInstance();
-        HuntingCardData.getInstance();
         PartyMatchRoomManager.getInstance();
         RaidPointManager.getInstance();
         HealSpsData.getInstance();
@@ -172,7 +171,6 @@ public class GameServer {
         InstantTeleportData.getInstance();
         TeleportData.getInstance();
         ObserverGroupData.getInstance();
-        ShopData.getInstance();
 
         CastleManager.getInstance().loadArtifacts();
 
@@ -183,6 +181,10 @@ public class GameServer {
         StringUtil.printSection("Gatekeeper");
         LocationsData.getInstance();
         MenuData.getInstance();
+
+        StringUtil.printSection("Character Cards");
+        HuntingCardData.getInstance();
+        ShopData.getInstance();
 
         StringUtil.printSection("Olympiads & Heroes");
         OlympiadGameManager.getInstance();

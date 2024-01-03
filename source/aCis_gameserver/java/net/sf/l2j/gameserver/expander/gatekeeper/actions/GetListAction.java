@@ -33,6 +33,7 @@ public class GetListAction extends Action {
     protected final int _itemPerPage = Config.TELEPORT_LIST_ITEM_PER_PAGE;
     protected final int _heightIndentPerItem = Config.TELEPORT_LIST_HEIGHT_INDENT_PER_ITEM;
     protected final int _minHeightIndent = Config.TELEPORT_LIST_MIN_HEIGHT_INDENT;
+    protected final int _popularListId = Config.TELEPORT_POPULAR_LIST_ID;
 
     public void execute(Player player, Npc npc, int listId, GatekeeperActionDto actionDto) {
         final Map<Integer, LocationHolder> locations = MenuData.getInstance().getList(listId);
@@ -66,7 +67,7 @@ public class GetListAction extends Action {
 
     private List<LocationHolder> getFilteredList(int listId, Map<Integer, LocationHolder> locations, Player player) {
         Comparator<LocationHolder> comparator = Comparator.comparing(LocationHolder::getId, Comparator.naturalOrder());
-        if (listId == 20) {
+        if (listId == _popularListId) {
             comparator = Comparator.comparing(LocationHolder::getTeleportCount, Comparator.reverseOrder());
         }
         Stream<LocationHolder> listStream = locations.values().stream();

@@ -9,8 +9,8 @@ import net.sf.l2j.gameserver.model.actor.Player;
 public class BuffPriceCalculator extends Calculator {
     private static final int BASE_PRICE = Config.BUFFER_PRICE_PER_UNIT;
     private static final int FREE_PLAYER_LEVEL = Config.BUFFER_FREE_PLAYER_LVL;
-    private static final int EXTRA_MUL_PRICE_ITEM_ID = 57;
-    private static final int MAX_PK_MUL = 100;
+    private static final int EXTRA_MUL_PRICE_ITEM_ID = Config.BUFFER_EXTRA_MUL_PRICE_ITEM_ID;
+    private static final int MAX_PK_MUL = Config.BUFFER_MAX_PK_MUL;
     private final NeedPayCondition needPayCondition = new NeedPayCondition();
 
     public int execute(Player player, int count) {

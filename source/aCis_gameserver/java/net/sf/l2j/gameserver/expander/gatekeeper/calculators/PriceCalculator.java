@@ -9,9 +9,9 @@ import net.sf.l2j.gameserver.model.location.Location;
 
 public class PriceCalculator extends Calculator {
     private static final int FREE_PLAYER_LEVEL = Config.FREE_TELEPORT_LVL;
-    private static final int EXTRA_MUL_PRICE_ITEM_ID = 57;
-    private static final int DISTANCE_THRESHOLD = 1000;
-    private static final int MAX_PK_MUL = 100;
+    private static final int EXTRA_MUL_PRICE_ITEM_ID = Config.TELEPORT_EXTRA_MUL_PRICE_ITEM_ID;
+    private static final int DISTANCE_THRESHOLD = Config.TELEPORT_DISTANNCE_TRASHHOLD;
+    private static final int MAX_PK_MUL = Config.TELEPORT_MAX_PK_MUL;
     private final NotNeedPayCondition notNeedPayCondition = new NotNeedPayCondition();
 
     public int execute(Player player, LocationHolder location) {

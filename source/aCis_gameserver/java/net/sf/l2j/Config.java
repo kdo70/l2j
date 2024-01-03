@@ -682,6 +682,8 @@ public final class Config {
     public static int BUFFER_LIST_ITEM_PEG_PAGE;
     public static int BUFFER_LIST_HEIGHT_INDENT_PER_ITEM;
     public static int BUFFER_LIST_MIN_HEIGHT_INDENT;
+    public static int BUFFER_MAX_PK_MUL;
+    public static int BUFFER_EXTRA_MUL_PRICE_ITEM_ID;
 
     /**
      * Expander: Gatekeeper
@@ -695,6 +697,11 @@ public final class Config {
     public static int TELEPORT_MENU_HEIGHT_INDENT_PER_ITEM;
     public static int TELEPORT_POPULAR_REFRESH_DELAY;
     public static int TELEPORT_POPULAR_LIMIT;
+    public static int TELEPORT_POPULAR_LIST_ID;
+    public static int TELEPORT_OFFSET;
+    public static int TELEPORT_EXTRA_MUL_PRICE_ITEM_ID;
+    public static int TELEPORT_DISTANNCE_TRASHHOLD;
+    public static int TELEPORT_MAX_PK_MUL;
 
     // --------------------------------------------------
     // Those "hidden" settings haven't configs to avoid admins to fuck their server
@@ -1166,6 +1173,8 @@ public final class Config {
         BUFFER_LIST_ITEM_PEG_PAGE = buffer.getProperty("ListItemPerPage", 8);
         BUFFER_LIST_HEIGHT_INDENT_PER_ITEM = buffer.getProperty("ListHeightIndentPerItem", 20);
         BUFFER_LIST_MIN_HEIGHT_INDENT = buffer.getProperty("ListMinHeightIndent", 12);
+        BUFFER_MAX_PK_MUL = buffer.getProperty("MaxPkMul", 100);
+        BUFFER_EXTRA_MUL_PRICE_ITEM_ID = buffer.getProperty("ExtraMulPriceItemId", 57);
     }
 
     private static void loadGatekeeper() {
@@ -1180,6 +1189,11 @@ public final class Config {
         TELEPORT_MENU_HEIGHT_INDENT_PER_ITEM = config.getProperty("MenuHeightIndentPerItem", 20);
         TELEPORT_POPULAR_REFRESH_DELAY = config.getProperty("PopularRefreshDelayMinutes", 30);
         TELEPORT_POPULAR_LIMIT = config.getProperty("PopularLimit", 20);
+        TELEPORT_POPULAR_LIST_ID = config.getProperty("PopularListId", 20);
+        TELEPORT_OFFSET = config.getProperty("TeleportOffset", 20);
+        TELEPORT_EXTRA_MUL_PRICE_ITEM_ID = config.getProperty("ExtraMulPriceItemId", 57);
+        TELEPORT_DISTANNCE_TRASHHOLD = config.getProperty("DistanceTrashHold", 1000);
+        TELEPORT_MAX_PK_MUL = config.getProperty("MaxPkMul", 100);
     }
 
     /**

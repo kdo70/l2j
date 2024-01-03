@@ -1,5 +1,6 @@
 package net.sf.l2j.gameserver.expander.gatekeeper.actions;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.data.manager.CastleManager;
 import net.sf.l2j.gameserver.expander.common.actions.Action;
 import net.sf.l2j.gameserver.expander.common.actions.SendMsgAction;
@@ -17,6 +18,7 @@ public class TeleportAction extends Action {
     protected final NotNeedPayCondition _notNeedPayCondition = new NotNeedPayCondition();
     protected final PriceCalculator _priceCalculator = new PriceCalculator();
     protected final PaymentAction _paymentAction = new PaymentAction();
+    protected final int _teleportOffset = Config.TELEPORT_OFFSET;
 
     public void execute(Player player, Npc npc, GatekeeperActionDto data) {
         LocationHolder location = LocationsData.getInstance().getLocation(data.getLocationId());
@@ -52,6 +54,6 @@ public class TeleportAction extends Action {
 
     private void handleTeleport(Player player, LocationHolder location) {
         location.setTeleportCount(location.getTeleportCount() + 1);
-        player.teleportTo(location, 20);
+        player.teleportTo(location, _teleportOffset);
     }
 }

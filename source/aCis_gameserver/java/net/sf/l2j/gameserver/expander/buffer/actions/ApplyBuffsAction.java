@@ -7,9 +7,9 @@ import net.sf.l2j.gameserver.expander.buffer.conditions.NeedPayCondition;
 import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsByClassData;
 import net.sf.l2j.gameserver.expander.buffer.model.holder.BuffHolder;
 import net.sf.l2j.gameserver.expander.common.actions.Action;
+import net.sf.l2j.gameserver.expander.common.actions.SendMsgAction;
 import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.actor.Player;
-import net.sf.l2j.gameserver.expander.helpers.Str;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
@@ -25,7 +25,7 @@ public class ApplyBuffsAction extends Action {
         int price = _buffPriceCalculator.execute(player);
 
         if (_needPayCondition.execute(player) && !_paymentAction.execute(player, npc, _priceItemId, price)) {
-            Str.sendMsg(player, SystemMessageId.YOU_NOT_ENOUGH_ADENA);
+            SendMsgAction.execute(player, SystemMessageId.YOU_NOT_ENOUGH_ADENA);
             player.sendPacket(ActionFailed.STATIC_PACKET);
 
             return;

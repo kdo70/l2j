@@ -1,7 +1,6 @@
 package net.sf.l2j.gameserver.expander.buffer.actions;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.data.xml.ItemData;
 import net.sf.l2j.gameserver.expander.buffer.calculators.BuffPriceCalculator;
 import net.sf.l2j.gameserver.expander.buffer.conditions.VisibleBuffCondition;
@@ -51,12 +50,10 @@ public class GetListAction extends Action {
             if (currentPage != page) {
                 iteration++;
 
-                if (iteration != _itemPerPage) {
-                    continue;
+                if (iteration == _itemPerPage) {
+                    currentPage++;
+                    iteration = 0;
                 }
-
-                currentPage++;
-                iteration = 0;
 
                 continue;
             }
@@ -66,11 +63,16 @@ public class GetListAction extends Action {
                 break;
             }
 
-            StringUtil.append(list, getTemplateItem(player, buffHolder, index, page));
-
+            list.append(buildList(player, buffHolder, index, page));
             itemInPage++;
         }
 
+        player.sendPacket(getHtml(list, npc, itemInPage, hasMore, page, count));
+
+        return null;
+    }
+
+    private NpcHtmlMessage getHtml(StringBuilder list, Npc npc, int itemInPage, boolean hasMore, int page, int count) {
         int heightIndent = _minHeightIndent;
         if (itemInPage < _itemPerPage) {
             heightIndent += _heightIndentPerItem * (_itemPerPage - itemInPage);
@@ -93,34 +95,37 @@ public class GetListAction extends Action {
 
         html.replace("%heightIndent%", heightIndent);
 
-        player.sendPacket(html);
-
-        return null;
+        return html;
     }
 
-    private String getTemplateItem(Player player, BuffHolder buffHolder, int index, int page) {
+    private String buildList(Player player, BuffHolder buffHolder, int index, int page) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(_itemTemplate))) {
+            String template = reader.readLine();
+
+            return fillTemplateItem(template, player, buffHolder, index, page);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String fillTemplateItem(String template, Player player, BuffHolder buffHolder, int index, int page) {
         Item item = ItemData.getInstance().getTemplate(buffHolder.getPriceId());
         String[] tokens = item.getName().split("\\s");
         String itemName = tokens[0];
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(_itemTemplate))) {
-            String template = reader.readLine();
-            String price = Str.number(_buffPriceCalculator.execute(player, buffHolder));
+        String price = Str.number(_buffPriceCalculator.execute(player, buffHolder));
 
-            final int skillId = buffHolder.getSkill().getId();
-            final int skillLvl = buffHolder.getSkill().getLevel();
+        final int skillId = buffHolder.getSkill().getId();
+        final int skillLvl = buffHolder.getSkill().getLevel();
 
-            template = template.replace("%skillIcon%", SkillInfoData.getIco(skillId, skillLvl));
-            template = template.replace("%skillName%", SkillInfoData.getName(skillId, skillLvl));
-            template = template.replace("%price%", price);
-            template = template.replace("%itemName%", itemName);
-            template = template.replace("%index%", String.valueOf(index));
-            template = template.replace("%page%", String.valueOf(page));
+        template = template.replace("%skillIcon%", SkillInfoData.getIco(skillId, skillLvl));
+        template = template.replace("%skillName%", SkillInfoData.getName(skillId, skillLvl));
+        template = template.replace("%price%", price);
+        template = template.replace("%itemName%", itemName);
+        template = template.replace("%index%", String.valueOf(index));
+        template = template.replace("%page%", String.valueOf(page));
 
-            return template;
-        } catch (IOException e) {
-            throw new RuntimeException("Class: Gatekeeper Method: getTemplateItem", e);
-        }
+        return template;
     }
 
     private String getTemplatePagination(int count, int page, boolean hasMore) {
@@ -137,7 +142,7 @@ public class GetListAction extends Action {
 
             return pagination;
         } catch (IOException e) {
-            throw new RuntimeException("Class: Gatekeeper Method: getTemplatePagination", e);
+            throw new RuntimeException(e);
         }
     }
 }

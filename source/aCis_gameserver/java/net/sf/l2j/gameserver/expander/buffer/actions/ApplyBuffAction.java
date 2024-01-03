@@ -7,9 +7,9 @@ import net.sf.l2j.gameserver.expander.buffer.conditions.VisibleBuffCondition;
 import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsCommonData;
 import net.sf.l2j.gameserver.expander.buffer.model.holder.BuffHolder;
 import net.sf.l2j.gameserver.expander.common.actions.Action;
+import net.sf.l2j.gameserver.expander.common.actions.SendMsgAction;
 import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.actor.Player;
-import net.sf.l2j.gameserver.expander.helpers.Str;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
@@ -30,14 +30,14 @@ public class ApplyBuffAction extends Action {
         final int skillLvl = buffHolder.getSkill().getLevel();
 
         if (!_visibleBuffCondition.execute(player, buffHolder)) {
-            Str.sendMsg(player, "Сейчас неподходящее время для этого действия, доступно только ночью");
+            SendMsgAction.execute(player, "Сейчас неподходящее время для этого действия, доступно только ночью");
             player.sendPacket(ActionFailed.STATIC_PACKET);
 
             return;
         }
 
         if (_needPayCondition.execute(player) && !_paymentAction.execute(player, npc, buffHolder.getPriceId(), price)) {
-            Str.sendMsg(player, SystemMessageId.YOU_NOT_ENOUGH_ADENA);
+            SendMsgAction.execute(player, SystemMessageId.YOU_NOT_ENOUGH_ADENA);
             player.sendPacket(ActionFailed.STATIC_PACKET);
 
             return;

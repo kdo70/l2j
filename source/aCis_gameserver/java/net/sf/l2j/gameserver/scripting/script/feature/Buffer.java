@@ -2,9 +2,9 @@ package net.sf.l2j.gameserver.scripting.script.feature;
 
 import net.sf.l2j.gameserver.expander.buffer.actions.*;
 import net.sf.l2j.gameserver.expander.buffer.conditions.AvailableBuffCondition;
+import net.sf.l2j.gameserver.expander.common.actions.SendMsgAction;
 import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.actor.Player;
-import net.sf.l2j.gameserver.expander.helpers.Str;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 import net.sf.l2j.gameserver.scripting.Quest;
 
@@ -31,14 +31,14 @@ public class Buffer extends Quest {
     @Override
     public String onAdvEvent(String event, Npc npc, Player player) {
         if (player.getTarget() != npc) {
-            Str.sendMsg(player, "Поговорите с " + npc.getName());
+            SendMsgAction.execute(player, "Поговорите с " + npc.getName());
 
             player.sendPacket(ActionFailed.STATIC_PACKET);
             return null;
         }
 
         if (!_availableBuffCondition.execute(player)) {
-            Str.sendMsg(player, _getErrorMessageAction.execute(player));
+             SendMsgAction.execute(player, _getErrorMessageAction.execute(player));
 
             player.sendPacket(ActionFailed.STATIC_PACKET);
             return null;
@@ -64,7 +64,7 @@ public class Buffer extends Quest {
     @Override
     public String onFirstTalk(Npc npc, Player player) {
         if (!_availableBuffCondition.execute(player)) {
-            Str.sendMsg(player, _getErrorMessageAction.execute(player));
+             SendMsgAction.execute(player, _getErrorMessageAction.execute(player));
 
             player.sendPacket(ActionFailed.STATIC_PACKET);
             return null;

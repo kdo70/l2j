@@ -10,8 +10,8 @@ public class GetErrorMessageAction extends Action {
 
     public String execute(Player player) {
         final int playerLvl = player.getStatus().getLevel();
-        String message = null;
 
+        String message = null;
         if (playerLvl < _playerMinLvl) {
             message = "Ваш уровень должен быть больше или равен " + _playerMinLvl;
         } else if (playerLvl > _playerMaxLvl) {

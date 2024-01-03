@@ -25,41 +25,24 @@ public class GetInfoAction extends Action {
     public void execute(Player player, Npc npc, int page) {
         final StringBuilder list = new StringBuilder();
 
-        final List<BuffHolder> buffHolderList = BuffsByClassData.getInstance().getValidBuffs(player.isMystic());
-        buffHolderList.addAll(BuffsCommonData.getInstance().getBuffs());
+        final List<BuffHolder> buffs = BuffsByClassData.getInstance().getValidBuffs(player.isMystic());
+        buffs.addAll(BuffsCommonData.getInstance().getBuffs());
 
-        int currentPage = 1;
-        int iteration = 0;
-        int itemInPage = 0;
-        boolean hasMore = false;
+        int startIndex = (page - 1) * _itemPerPage;
+        int endIndex = Math.min(startIndex + _itemPerPage, buffs.size());
 
-        for (BuffHolder buffHolder : buffHolderList) {
-            if (currentPage != page) {
-                iteration++;
-
-                if (iteration != _itemPerPage) {
-                    continue;
-                }
-
-                currentPage++;
-                iteration = 0;
-
-                continue;
-            }
-
-            if (itemInPage == _itemPerPage) {
-                hasMore = true;
-                break;
-            }
-
-            StringUtil.append(list, getTemplateItem(buffHolder));
-            itemInPage++;
+        for (int i = startIndex; i < endIndex; i++) {
+            list.append(buildList(buffs.get(i)));
         }
 
-        if (hasMore || page > 1) {
-            StringUtil.append(list, getTemplatePagination(buffHolderList.size(), page, hasMore));
+        if (endIndex < buffs.size() || page > 1) {
+            StringUtil.append(list, getTemplatePagination(buffs.size(), page, endIndex < buffs.size()));
         }
 
+        player.sendPacket(getHtml(list, npc));
+    }
+
+    private NpcHtmlMessage getHtml(StringBuilder list, Npc npc) {
         final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
         html.setFile(_infoTemplate);
 
@@ -68,37 +51,38 @@ public class GetInfoAction extends Action {
         html.replace("%npcName%", npc.getName());
         html.replace("%objectId%", npc.getObjectId());
 
-        player.sendPacket(html);
+        return html;
     }
 
+    private String buildList(BuffHolder buffHolder) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(_itemTemplate))) {
+            String template = reader.readLine();
 
-    private String getTemplateItem(BuffHolder buffHolder) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(_itemTemplate));
-            String templateItem = reader.readLine();
-
-            String onlyNightTxt = "Доступно только ночью";
-            String availableLvlTxt = "Доступно с " + buffHolder.getMinLvl() + " уровня";
-            String available = buffHolder.isOnlyNight() ? onlyNightTxt : availableLvlTxt;
-
-            final int skillId = buffHolder.getSkill().getId();
-            final int skillLvl = buffHolder.getSkill().getLevel();
-
-            templateItem = templateItem.replace("%skillIcon%", SkillInfoData.getIco(skillId, skillLvl));
-            templateItem = templateItem.replace("%skillName%", SkillInfoData.getName(skillId, skillLvl));
-            templateItem = templateItem.replace("%skillLvl%", String.valueOf(skillLvl));
-            templateItem = templateItem.replace("%available%", available);
-            templateItem = templateItem.replace("%desc%", SkillInfoData.getDesc(skillId, skillLvl));
-
-            return templateItem;
+            return fillTemplateItem(template, buffHolder);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
+    private String fillTemplateItem(String template, BuffHolder buffHolder) {
+        String onlyNightTxt = "Доступно только ночью";
+        String availableLvlTxt = "Доступно с " + buffHolder.getMinLvl() + " уровня";
+        String available = buffHolder.isOnlyNight() ? onlyNightTxt : availableLvlTxt;
+
+        final int skillId = buffHolder.getSkill().getId();
+        final int skillLvl = buffHolder.getSkill().getLevel();
+
+        template = template.replace("%skillIcon%", SkillInfoData.getIco(skillId, skillLvl));
+        template = template.replace("%skillName%", SkillInfoData.getName(skillId, skillLvl));
+        template = template.replace("%skillLvl%", String.valueOf(skillLvl));
+        template = template.replace("%available%", available);
+        template = template.replace("%desc%", SkillInfoData.getDesc(skillId, skillLvl));
+
+        return template;
+    }
+
     private String getTemplatePagination(int count, int page, boolean hasMore) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(_paginationTemplate));
+        try (BufferedReader reader = new BufferedReader(new FileReader(_paginationTemplate))) {
             final int pageCount = (int) Math.ceil((double) count / _itemPerPage);
             String pagination = reader.readLine();
 

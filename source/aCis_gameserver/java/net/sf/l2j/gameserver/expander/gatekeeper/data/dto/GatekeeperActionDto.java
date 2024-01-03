@@ -1,13 +1,13 @@
 package net.sf.l2j.gameserver.expander.gatekeeper.data.dto;
 
-public class GatekeeperData {
+public class GatekeeperActionDto {
     private final String _action;
     private final Integer _listId;
     private final Integer _locationId;
     private final String _parentAction;
     private final int _page;
 
-    public GatekeeperData(
+    public GatekeeperActionDto(
             String action,
             Integer listId,
             Integer locationId,
@@ -20,6 +20,7 @@ public class GatekeeperData {
         _parentAction = parentAction;
         _page = page;
     }
+
     public String getAction() {
         return _action;
     }
@@ -38,16 +39,5 @@ public class GatekeeperData {
 
     public int getPage() {
         return _page;
-    }
-
-    @Override
-    public String toString() {
-        return "GatekeeperData{" +
-                ", _action='" + _action + '\'' +
-                ", _listId=" + _listId +
-                ", _locationId=" + _locationId +
-                ", _parentAction='" + _parentAction + '\'' +
-                ", _page=" + _page +
-                '}';
     }
 }

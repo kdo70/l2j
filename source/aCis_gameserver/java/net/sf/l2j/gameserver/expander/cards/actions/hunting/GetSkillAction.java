@@ -151,9 +151,9 @@ public class GetSkillAction extends Action {
         double nextStat = nextSkill.getStatFuncs(player).get(index).getValue();
 
         if (currentStat == nextStat) {
-            stat = "<font color=B09979> " + Str.mul(currentStat) + "</font>";
+            stat = "<font color=B09979> x" + currentStat + "</font>";
         } else {
-            stat = "<font color=B09979>" + Str.mul(currentStat) + "</font> > " + Str.mul(nextStat) + "</font>";
+            stat = "<font color=B09979>x" + currentStat + "</font> > x" + nextStat + "</font>";
         }
 
         return stat;

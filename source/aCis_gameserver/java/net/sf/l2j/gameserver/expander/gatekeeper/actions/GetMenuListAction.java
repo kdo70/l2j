@@ -1,9 +1,9 @@
 package net.sf.l2j.gameserver.expander.gatekeeper.actions;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.expander.common.actions.Action;
-import net.sf.l2j.gameserver.expander.gatekeeper.data.dto.GatekeeperData;
+import net.sf.l2j.gameserver.expander.gatekeeper.data.dto.GatekeeperActionDto;
+import net.sf.l2j.gameserver.expander.gatekeeper.data.dto.GatekeeperHtmlDto;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.MenuData;
 import net.sf.l2j.gameserver.expander.gatekeeper.model.holder.LocationHolder;
 import net.sf.l2j.gameserver.model.actor.Npc;
@@ -27,46 +27,46 @@ public class GetMenuListAction extends Action {
     protected final int _itemPerPage = Config.TELEPORT_MENU_ITEM_PER_PAGE;
     protected final int _heightIndentPerItem = Config.TELEPORT_MENU_HEIGHT_INDENT_PER_ITEM;
 
-    public void execute(Player player, Npc npc, int listId, GatekeeperData data) {
-        final Map<Integer, LocationHolder> list = MenuData.getInstance().getList(listId);
-        final StringBuilder locations = new StringBuilder();
+    public void execute(Player player, Npc npc, int listId, GatekeeperActionDto actionDto) {
+        final Map<Integer, LocationHolder> locations = MenuData.getInstance().getList(listId);
+        final StringBuilder list = new StringBuilder();
 
         int currentPage = 1;
-        int iteration = 0;
         int itemInPage = 0;
         boolean hasMore = false;
-        int heightIndent = 0;
+        final int page = actionDto.getPage();
 
-        Comparator<LocationHolder> comparator = Comparator.comparing(LocationHolder::getId, Comparator.naturalOrder());
+        List<LocationHolder> filteredList = getFilteredList(locations);
 
-        final int page = data.getPage();
-        List<LocationHolder> filteredList = list.values().stream().sorted(comparator).toList();
         for (LocationHolder location : filteredList) {
             if (currentPage != page) {
-                iteration++;
-
-                if (iteration != _itemPerPage) {
-                    continue;
+                if (++itemInPage > _itemPerPage) {
+                    hasMore = true;
+                    break;
                 }
-
-                currentPage++;
-                iteration = 0;
-
                 continue;
             }
 
-            if (itemInPage == _itemPerPage) {
+            list.append(buildList(actionDto, listId, location));
+            if (++itemInPage > _itemPerPage) {
                 hasMore = true;
                 break;
             }
-
-            StringUtil.append(locations, getTemplateItem(data.getAction(), listId, location));
-
-            itemInPage++;
         }
 
-        if (itemInPage < _itemPerPage) {
-            heightIndent += _heightIndentPerItem * (_itemPerPage - itemInPage);
+        GatekeeperHtmlDto htmlDto = new GatekeeperHtmlDto(itemInPage, list, hasMore, currentPage, listId, filteredList);
+        player.sendPacket(getHtml(actionDto, npc, htmlDto));
+    }
+
+    private List<LocationHolder> getFilteredList(Map<Integer, LocationHolder> locations) {
+        Comparator<LocationHolder> comparator = Comparator.comparing(LocationHolder::getId, Comparator.naturalOrder());
+        return locations.values().stream().sorted(comparator).toList();
+    }
+
+    private NpcHtmlMessage getHtml(GatekeeperActionDto actionDto, Npc npc, GatekeeperHtmlDto htmlDto) {
+        int heightIndent = 0;
+        if (htmlDto.getItemInPage() < _itemPerPage) {
+            heightIndent += _heightIndentPerItem * (_itemPerPage - htmlDto.getItemInPage());
         }
 
         final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
@@ -76,17 +76,18 @@ public class GetMenuListAction extends Action {
         html.replace("%npcTitle%", npc.getTitle());
         html.replace("%npcName%", npc.getName());
 
-        html.replace("%list%", locations.toString());
+        html.replace("%list%", htmlDto.getList().toString());
         html.replace("%menu%", _getMenuAction.execute());
 
-        html.replace("%towns%", Objects.equals(data.getAction(), "Towns") ? _activeColor : "");
-        html.replace("%villages%", Objects.equals(data.getAction(), "Villages") ? _activeColor : "");
-        html.replace("%popular%", Objects.equals(data.getAction(), "Popular") ? _activeColor : "");
-        html.replace("%recommended%", Objects.equals(data.getAction(), "Recommended") ? _activeColor : "");
+        html.replace("%towns%", Objects.equals(actionDto.getAction(), "Towns") ? _activeColor : "");
+        html.replace("%villages%", Objects.equals(actionDto.getAction(), "Villages") ? _activeColor : "");
+        html.replace("%popular%", Objects.equals(actionDto.getAction(), "Popular") ? _activeColor : "");
+        html.replace("%recommended%", Objects.equals(actionDto.getAction(), "Recommended") ? _activeColor : "");
 
-        if (hasMore || page > 1) {
-            int itemCount = filteredList.size();
-            html.replace("%pagination%", getTemplatePagination(itemCount, data, listId, hasMore));
+        if (htmlDto.getHasMore() || htmlDto.getPage() > 1) {
+            int itemCount = htmlDto.getFilteredList().size();
+            final String pagination = getTemplatePagination(itemCount, actionDto, htmlDto.getListId(), htmlDto.getHasMore());
+            html.replace("%pagination%", pagination);
         } else {
             heightIndent += 20;
             html.replace("%pagination%", "");
@@ -94,30 +95,33 @@ public class GetMenuListAction extends Action {
 
         html.replace("%heightIndent%", heightIndent);
 
-        player.sendPacket(html);
+        return html;
     }
 
-    private String getTemplateItem(String action, int listId, LocationHolder location) {
+    private String buildList(GatekeeperActionDto dto, int listId, LocationHolder location) {
         try (BufferedReader reader = new BufferedReader(new FileReader(_itemTemplate))) {
-            String templateItem = reader.readLine();
-
-            templateItem = templateItem.replace("%listId%", String.valueOf(listId));
-            templateItem = templateItem.replace("%id%", String.valueOf(location.getId()));
-            templateItem = templateItem.replace("%childId%", String.valueOf(location.getChildId()));
-            templateItem = templateItem.replace("%name%", String.valueOf(location.getName()));
-            templateItem = templateItem.replace("%placeholder%", String.valueOf(location.getPlaceholder()));
-            templateItem = templateItem.replace("%desc%", String.valueOf(location.getDesc()));
-            templateItem = templateItem.replace("%parentAction%", action);
-
-            return templateItem;
+            String template = reader.readLine();
+            return getTemplateItem(template, dto.getAction(), listId, location);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private String getTemplatePagination(int count, GatekeeperData data, int listId, boolean hasMore) {
+    private String getTemplateItem(String template, String action, int listId, LocationHolder location) {
+        template = template.replace("%listId%", String.valueOf(listId));
+        template = template.replace("%id%", String.valueOf(location.getId()));
+        template = template.replace("%childId%", String.valueOf(location.getChildId()));
+        template = template.replace("%name%", String.valueOf(location.getName()));
+        template = template.replace("%placeholder%", String.valueOf(location.getPlaceholder()));
+        template = template.replace("%desc%", String.valueOf(location.getDesc()));
+        template = template.replace("%parentAction%", action);
+
+        return template;
+    }
+
+    private String getTemplatePagination(int count, GatekeeperActionDto actionDto, int listId, boolean hasMore) {
         try (BufferedReader reader = new BufferedReader(new FileReader(_paginationTemplate))) {
-            final int page = data.getPage();
+            final int page = actionDto.getPage();
             final int pageCount = (int) Math.ceil((double) count / _itemPerPage);
 
             String pagination = reader.readLine();
@@ -126,8 +130,8 @@ public class GetMenuListAction extends Action {
             pagination = pagination.replace("%currentPage%", String.valueOf(page));
             pagination = pagination.replace("%nextPage%", String.valueOf(page + (hasMore ? 1 : 0)));
             pagination = pagination.replace("%listId%", String.valueOf(listId));
-            pagination = pagination.replace("%parentAction%", data.getParentAction());
-            pagination = pagination.replace("%action%", data.getParentAction());
+            pagination = pagination.replace("%parentAction%", actionDto.getParentAction());
+            pagination = pagination.replace("%action%", actionDto.getParentAction());
             pagination = pagination.replace("%pageCount%", String.valueOf(pageCount));
 
             return pagination;

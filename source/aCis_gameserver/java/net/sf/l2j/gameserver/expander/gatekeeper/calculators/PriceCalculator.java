@@ -2,18 +2,37 @@ package net.sf.l2j.gameserver.expander.gatekeeper.calculators;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.expander.common.calculators.Calculator;
+import net.sf.l2j.gameserver.expander.gatekeeper.conditions.NotNeedPayCondition;
 import net.sf.l2j.gameserver.expander.gatekeeper.model.holder.LocationHolder;
 import net.sf.l2j.gameserver.model.actor.Player;
+import net.sf.l2j.gameserver.model.location.Location;
 
 public class PriceCalculator extends Calculator {
-    public int execute(Player player, LocationHolder locationHolder) {
-        final int playerLvl = player.getStatus().getLevel();
+    private static final int FREE_PLAYER_LEVEL = Config.FREE_TELEPORT_LVL;
+    private static final int EXTRA_MUL_PRICE_ITEM_ID = 57;
+    private static final int DISTANCE_THRESHOLD = 1000;
+    private static final int MAX_PK_MUL = 100;
+    private final NotNeedPayCondition notNeedPayCondition = new NotNeedPayCondition();
 
-        if (Config.FREE_BUFFER || locationHolder.getPriceCount() == 0) {
-
+    public int execute(Player player, LocationHolder location) {
+        if (notNeedPayCondition.execute(location)) {
             return 0;
         }
 
-        return locationHolder.getPriceCount() * playerLvl;
+        int adjustedLevel = Math.max(player.getStatus().getLevel() - FREE_PLAYER_LEVEL, 1);
+        int playerKills = Math.min(player.getPkKills(), MAX_PK_MUL);
+
+        int distanceMul = 1;
+        if (location.getPriceId() == EXTRA_MUL_PRICE_ITEM_ID) {
+            distanceMul = calculateDistanceMultiplier(player, location);
+        }
+
+        return location.getPriceCount() * (adjustedLevel + playerKills + distanceMul);
+    }
+
+    private int calculateDistanceMultiplier(Player player, LocationHolder location) {
+        Location destination = new Location(location.getX(), location.getY(), location.getZ());
+        double distance = player.distance3D(destination);
+        return Math.max((int) (distance / DISTANCE_THRESHOLD), 1);
     }
 }

@@ -10,6 +10,7 @@ import net.sf.l2j.gameserver.expander.gatekeeper.data.dto.GatekeeperActionDto;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.dto.GatekeeperHtmlDto;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.MenuData;
 import net.sf.l2j.gameserver.expander.gatekeeper.model.holder.LocationHolder;
+import net.sf.l2j.gameserver.expander.helpers.Str;
 import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.actor.Player;
 import net.sf.l2j.gameserver.model.item.kind.Item;
@@ -136,7 +137,7 @@ public class GetListAction extends Action {
         template = template.replace("%listId%", String.valueOf(listId));
         template = template.replace("%id%", String.valueOf(locationHolder.getId()));
         template = template.replace("%point%", String.valueOf(locationHolder.getPoint()));
-        template = template.replace("%priceCount%", String.valueOf(priceCount));
+        template = template.replace("%priceCount%", Str.number(priceCount));
         template = template.replace("%itemName%", itemName);
 
         return template;

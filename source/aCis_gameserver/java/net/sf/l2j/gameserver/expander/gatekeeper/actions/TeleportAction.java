@@ -4,7 +4,7 @@ import net.sf.l2j.gameserver.data.manager.CastleManager;
 import net.sf.l2j.gameserver.expander.common.actions.Action;
 import net.sf.l2j.gameserver.expander.common.actions.SendMsgAction;
 import net.sf.l2j.gameserver.expander.gatekeeper.calculators.PriceCalculator;
-import net.sf.l2j.gameserver.expander.gatekeeper.conditions.NeedPayCondition;
+import net.sf.l2j.gameserver.expander.gatekeeper.conditions.NotNeedPayCondition;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.dto.GatekeeperActionDto;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.LocationsData;
 import net.sf.l2j.gameserver.expander.gatekeeper.model.holder.LocationHolder;
@@ -14,7 +14,7 @@ import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
 
 public class TeleportAction extends Action {
-    protected final NeedPayCondition _needPayCondition = new NeedPayCondition();
+    protected final NotNeedPayCondition _notNeedPayCondition = new NotNeedPayCondition();
     protected final PriceCalculator _priceCalculator = new PriceCalculator();
     protected final PaymentAction _paymentAction = new PaymentAction();
 
@@ -32,7 +32,7 @@ public class TeleportAction extends Action {
         }
 
         int price = _priceCalculator.execute(player, location);
-        if (_needPayCondition.execute(location) || _paymentAction.execute(player, npc, location.getPriceId(), price)) {
+        if (_notNeedPayCondition.execute(location) || _paymentAction.execute(player, npc, location.getPriceId(), price)) {
             handleTeleport(player, location);
         }
     }

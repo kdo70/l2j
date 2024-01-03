@@ -1,25 +1,28 @@
 package net.sf.l2j.gameserver.expander.gatekeeper.actions;
 
 import net.sf.l2j.Config;
+import net.sf.l2j.gameserver.data.xml.ItemData;
 import net.sf.l2j.gameserver.expander.common.actions.Action;
+import net.sf.l2j.gameserver.expander.gatekeeper.calculators.PriceCalculator;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.dto.GatekeeperActionDto;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.dto.GatekeeperHtmlDto;
+import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.LocationsData;
 import net.sf.l2j.gameserver.expander.gatekeeper.data.xml.MenuData;
 import net.sf.l2j.gameserver.expander.gatekeeper.model.holder.LocationHolder;
+import net.sf.l2j.gameserver.expander.helpers.Str;
 import net.sf.l2j.gameserver.model.actor.Npc;
 import net.sf.l2j.gameserver.model.actor.Player;
+import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class GetMenuListAction extends Action {
     protected final GetMenuAction _getMenuAction = new GetMenuAction();
+    protected final PriceCalculator _priceCalculator = new PriceCalculator();
     protected final String _dialogTemplate = "data/html/script/feature/gatekeeper/towns.htm";
     protected final String _itemTemplate = "data/html/script/feature/gatekeeper/town-item.htm";
     protected final String _paginationTemplate = "data/html/script/feature/gatekeeper/pagination.htm";
@@ -47,7 +50,7 @@ public class GetMenuListAction extends Action {
                 continue;
             }
 
-            list.append(buildList(actionDto, listId, location));
+            list.append(buildList(player, actionDto, listId, location));
             if (++itemInPage > _itemPerPage) {
                 hasMore = true;
                 break;
@@ -98,21 +101,28 @@ public class GetMenuListAction extends Action {
         return html;
     }
 
-    private String buildList(GatekeeperActionDto dto, int listId, LocationHolder location) {
+    private String buildList(Player player, GatekeeperActionDto dto, int listId, LocationHolder location) {
         try (BufferedReader reader = new BufferedReader(new FileReader(_itemTemplate))) {
             String template = reader.readLine();
-            return getTemplateItem(template, dto.getAction(), listId, location);
+            return getTemplateItem(player, template, dto.getAction(), listId, location);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private String getTemplateItem(String template, String action, int listId, LocationHolder location) {
-        template = template.replace("%listId%", String.valueOf(listId));
-        template = template.replace("%id%", String.valueOf(location.getId()));
-        template = template.replace("%childId%", String.valueOf(location.getChildId()));
+    private String getTemplateItem(Player player, String template, String action, int listId, LocationHolder location) {
+        final int priceCount = _priceCalculator.execute(player, location);
+
+        Item item = ItemData.getInstance().getTemplate(location.getPriceId());
+        StringTokenizer tokenizer = new StringTokenizer(item.getName());
+        String itemName = tokenizer.nextToken();
+
+        template = template.replace("%listId%", Integer.toString(listId));
+        template = template.replace("%id%", Integer.toString(location.getId()));
+        template = template.replace("%childId%", Integer.toString(location.getChildId()));
         template = template.replace("%name%", String.valueOf(location.getName()));
-        template = template.replace("%placeholder%", String.valueOf(location.getPlaceholder()));
+        template = template.replace("%priceCount%", Str.number(priceCount));
+        template = template.replace("%itemName%", itemName);
         template = template.replace("%desc%", String.valueOf(location.getDesc()));
         template = template.replace("%parentAction%", action);
 
@@ -126,13 +136,13 @@ public class GetMenuListAction extends Action {
 
             String pagination = reader.readLine();
 
-            pagination = pagination.replace("%prevPage%", String.valueOf(page - (page > 1 ? 1 : 0)));
-            pagination = pagination.replace("%currentPage%", String.valueOf(page));
-            pagination = pagination.replace("%nextPage%", String.valueOf(page + (hasMore ? 1 : 0)));
-            pagination = pagination.replace("%listId%", String.valueOf(listId));
+            pagination = pagination.replace("%prevPage%", Integer.toString(page - (page > 1 ? 1 : 0)));
+            pagination = pagination.replace("%currentPage%", Integer.toString(page));
+            pagination = pagination.replace("%nextPage%", Integer.toString(page + (hasMore ? 1 : 0)));
+            pagination = pagination.replace("%listId%", Integer.toString(listId));
             pagination = pagination.replace("%parentAction%", actionDto.getParentAction());
             pagination = pagination.replace("%action%", actionDto.getParentAction());
-            pagination = pagination.replace("%pageCount%", String.valueOf(pageCount));
+            pagination = pagination.replace("%pageCount%", Integer.toString(pageCount));
 
             return pagination;
         } catch (IOException e) {

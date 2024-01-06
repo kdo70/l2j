@@ -18,7 +18,7 @@ import net.sf.l2j.gameserver.data.sql.ClanTable;
 import net.sf.l2j.gameserver.data.sql.PlayerInfoTable;
 import net.sf.l2j.gameserver.data.sql.ServerMemoTable;
 import net.sf.l2j.gameserver.data.xml.*;
-import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsByClassData;
+import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsClassesData;
 import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsCommonData;
 import net.sf.l2j.gameserver.expander.cards.data.xml.HuntingCardData;
 import net.sf.l2j.gameserver.expander.cards.data.xml.ShopData;
@@ -175,7 +175,7 @@ public class GameServer {
         CastleManager.getInstance().loadArtifacts();
 
         StringUtil.printSection("Buffer");
-        BuffsByClassData.getInstance();
+        BuffsClassesData.getInstance();
         BuffsCommonData.getInstance();
 
         StringUtil.printSection("Gatekeeper");

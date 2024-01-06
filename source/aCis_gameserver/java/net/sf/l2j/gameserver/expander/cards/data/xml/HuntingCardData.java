@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HuntingCardData implements IXmlReader {
-    private final Map<Integer, CardLvlHolder> _cards = new HashMap<>();
+    private final Map<Integer, CardLvlHolder> _lvlList = new HashMap<>();
 
     protected HuntingCardData() {
         load();
@@ -19,7 +19,7 @@ public class HuntingCardData implements IXmlReader {
     @Override
     public void load() {
         parseFile("./data/xml/expander/cards/hunting.xml");
-        LOGGER.info("Loaded {} hunting card levels", _cards.size());
+        LOGGER.info("Loaded {} hunting card levels", _lvlList.size());
     }
 
     @Override
@@ -29,16 +29,16 @@ public class HuntingCardData implements IXmlReader {
             final StatSet set = parseAttributes(item);
             final int level = set.getInteger("lvl");
 
-            _cards.put(level, new CardLvlHolder(set));
+            _lvlList.put(level, new CardLvlHolder(set));
         }));
     }
 
-    public CardLvlHolder getCard(int level) {
-        return _cards.get(level);
+    public CardLvlHolder getLvl(int level) {
+        return _lvlList.get(level);
     }
 
-    public Map<Integer, CardLvlHolder> getCards() {
-        return _cards;
+    public Map<Integer, CardLvlHolder> getList() {
+        return _lvlList;
     }
 
     public static HuntingCardData getInstance() {

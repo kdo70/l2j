@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BuffsByClassData implements IXmlReader {
+public class BuffsClassesData implements IXmlReader {
 
     private final List<BuffHolder> _buffs = new ArrayList<>();
 
@@ -18,7 +18,7 @@ public class BuffsByClassData implements IXmlReader {
 
     private int _maxLvl = 1;
 
-    protected BuffsByClassData() {
+    protected BuffsClassesData() {
         load();
     }
 
@@ -63,11 +63,11 @@ public class BuffsByClassData implements IXmlReader {
         return _maxLvl;
     }
 
-    public static BuffsByClassData getInstance() {
+    public static BuffsClassesData getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
     private static class SingletonHolder {
-        protected static final BuffsByClassData INSTANCE = new BuffsByClassData();
+        protected static final BuffsClassesData INSTANCE = new BuffsClassesData();
     }
 }

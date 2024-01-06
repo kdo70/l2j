@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.expander.buffer.actions;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.lang.StringUtil;
-import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsByClassData;
+import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsClassesData;
 import net.sf.l2j.gameserver.expander.buffer.data.xml.BuffsCommonData;
 import net.sf.l2j.gameserver.expander.buffer.model.holder.BuffHolder;
 import net.sf.l2j.gameserver.expander.common.actions.Action;
@@ -25,7 +25,7 @@ public class GetInfoAction extends Action {
     public void execute(Player player, Npc npc, int page) {
         final StringBuilder list = new StringBuilder();
 
-        final List<BuffHolder> buffs = BuffsByClassData.getInstance().getValidBuffs(player.isMystic());
+        final List<BuffHolder> buffs = BuffsClassesData.getInstance().getValidBuffs(player.isMystic());
         buffs.addAll(BuffsCommonData.getInstance().getBuffs());
 
         int startIndex = (page - 1) * _itemPerPage;

@@ -2,27 +2,31 @@ package net.sf.l2j.gameserver.expander.cards.model.holder;
 
 public class CharacterCardHolder {
     protected final String _type;
-    protected int _level;
+    protected int _lvl;
     protected int _exp;
     protected int _points;
+    protected int _sp;
+    protected int _rewardLvl;
 
-    public CharacterCardHolder(String type, int level, int exp, int points) {
+    public CharacterCardHolder(String type, int lvl, int exp, int points, int sp, int rewardLvl) {
         _type = type;
-        _level = level;
+        _lvl = lvl;
         _exp = exp;
         _points = points;
+        _sp = sp;
+        _rewardLvl = rewardLvl;
     }
 
     public String getType() {
         return _type;
     }
 
-    public int getLevel() {
-        return _level;
+    public int getLvl() {
+        return _lvl;
     }
 
-    public void setLevel(int level) {
-        _level = level;
+    public void setLvl(int lvl) {
+        _lvl = lvl;
     }
 
     public int getExp() {
@@ -39,5 +43,21 @@ public class CharacterCardHolder {
 
     public int getPoints() {
         return _points;
+    }
+
+    public int getSp() {
+        return _sp;
+    }
+
+    public void setSp(int sp) {
+        _sp = sp;
+    }
+
+    public int getRewardLvl() {
+        return _rewardLvl;
+    }
+
+    public void setRewardLvl(int rewardLvl) {
+        _rewardLvl = rewardLvl;
     }
 }

@@ -160,7 +160,7 @@ public class Monster extends Attackable {
                     attacker.addExpAndSp(exp, sp, rewards, this);
 
                     CharacterStatistic.addMonsterKills(attacker, this);
-                    HuntingCard.addExp(attacker, this);
+                    HuntingCard.addReward(attacker, this);
                 }
             }
             // Share with party members.
@@ -173,7 +173,7 @@ public class Monster extends Attackable {
                 final Map<Creature, RewardInfo> playersWithPets = new HashMap<>();
 
                 CharacterStatistic.addMonsterKills(attacker, this);
-                HuntingCard.addExp(attacker, this);
+                HuntingCard.addReward(attacker, this);
 
                 // Iterate every Party member.
                 for (Player partyPlayer : (attackerParty.isInCommandChannel()) ? attackerParty.getCommandChannel().getMembers() : attackerParty.getMembers()) {
@@ -466,7 +466,7 @@ public class Monster extends Attackable {
      * @param holder : The {@link IntIntHolder} used for reward (item id / amount).
      */
     private void dropOrAutoLootItem(Player player, IntIntHolder holder) {
-        final double autolootMonsterLevel = player.getStatus().calcStat(Stats.AUTOLOOT, 0, null, null);
+        final double autolootMonsterLevel = player.getStatus().calcStat(Stats.AUTOLOOT_ITEMS, 0, null, null);
         ItemType type = ItemData.getInstance().getTemplate(holder.getId()).getItemType();
 
         if (player.isInParty() && player.getInventory().validateCapacityByItemId(holder)) {

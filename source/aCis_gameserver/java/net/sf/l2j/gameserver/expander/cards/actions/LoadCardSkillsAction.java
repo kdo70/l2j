@@ -1,16 +1,17 @@
 package net.sf.l2j.gameserver.expander.cards.actions;
 
 import net.sf.l2j.commons.pool.ConnectionPool;
-import net.sf.l2j.gameserver.expander.cards.model.holder.CharacterCardHolder;
+import net.sf.l2j.gameserver.data.SkillTable;
 import net.sf.l2j.gameserver.expander.common.actions.Action;
 import net.sf.l2j.gameserver.model.actor.Player;
+import net.sf.l2j.gameserver.skills.L2Skill;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class LoadCardsAction extends Action {
-    private static final String _query = "SELECT type,level,exp,points,sp,reward_lvl FROM character_cards WHERE owner_id=?";
+public class LoadCardSkillsAction extends Action {
+    private static final String _query = "SELECT skill_id,skill_lvl FROM character_card_skills WHERE owner_id=?";
 
     public void execute(Player player) {
         try (Connection con = ConnectionPool.getConnection(); PreparedStatement ps = con.prepareStatement(_query)) {
@@ -18,16 +19,12 @@ public class LoadCardsAction extends Action {
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    CharacterCardHolder card = new CharacterCardHolder(
-                            rs.getString(1),
-                            rs.getInt(2),
-                            rs.getInt(3),
-                            rs.getInt(4),
-                            rs.getInt(5),
-                            rs.getInt(6)
-                    );
+                    if (player.hasSkill(rs.getInt(1))) {
+                        continue;
+                    }
 
-                    player.addCard(rs.getString(1), card);
+                    L2Skill skill = SkillTable.getInstance().getInfo(rs.getInt(1), rs.getInt(2));
+                    player.addSkill(skill, true);
                 }
             }
 

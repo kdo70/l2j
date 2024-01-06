@@ -1,4 +1,4 @@
-package net.sf.l2j.gameserver.expander.cards.actions.hunting;
+package net.sf.l2j.gameserver.expander.cards.actions.hunting.htm;
 
 import net.sf.l2j.gameserver.data.cache.HtmCache;
 import net.sf.l2j.gameserver.data.xml.ItemData;

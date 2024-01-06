@@ -159,7 +159,9 @@ public enum Stats {
 
     // Skill mastery
     SKILL_MASTERY("skillMastery", false),
-    AUTOLOOT("autoloot", false),
+    AUTOLOOT_CURRENCY("autolootCurrency", false),
+    AUTOLOOT_ITEMS("autolootItems", false),
+    AUTOLOOT_EQUIP("autolootEquip", false),
     MONSTER_MUL_MAGIC_DMG("monsterMulMagicDmg", true),
     MONSTER_MUL_PHYS_DMG("monsterMulPhysDmg", true),
     MONSTER_MUL_MAGIC_DEF("monsterMulMagicDef", true),

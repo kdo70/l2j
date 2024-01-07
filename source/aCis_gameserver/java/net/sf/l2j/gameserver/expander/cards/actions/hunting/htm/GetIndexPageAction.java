@@ -25,7 +25,7 @@ public class GetIndexPageAction extends Action {
         template = template.replace("%rewards%", _getRewardsAction.execute(card));
         template = template.replace("%huntingStatsLeft%", _getStatsLeftAction.execute(player));
         template = template.replace("%huntingStatsRight%", _getStatsRightAction.execute(player));
-        template = template.replace("%skillInfo%", _getSkillInfoAction.execute(player));
+        template = template.replace("%skillInfo%", _getSkillInfoAction.execute(player, card));
 
         return template;
     }

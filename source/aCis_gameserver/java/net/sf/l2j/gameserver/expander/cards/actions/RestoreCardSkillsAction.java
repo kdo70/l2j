@@ -10,8 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class LoadCardSkillsAction extends Action {
-    private static final String _query = "SELECT skill_id,skill_lvl FROM character_card_skills WHERE owner_id=?";
+public class RestoreCardSkillsAction extends Action {
+    private static final String _query = "SELECT card_type,skill_id,skill_lvl FROM character_card_skills WHERE owner_id=?";
 
     public void execute(Player player) {
         try (Connection con = ConnectionPool.getConnection(); PreparedStatement ps = con.prepareStatement(_query)) {
@@ -19,17 +19,19 @@ public class LoadCardSkillsAction extends Action {
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    if (player.hasSkill(rs.getInt(1))) {
+                    L2Skill skill = SkillTable.getInstance().getInfo(rs.getInt(2), rs.getInt(3));
+                    player.getCards().get(rs.getString(1)).addSkill(skill);
+
+                    if (player.hasSkill(rs.getInt(2))) {
                         continue;
                     }
 
-                    L2Skill skill = SkillTable.getInstance().getInfo(rs.getInt(1), rs.getInt(2));
                     player.addSkill(skill, true);
                 }
             }
 
         } catch (final Exception e) {
-            LOGGER.error("Couldn't restore player cards.", e);
+            throw new IllegalStateException(e);
         }
     }
 }

@@ -1,6 +1,5 @@
 package net.sf.l2j.gameserver.expander.cards.actions.hunting;
 
-import net.sf.l2j.gameserver.expander.cards.CharacterCard;
 import net.sf.l2j.gameserver.expander.cards.data.enums.CardsTypeEnum;
 import net.sf.l2j.gameserver.expander.cards.data.xml.HuntingCardData;
 import net.sf.l2j.gameserver.expander.cards.model.holder.CardLvlHolder;
@@ -24,7 +23,6 @@ public class AddItemAction extends Action {
         if (player.getInventory().validateCapacityByItemId(card.getItemId(), card.getItemCount())) {
             player.addItem("Loot", card.getItemId(), card.getItemCount(), player, true);
             playerCard.setRewardLvl(playerCard.getRewardLvl() + 1);
-            CharacterCard.storeCards(player);
 
             return;
         }

@@ -41,7 +41,6 @@
     <buff skillId="273" skillLevel="1" minLvl="20" maxLvl="75" isMagic="true"/>
     <buff skillId="276" skillLevel="1" minLvl="20" maxLvl="75" isMagic="true"/>
     <buff skillId="365" skillLevel="1" minLvl="20" maxLvl="75" isMagic="true"/>
-    <buff skillId="1062" skillLevel="2" minLvl="6" maxLvl="75" isMagic="true"/>
     <buff skillId="1355" skillLevel="1" minLvl="15" maxLvl="75" isMagic="true"/>
     <buff skillId="4703" skillLevel="13" minLvl="20" maxLvl="75" isMagic="true"/>
 </list>

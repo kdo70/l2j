@@ -270,36 +270,6 @@
 		<loc desc="Immortal Plateau, Northern Region" type="NOBLE_HUNTING_ZONE_ADENA" priceId="57" priceCount="1000" x="-8804" y="-114748" z="-3030" />
 		<loc desc="Coliseum" type="NOBLE_HUNTING_ZONE_ADENA" priceId="57" priceCount="1000" x="146440" y="46723" z="-3400" />
 	</telPosList>
-	<telPosList npcId="30598">
-		<loc desc="Dark Elf Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="9716" y="15502" z="-4500" />
-		<loc desc="Dwarven Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="115120" y="-178112" z="-916" />
-		<loc desc="Elven Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="46890" y="51531" z="-2976" />
-		<loc desc="Orc Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="-45186" y="-112459" z="-236" />
-	</telPosList>
-	<telPosList npcId="30599">
-		<loc desc="Dark Elf Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="9716" y="15502" z="-4500" />
-		<loc desc="Dwarven Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="115120" y="-178112" z="-916" />
-		<loc desc="Talking Island Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="-84141" y="244623" z="-3729" />
-		<loc desc="Orc Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="-45186" y="-112459" z="-236" />
-	</telPosList>
-	<telPosList npcId="30600">
-		<loc desc="Dwarven Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="115120" y="-178112" z="-916" />
-		<loc desc="Talking Island Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="-84141" y="244623" z="-3729" />
-		<loc desc="Elven Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="46890" y="51531" z="-2976" />
-		<loc desc="Orc Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="-45186" y="-112459" z="-236" />
-	</telPosList>
-	<telPosList npcId="30601">
-		<loc desc="Dark Elf Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="9716" y="15502" z="-4500" />
-		<loc desc="Talking Island Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="-84141" y="244623" z="-3729" />
-		<loc desc="Elven Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="46890" y="51531" z="-2976" />
-		<loc desc="Orc Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="-45186" y="-112459" z="-236" />
-	</telPosList>
-	<telPosList npcId="30602">
-		<loc desc="Dark Elf Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="9716" y="15502" z="-4500" />
-		<loc desc="Dwarven Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="115120" y="-178112" z="-916" />
-		<loc desc="Talking Island Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="-84141" y="244623" z="-3729" />
-		<loc desc="Elven Village" type="NEWBIE_TOKEN" priceId="8542" priceCount="1" x="46890" y="51531" z="-2976" />
-	</telPosList>
 	<telPosList npcId="30727">
 		<loc desc="Town of Oren" type="STANDARD" priceId="57" priceCount="3700" x="82971" y="53207" z="-1470" castleId="4" />
 		<loc desc="Hunters Village" type="STANDARD" priceId="57" priceCount="6800" x="117156" y="76878" z="-2670" />

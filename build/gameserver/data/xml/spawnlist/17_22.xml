@@ -1056,17 +1056,6 @@ Gludin Area
 	</npcmaker>
 	
 	<!--  -->
-	<territory name="gludio06_npc1722_sw01" minZ="-3172" maxZ="-2972">
-		<node x="-82132" y="150076" />
-		<node x="-81932" y="150076" />
-		<node x="-81932" y="150276" />
-		<node x="-82132" y="150276" />
-	</territory>
-	<npcmaker name="gludio06_npc1722_sw01" territory="gludio06_npc1722_sw01" spawn="ALL" maximumNpcs="1" event="start_weapon">
-		<npc id="31760" pos="-82032;150160;-3127;16500" total="1" respawnDelay="1m"/>
-	</npcmaker>
-	
-	<!--  -->
 	<territory name="gludio06_npc1722_tb01" minZ="-3088" maxZ="-2888">
 		<node x="-80871" y="151013" />
 		<node x="-80705" y="151010" />

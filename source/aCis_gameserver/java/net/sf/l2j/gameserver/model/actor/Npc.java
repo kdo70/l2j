@@ -67,6 +67,7 @@ public class Npc extends Creature {
     private static final int SOCIAL_INTERVAL = 12000;
 
     private ASpawn _spawn;
+    private Spawn _spawnTable;
     private SpawnLocation _spawnLoc;
     private ScheduledFuture<?> _respawnTask;
 
@@ -481,6 +482,14 @@ public class Npc extends Creature {
      */
     public void setSpawn(ASpawn spawn) {
         _spawn = spawn;
+    }
+
+    public Spawn getSpawnTable() {
+        return _spawnTable;
+    }
+
+    public void setSpawnTable(Spawn spawnTable) {
+        _spawnTable = spawnTable;
     }
 
     /**

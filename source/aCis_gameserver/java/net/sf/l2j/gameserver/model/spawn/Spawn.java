@@ -88,6 +88,7 @@ public final class Spawn extends ASpawn
 	{
 		// Spawn NPC.
 		_npc = super.doSpawn(isSummonSpawn);
+		_npc.setSpawnTable(this);
 		if (_npc == null)
 		{
 			LOGGER.warn("Can not spawn id {} from loc {}.", getNpcId(), _loc);
@@ -95,7 +96,7 @@ public final class Spawn extends ASpawn
 		// Add Spawn to SpawnManager.
 		else
 			SpawnManager.getInstance().addSpawn(this);
-		
+
 		return _npc;
 	}
 	

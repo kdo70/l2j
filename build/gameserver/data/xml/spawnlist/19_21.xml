@@ -931,17 +931,6 @@ Gludio Area
 	</npcmaker>
 	
 	<!--  -->
-	<territory name="gludio08_npc1921_sw01" minZ="-3148" maxZ="-2948">
-		<node x="-14148" y="123084" />
-		<node x="-13948" y="123084" />
-		<node x="-13948" y="123284" />
-		<node x="-14148" y="123284" />
-	</territory>
-	<npcmaker name="gludio08_npc1921_sw01" territory="gludio08_npc1921_sw01" spawn="ALL" maximumNpcs="1" event="start_weapon">
-		<npc id="31760" pos="-14048;123184;-3120;32000" total="1" respawnDelay="1m"/>
-	</npcmaker>
-	
-	<!--  -->
 	<territory name="gludio08_npc1921_tb01" minZ="-3216" maxZ="-3016">
 		<node x="-13075" y="122701" />
 		<node x="-12875" y="122701" />

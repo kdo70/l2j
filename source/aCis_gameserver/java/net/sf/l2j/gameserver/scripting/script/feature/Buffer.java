@@ -23,9 +23,8 @@ public class Buffer extends Quest {
     public Buffer() {
         super(-1, "buffer");
 
-        // TODO: Добавить идентификаторы
-        addTalkId(31077);
-        addFirstTalkId(31077);
+        addTalkId(30598, 30601, 30602, 30600, 30599, 31076, 31077);
+        addFirstTalkId(30598, 30601, 30602, 30600, 30599, 31076, 31077);
     }
 
     @Override
@@ -38,7 +37,7 @@ public class Buffer extends Quest {
         }
 
         if (!_availableBuffCondition.execute(player)) {
-             SendMsgAction.execute(player, _getErrorMessageAction.execute(player));
+            SendMsgAction.execute(player, _getErrorMessageAction.execute(player));
 
             player.sendPacket(ActionFailed.STATIC_PACKET);
             return null;
@@ -64,7 +63,7 @@ public class Buffer extends Quest {
     @Override
     public String onFirstTalk(Npc npc, Player player) {
         if (!_availableBuffCondition.execute(player)) {
-             SendMsgAction.execute(player, _getErrorMessageAction.execute(player));
+            SendMsgAction.execute(player, _getErrorMessageAction.execute(player));
 
             player.sendPacket(ActionFailed.STATIC_PACKET);
             return null;

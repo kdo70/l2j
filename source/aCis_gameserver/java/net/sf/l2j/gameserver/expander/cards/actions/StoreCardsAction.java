@@ -28,7 +28,7 @@ public class StoreCardsAction extends Action {
 
             ps.executeBatch();
         } catch (final Exception e) {
-            LOGGER.error("Couldn't store player cards.", e);
+            throw new IllegalStateException(e);
         }
     }
 }

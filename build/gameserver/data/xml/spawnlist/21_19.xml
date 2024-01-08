@@ -1484,28 +1484,6 @@ Elven Area
 	</npcmaker>
 	
 	<!--  -->
-	<territory name="oren04_npc2119_sw01" minZ="-3116" maxZ="-2916">
-		<node x="45356" y="49260" />
-		<node x="45556" y="49260" />
-		<node x="45556" y="49460" />
-		<node x="45356" y="49460" />
-	</territory>
-	<npcmaker name="oren04_npc2119_sw01" territory="oren04_npc2119_sw01" spawn="ALL" maximumNpcs="1" event="start_weapon">
-		<npc id="31760" pos="45472;49312;-3072;53000" total="1" respawnDelay="1m"/>
-	</npcmaker>
-	
-	<!--  -->
-	<territory name="oren04_npc2119_sw02" minZ="-3040" maxZ="-2840">
-		<node x="47548" y="51180" />
-		<node x="47748" y="51180" />
-		<node x="47748" y="51380" />
-		<node x="47548" y="51380" />
-	</territory>
-	<npcmaker name="oren04_npc2119_sw02" territory="oren04_npc2119_sw02" spawn="ALL" maximumNpcs="1" event="start_weapon">
-		<npc id="31760" pos="47648;51296;-2994;38500" total="1" respawnDelay="1m"/>
-	</npcmaker>
-	
-	<!--  -->
 	<territory name="oren04_npc2119_tb01" minZ="-3104" maxZ="-2904">
 		<node x="47044" y="49334" />
 		<node x="47244" y="49334" />

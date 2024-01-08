@@ -442,28 +442,6 @@ Talking Island
 	</npcmaker>
 	
 	<!--  -->
-	<territory name="gludio25_npc1725_sw01" minZ="-3788" maxZ="-3588">
-		<node x="-84196" y="243116" />
-		<node x="-83996" y="243116" />
-		<node x="-83996" y="243316" />
-		<node x="-84196" y="243316" />
-	</territory>
-	<npcmaker name="gludio25_npc1725_sw01" territory="gludio25_npc1725_sw01" spawn="ALL" maximumNpcs="1" event="start_weapon">
-		<npc id="31760" pos="-84119;243254;-3730;8000" total="1" respawnDelay="1m"/>
-	</npcmaker>
-	
-	<!--  -->
-	<territory name="gludio25_npc1725_sw02" minZ="-3776" maxZ="-3576">
-		<node x="-84452" y="242060" />
-		<node x="-84252" y="242060" />
-		<node x="-84252" y="242260" />
-		<node x="-84452" y="242260" />
-	</territory>
-	<npcmaker name="gludio25_npc1725_sw02" territory="gludio25_npc1725_sw02" spawn="ALL" maximumNpcs="1" event="start_weapon">
-		<npc id="31760" pos="-84336;242156;-3730;24500" total="1" respawnDelay="1m"/>
-	</npcmaker>
-	
-	<!--  -->
 	<territory name="gludio25_npc1725_tb01" minZ="-3817" maxZ="-3617">
 		<node x="-84678" y="242877" />
 		<node x="-84478" y="242877" />

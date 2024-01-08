@@ -411,7 +411,6 @@
     <script path="script.feature.HeroCirclet"/>
     <script path="script.feature.HeroWeapon"/>
     <script path="script.feature.KetraOrcSupport"/>
-    <script path="script.feature.MissQueen"/>
     <script path="script.feature.Buffer"/>
     <script path="script.feature.RaidbossInfo"/>
     <script path="script.feature.SecondClassChange"/>

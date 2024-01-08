@@ -4,5 +4,4 @@ import net.sf.l2j.commons.logging.CLogger;
 
 public class Action {
     protected static final CLogger LOGGER = new CLogger(Action.class.getName());
-    protected final String _htmlExt = ".htm";
 }

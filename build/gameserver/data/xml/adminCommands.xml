@@ -135,6 +135,7 @@
 	<aCar name="admin_deletefence" accessLevel="7" params="" desc=""/>
 	<aCar name="admin_listfence" accessLevel="7" params="" desc=""/>
 	<aCar name="admin_delete" accessLevel="7" params="" desc=""/>
+	<aCar name="admin_replace" accessLevel="7" params="" desc=""/>
 
 	<!-- SPAWN -->
 	<aCar name="admin_maker" accessLevel="7" params="[delete|respawn|switch|scripts|spawn [name]]" desc="Open the Maker panel."/>

@@ -14761,7 +14761,7 @@
 			<skill id="4416" level="14"/>
 		</skills>
 	</npc>
-	<npc id="30598" name="Newbie Guide" title="">
+	<npc id="30598" name="Osborn" title="Guardian of Light">
 		<set name="level" val="70"/>
 		<set name="radius" val="8"/>
 		<set name="height" val="23"/>
@@ -14795,7 +14795,7 @@
 			<skill id="4416" level="14"/>
 		</skills>
 	</npc>
-	<npc id="30599" name="Newbie Guide" title="">
+	<npc id="30599" name="Jer" title="Guardian of Light">
 		<set name="level" val="70"/>
 		<set name="radius" val="8"/>
 		<set name="height" val="23.5"/>
@@ -14829,7 +14829,7 @@
 			<skill id="4416" level="15"/>
 		</skills>
 	</npc>
-	<npc id="30600" name="Newbie Guide" title="">
+	<npc id="30600" name="Seymour" title="Guardian of Light">
 		<set name="level" val="70"/>
 		<set name="radius" val="8"/>
 		<set name="height" val="23"/>
@@ -14863,7 +14863,7 @@
 			<skill id="4416" level="16"/>
 		</skills>
 	</npc>
-	<npc id="30601" name="Newbie Guide" title="">
+	<npc id="30601" name="Redcliffe" title="Guardian of Light">
 		<set name="level" val="70"/>
 		<set name="radius" val="8"/>
 		<set name="height" val="19"/>
@@ -14897,7 +14897,7 @@
 			<skill id="4416" level="18"/>
 		</skills>
 	</npc>
-	<npc id="30602" name="Newbie Guide" title="">
+	<npc id="30602" name="Vauhan" title="Guardian of Light">
 		<set name="level" val="70"/>
 		<set name="radius" val="8"/>
 		<set name="height" val="27"/>

@@ -597,17 +597,6 @@ Orc Area
 	</npcmaker>
 	
 	<!--  -->
-	<territory name="lyonn03_npc1814_sw01" minZ="-276" maxZ="-76">
-		<node x="-45044" y="-113636" />
-		<node x="-44844" y="-113636" />
-		<node x="-44844" y="-113436" />
-		<node x="-45044" y="-113436" />
-	</territory>
-	<npcmaker name="lyonn03_npc1814_sw01" territory="lyonn03_npc1814_sw01" spawn="ALL" maximumNpcs="1" event="start_weapon">
-		<npc id="31760" pos="-44979;-113508;-199;32000" total="1" respawnDelay="1m"/>
-	</npcmaker>
-	
-	<!--  -->
 	<territory name="lyonn03_npc1814_tb01" minZ="-324" maxZ="-124">
 		<node x="-44412" y="-113816" />
 		<node x="-44212" y="-113816" />

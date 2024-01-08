@@ -33,7 +33,7 @@ public class CreateCardsAction extends Action {
 
             ps.executeBatch();
         } catch (final Exception e) {
-            LOGGER.error("Couldn't create player cards.", e);
+            throw new IllegalStateException(e);
         }
     }
 }

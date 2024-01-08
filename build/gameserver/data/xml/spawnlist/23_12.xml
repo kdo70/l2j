@@ -896,28 +896,6 @@ Dwarven Area
 	</npcmaker>
 	
 	<!--  -->
-	<territory name="schuttgart03_npc2312_sw01" minZ="-1504" maxZ="-1304">
-		<node x="116124" y="-181828" />
-		<node x="116324" y="-181828" />
-		<node x="116324" y="-181628" />
-		<node x="116124" y="-181628" />
-	</territory>
-	<npcmaker name="schuttgart03_npc2312_sw01" territory="schuttgart03_npc2312_sw01" spawn="ALL" maximumNpcs="1" event="start_weapon">
-		<npc id="31760" pos="116224;-181728;-1378;0" total="1" respawnDelay="1m"/>
-	</npcmaker>
-	
-	<!--  -->
-	<territory name="schuttgart03_npc2312_sw02" minZ="-892" maxZ="-692">
-		<node x="114764" y="-178244" />
-		<node x="114964" y="-178244" />
-		<node x="114964" y="-178044" />
-		<node x="114764" y="-178044" />
-	</territory>
-	<npcmaker name="schuttgart03_npc2312_sw02" territory="schuttgart03_npc2312_sw02" spawn="ALL" maximumNpcs="1" event="start_weapon">
-		<npc id="31760" pos="114885;-178092;-832;0" total="1" respawnDelay="1m"/>
-	</npcmaker>
-	
-	<!--  -->
 	<territory name="schuttgart03_npc2312_tb01" minZ="-928" maxZ="-728">
 		<node x="114696" y="-178841" />
 		<node x="114896" y="-178841" />

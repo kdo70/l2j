@@ -990,7 +990,7 @@ public final class Config {
         final ExProperties npcs = initProperties(NPCS_FILE);
 
         SPAWN_MULTIPLIER = npcs.getProperty("SpawnMultiplier", 1.);
-        SPAWN_EVENTS = npcs.getProperty("SpawnEvents", new String[]{"extra_mob", "18age", "start_weapon",});
+        SPAWN_EVENTS = npcs.getProperty("SpawnEvents", new String[]{"extra_mob", "18age"});
 
         BUFFER_MAX_SCHEMES = npcs.getProperty("BufferMaxSchemesPerChar", 4);
         BUFFER_STATIC_BUFF_COST = npcs.getProperty("BufferStaticCostPerBuff", -1);

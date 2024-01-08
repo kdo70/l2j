@@ -319,7 +319,7 @@ Dark Elven Area
 	<npcmaker name="oren09_npc1921_bk02" territory="oren09_npc1921_bk02" spawn="ALL" maximumNpcs="1" event="bak_event">
 		<npc id="31255" pos="11303;17732;-4574;57344" total="1" respawnDelay="1m"/>
 	</npcmaker>
-	
+
 	<!--  -->
 	<territory name="oren09_npc2018_001" minZ="-4697" maxZ="-4497">
 		<node x="12012" y="16572" />
@@ -329,17 +329,6 @@ Dark Elven Area
 	</territory>
 	<npcmaker name="oren09_npc2018_00101" territory="oren09_npc2018_001" spawn="ALL" maximumNpcs="1">
 		<npc id="30600" pos="12111;16686;-4582;63240" total="1" respawnDelay="1m"/>
-	</npcmaker>
-	
-	<!--  -->
-	<territory name="oren09_npc2018_002" minZ="-3776" maxZ="-3576">
-		<node x="16940" y="13212" />
-		<node x="17140" y="13212" />
-		<node x="17140" y="13412" />
-		<node x="16940" y="13412" />
-	</territory>
-	<npcmaker name="oren09_npc2018_00201" territory="oren09_npc2018_002" spawn="ALL" maximumNpcs="1">
-		<npc id="30600" pos="17024;13296;-3744;62000" total="1" respawnDelay="1m"/>
 	</npcmaker>
 	
 	<!--  -->
@@ -713,28 +702,6 @@ Dark Elven Area
 	</territory>
 	<npcmaker name="oren09_npc2018_omega02" territory="oren09_npc2018_omega02" spawn="ALL" maximumNpcs="1000" event="omegas_revenge">
 		<npc id="32091" pos="11610;17870;-4584;49152" total="1" respawnDelay="1m"/>
-	</npcmaker>
-	
-	<!--  -->
-	<territory name="oren09_npc2018_sw01" minZ="-4632" maxZ="-4432">
-		<node x="11228" y="15868" />
-		<node x="11428" y="15868" />
-		<node x="11428" y="16068" />
-		<node x="11228" y="16068" />
-	</territory>
-	<npcmaker name="oren09_npc2018_sw01" territory="oren09_npc2018_sw01" spawn="ALL" maximumNpcs="1" event="start_weapon">
-		<npc id="31760" pos="11340;15972;-4582;14000" total="1" respawnDelay="1m"/>
-	</npcmaker>
-	
-	<!--  -->
-	<territory name="oren09_npc2018_sw02" minZ="-4624" maxZ="-4424">
-		<node x="10876" y="17452" />
-		<node x="11076" y="17452" />
-		<node x="11076" y="17652" />
-		<node x="10876" y="17652" />
-	</territory>
-	<npcmaker name="oren09_npc2018_sw02" territory="oren09_npc2018_sw02" spawn="ALL" maximumNpcs="1" event="start_weapon">
-		<npc id="31760" pos="10968;17540;-4572;55000" total="1" respawnDelay="1m"/>
 	</npcmaker>
 	
 	<!--  -->

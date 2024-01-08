@@ -11,7 +11,7 @@ import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
 import java.util.List;
 
 public class TalkAction extends Action {
-    protected final String _folder = "data/html/script/feature/buffer/";
+    protected final String _template = "data/html/script/feature/buffer/index.htm";
     protected final BuffPriceCalculator _calculator = new BuffPriceCalculator();
     protected final GetValidBuffsAction _getValidBuffsAction = new GetValidBuffsAction();
 
@@ -20,7 +20,7 @@ public class TalkAction extends Action {
         final List<BuffHolder> validBuffs = _getValidBuffsAction.execute(player);
         final int price = _calculator.execute(player, validBuffs.size());
 
-        html.setFile(_folder + npc.getNpcId() + _htmlExt);
+        html.setFile(_template);
 
         html.replace("%npcTitle%", npc.getTitle());
         html.replace("%npcName%", npc.getName());

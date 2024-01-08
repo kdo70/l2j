@@ -16,23 +16,28 @@ public class AddSkillAction extends Action {
 
         if (playerSp < 1) {
             SendMsgAction.execute(player, "Для изучения умения недостаточно Skill Points");
+
             return;
         }
 
         if (currentSkill != null) {
             int currentLevel = currentSkill.getLevel();
+            int skillMaxLvl = SkillTable.getInstance().getMaxLevel(currentSkill.getId());
 
-            if (currentLevel == skillLvl) {
-                SendMsgAction.execute(player, "Умение уже изучено");
+            if (currentLevel == skillLvl || currentLevel + 1 > skillMaxLvl) {
+                SendMsgAction.execute(player, "Достигнут максимальный уровень умения");
+
                 return;
             }
 
             if (currentLevel + 1 != skillLvl) {
                 SendMsgAction.execute(player, "Невозможно изучить это умение");
+
                 return;
             }
         } else if (skillLvl != 1) {
             SendMsgAction.execute(player, "Невозможно изучить это умение");
+
             return;
         }
 
@@ -40,6 +45,7 @@ public class AddSkillAction extends Action {
 
         if (skill == null) {
             SendMsgAction.execute(player, "Невозможно изучить это умение");
+
             return;
         }
 

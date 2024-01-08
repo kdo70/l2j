@@ -31,7 +31,7 @@ public class GetStatsLeftAction extends Action {
 
             return template;
         } catch (IOException e) {
-            throw new IllegalStateException("Error in forming the reward list", e);
+            throw new IllegalStateException(e);
         }
     }
 }

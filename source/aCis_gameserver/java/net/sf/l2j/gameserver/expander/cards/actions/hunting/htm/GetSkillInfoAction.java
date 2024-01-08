@@ -55,24 +55,30 @@ public class GetSkillInfoAction extends Action {
 
             for (Integer skill : HuntingSkillEnum.getList()) {
                 String htm = buttonTemplate;
+
                 htm = htm.replace("%skillId%", Integer.toString(skill));
-                htm = htm.replace("%color%", card.getSp() > 0 ? _buttonActiveColor : _buttonColor);
 
                 L2Skill currentSkill = player.getSkill(skill);
                 int currentLevel = (currentSkill != null) ? currentSkill.getLevel() : 0;
                 int skillMaxLvl = SkillTable.getInstance().getMaxLevel(skill);
 
+                String color = _buttonColor;
+                if (card.getSp() > 0 && currentLevel != skillMaxLvl) {
+                    color = _buttonActiveColor;
+                }
+
+                htm = htm.replace("%color%", color);
+
                 String text;
-                if (currentLevel == 0 && skillMaxLvl == 1) {
+                if (skillMaxLvl == 1) {
                     text = "Активировать";
-                } else if (currentLevel == skillMaxLvl) {
-                    text = "";
                 } else {
-                    L2Skill nextSkill = SkillTable.getInstance().getInfo(skill, currentLevel + 1);
+                    int nextLvl = currentLevel == skillMaxLvl ? currentLevel : currentLevel + 1;
+                    L2Skill nextSkill = SkillTable.getInstance().getInfo(skill, nextLvl);
                     text = "x" + nextSkill.getStatFuncs(player).get(0).getValue();
                 }
 
-                int skillLvl = (currentLevel == 0 && skillMaxLvl == 1) ? skillMaxLvl : currentLevel + 1;
+                int skillLvl = (currentLevel == 0 && skillMaxLvl == 1) ? skillMaxLvl : Math.min(currentLevel + 1, skillMaxLvl);
 
                 htm = htm.replace("%skillLvl%", Integer.toString(skillLvl));
                 htm = htm.replace("%text%", text);
@@ -85,5 +91,4 @@ public class GetSkillInfoAction extends Action {
             throw new IllegalStateException(e);
         }
     }
-
 }

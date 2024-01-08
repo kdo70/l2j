@@ -12,6 +12,18 @@ public class AddItemAction extends Action {
     public void execute(Player player, int index) {
         CharacterCardHolder playerCard = player.getCards().get(CardsTypeEnum.MONSTER.getName());
 
+        if (playerCard.getRewardLvl() >= index) {
+            SendMsgAction.execute(player, "Награда была получена вами ранее");
+
+            return;
+        }
+
+        if (Math.abs(playerCard.getRewardLvl() - index) > 1) {
+            SendMsgAction.execute(player, "Награда будет доступна после получения награды за " + (index - 1) + " уровнь");
+
+            return;
+        }
+
         if (playerCard.getRewardLvl() + 1 != index || index > playerCard.getLvl()) {
             SendMsgAction.execute(player, "Награда будет доступна на " + index + " уровне");
 

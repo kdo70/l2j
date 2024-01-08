@@ -30,12 +30,12 @@ public class GetRewardListAction extends Action {
 
             return list.toString();
         } catch (IOException e) {
-            throw new IllegalStateException("Error in forming the reward list", e);
+            throw new IllegalStateException(e);
         }
     }
 
     private String getTemplateItem(String template, CharacterCardHolder card, int index) {
-        final int cardsMaxOffset = HuntingCardData.getInstance().getList().size() - _pageSize;
+        final int cardsMaxOffset = HuntingCardData.getInstance().getList().size() + 1 - _pageSize;
         int characterCardLvl = Math.min(card.getRewardLvl(), cardsMaxOffset);
 
         CardLvlHolder nextCard = HuntingCardData.getInstance().getLvl(characterCardLvl + index);
